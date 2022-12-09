@@ -11,7 +11,7 @@ import { Filter } from 'src/app/Model/Filter/filter.model';
   providedIn: 'root'
 })
 export class CardServiceService {
-  private baseUrl = "http://localhost:8080/API/Card/";
+  private baseUrl = "http://localhost:9191/card/";
   constructor(private http: HttpClient, private adapterDTO: CardAdapterFromDTO, private adapterCard: CardAdapter, private cookieService: CookieService,
     private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter) { }
 
