@@ -33,7 +33,7 @@ export class CardServiceService {
   }
 
   getAll(): Observable<CardDetailsDTO[]> {
-    const url = `${this.baseUrl}getAll/`;
+    const url = `https://onepiece-be.azurewebsites.net/card/all`;
     return this.http.get<CardDetailsDTO[]>(url).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cdall.adapt(item)))
     );
