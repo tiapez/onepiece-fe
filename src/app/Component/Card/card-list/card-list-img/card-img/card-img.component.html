@@ -1,0 +1,10 @@
+<div id="{{'card-container-'+cardDet.card.id}}"
+    class="{{  cardDet.qty <= 0 ? 'grey-img card-bg card-' + cardDet.card.color : 'card-bg card-' + cardDet.card.color}}{{cardDet.card.name.includes('Full') ? ' shine' : ''}}">
+    <div class="{{'card-container card-' + cardDet.card.role}}">
+        <img id="{{'img-card-'+cardDet.card.id}}" class="{{cardDet.qty == 0 ? 'grey-img' : ''}}"
+            src="./assets/Img/{{cardService.filter.setId}}/{{cardDet.card.number}}.png" width="360" 
+            (click)="!cardService.isUserCard ? cardService.openView(cardDet.card) : ''" />
+
+            <app-card-button *ngIf="cardService.isUserCard" [cardDet]="cardDet"></app-card-button>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container-myside">
+	<div class="container-lg navbar-container  align-items-center">
+		<div class="navbar-brand" href="/">
+			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
+			<div id="div-click" (click)="openNav()"></div>
+		</div>
+		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
+			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
+			<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+			<a href="/">Home</a>
+			<a href="/CardList">Card List</a>
+			<a class="dropdown-toggle only-dk" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+				aria-expanded="false">User Card</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li> <a href="/UserCardClassic">Classic</a></li>
+				<li> <a href="/UserCardDetails">Details</a></li>
+			</ul>
+			<a class="only-mb" href="/UserCardClassic">User Card Classic</a>
+			<a class="only-mb" href="/UserCardDetails">User Card Details</a>
+			<a style="color: grey;">Deck (incoming)</a>  
+			<div class="navbar-button">
+
+				<button *ngIf="router.url.includes('Card')" class="btn btn-outline-danger align-items-center"
+					(click)="cardService.changeView(); closeNav();">
+					<i class="fas fa-eye"></i>
+					{{cardService.view == '0' ? 'Text' : 'Img'}}
+			</button>
+
+				<button class="btn btn-outline-success align-items-center" (click)="signUp()">
+					<i class="fas fa-user-circle"></i>
+					{{userLogged.length == 0 ? 'Guest' :' ' + userLogged |titlecase}}
+				</button>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="container-lg">
+		<app-filter *ngIf="this.router.url.includes('Card')"></app-filter>
+	</div>
+</div>

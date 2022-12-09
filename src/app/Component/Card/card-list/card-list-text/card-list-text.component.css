@@ -1,0 +1,52 @@
+.card-list-container-text{
+	border-top: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+.card-list-container-text .table thead{
+	color: white !important;
+
+}
+.card-list-container-text .table .tbody{
+	color: black !important;
+
+}
+.card-list-container-text .table td {
+  text-align: center;
+}
+.card-list-container-text .table th {
+  text-align: center;
+}
+.card-list-container-text tbody{
+		background-color: white;
+}
+.card-list-container-text tbody td{
+	border-top: 1px solid black !important;
+	border-bottom: 1px solid black !important;
+}
+
+.grey-tr{
+	background: rgba(0, 0, 0, 0.473) !important;
+}
+.tr-Red {
+	background: linear-gradient(rgba(198,0,0,0.9),rgba(198,0,0,0.7));
+}
+.tr-Green{
+	background: linear-gradient(rgba(7,161,0,0.9),rgba(7,161,0,0.7));
+}
+.tr-Red-Green{
+background: linear-gradient(rgba(198,0,0,0.8), rgba(7,161,0,0.7));
+}
+.tr-Blue{
+	background: linear-gradient(rgba(21, 0, 161, 0.9),rgba(0, 38, 161, 0.7));
+}
+
+.tr-Purple{
+	background: linear-gradient(rgba(134, 0, 107, 0.9),rgba(158, 0, 161, 0.7));
+}
+
+.tr-Blue-Purple{
+	background: linear-gradient(rgba(21, 0, 161,0.8), rgba(34, 0, 107,0.7));
+}
+

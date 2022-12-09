@@ -1,0 +1,68 @@
+
+.modal-header{
+	margin: auto;
+}
+
+
+.super-card{
+border-radius: 20px;
+}
+
+
+
+.super-card-role{
+	transform: translateZ(40px);
+	padding: 5%;
+	border-radius: 20px;
+}
+
+.super-card-img{
+	width: 100%;
+	transform: translateZ(80px);
+	border-radius: 20px;
+}
+.super-card-img img{
+	width: 100%;
+}
+
+.rare-secret{
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+}
+
+.rare-secret .super-card-img{
+	transform: translateZ(80px);
+}
+
+.rare-secret .super-card-role{
+	transform: translateZ(40px);
+}
+
+.card-Red{
+background: linear-gradient(rgba(198,0,0,0.5),rgba(198,0,0,0.7));
+}
+
+.card-Green{
+background: linear-gradient(rgba(7,161,0,0.7),rgba(7,161,0,0.4));
+}
+
+.card-Red-Green{
+background: linear-gradient(135deg,rgba(7,161,0,0.7) 30%,rgba(198,0,0,0.7) 60%);
+}
+
+.card-Slash{
+background: linear-gradient(225deg, rgb(53, 0, 246,1),rgb(0, 0, 0,0) 30%);
+}
+.card-Strike{
+background: linear-gradient(225deg, rgb(246, 226, 0),rgb(0, 0, 0,0) 30%);
+}
+.card-Ranged{
+background: linear-gradient(225deg, rgb(201, 42, 42),rgb(0, 0, 0,0) 30%);
+}
+.card-Special{
+background: linear-gradient(225deg, rgb(180, 22, 247),rgb(0, 0, 0,0) 30%);
+}
+.card-Wisdom{
+background: linear-gradient(225deg, green,rgb(0, 0, 0,0) 30%);
+}
+

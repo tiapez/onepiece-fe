@@ -1,0 +1,166 @@
+<h1 class="text-center" style="color: white" (click)="openFilter()" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample">FILTRI
+</h1>
+
+<div class="sideFilter text-center" id="collapseExample" [ngbCollapse]="isCollapsed"
+    [ngStyle]='{ width : filterWidth }'>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeFilter()">&times;</a>
+
+    <form action="/addFilter" class="form-filter" method="POST" id="formFilter">
+        <div class="col-auto button-filter">
+            <select class="form-select" name="set" id="set" (change)="cardService.callCard()" [(ngModel)]="cardService.filter.setName">
+                <option value="1/Romance Dawn">Romance Dawn</option>
+                <option value="2/paramount War">paramount War</option>
+                <option value="3/ST01 - Straw Hat Crew">ST01 - Straw Hat Crew</option>
+                <option value="4/ST02 - Worst Generation">ST02 - Worst Generation</option>
+                <option value="5/ST03 - The Seven Warlords of the Sea">ST03 - The Seven Warlords of the Sea</option>
+                <option value="6/ST04 - Animal Kingdom Pirates">ST04 - Animal Kingdom Pirates</option>
+                <option value="7/ST05 - ONE PIECE FILM edition">ST05 - ONE PIECE FILM edition</option>
+                <option value="8/ST08 - The Navy">ST08 - The Navy</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="color" id="color" [(ngModel)]="cardService.filter.color">
+                <option value="All" text="{{cardService.filter.color == 'All' ? 'Color' : 'All'}}"></option>
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+                <option value="Blue">Blue</option>
+                <option value="Purple">Purple</option>
+                <option value="Black">Black</option>
+                <option value="-">Multi</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="role" id="role" [(ngModel)]="cardService.filter.role">
+                <option value="All">
+                    {{cardService.filter.role == 'All' ? 'Role' : 'All'}}
+                </option>
+                <option value="Slash">Slash</option>
+                <option value="Strike">Strike</option>
+                <option value="Ranged">Ranged</option>
+                <option value="Special">Special</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="cardType" id="cardType" [(ngModel)]="cardService.filter.cardType">
+                <option value="All">
+                    {{cardService.filter.cardType == 'All' ? 'Card Type' : 'All'}}
+                </option>
+                <option value="Leader">Leader</option>
+                <option value="Character">Character</option>
+                <option value="Event">Event</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="type" id="type" [(ngModel)]="cardService.filter.type">
+                <option value="">
+                    {{cardService.filter.type == '' ? 'Type' : 'All'}}
+                </option>
+                <option value="Supernovas">Supernovas
+                </option>
+                <option value="Straw Hat Crew">Straw
+                    Hat Crew</option>
+                <option value="Film">Film</option>
+                <option value="stand">stand</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter">
+            <input type="text" placeholder="Name..." id="name" name="name" class="form-control"
+                th:value="${session.filter.name}}" [(ngModel)]="cardService.filter.name">
+        </div>
+
+        <div class="col-auto button-filter">
+            <select class="form-select" name="rarity" id="rarity" [(ngModel)]="cardService.filter.rarity">
+                <option value="All">
+                    {{cardService.filter.rarity == 'All' ? 'Rarity' : 'All'}}
+                </option>
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare">Rare</option>
+                <option value="Leader">Leader</option>
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="power" id="power" [(ngModel)]="cardService.filter.power">
+                <option value=-1>
+                    {{cardService.filter.power == -1 ? 'Power' : 'Any'}}
+                </option>
+                <option th:each="i : ${#numbers.sequence(1, 10)}}" th:value="${i*1000}}" th:text="${i*1000}}"
+                    th:selected="${session.filter.Cost == i}}">
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="counter" id="counter" [(ngModel)]="cardService.filter.counter">
+                <option value=-1>
+                    {{cardService.filter.counter == -1 ? 'Counter' : 'Any'}}
+                </option>
+                <option th:each="i : ${#numbers.sequence(1, 5)}}" th:value="${i*1000}}" th:text="${i*1000}}"
+                    th:selected="${session.filter.Cost == i}}">
+            </select>
+        </div>
+
+        <div class="col-auto button-filter" *ngIf="!cardService.isUserCard">
+            <select class="form-select" name="cost" id="cost" [(ngModel)]="cardService.filter.cost">
+                <option value=-1>
+                    {{cardService.filter.power == -1 ? 'Cost' : 'Any'}}
+                </option>
+                <option th:each="i : ${#numbers.sequence(1, 12)}}" th:value="${i}}" th:text="${i}}"
+                    th:selected="${session.filter.Cost == i}}">
+            </select>
+        </div>
+
+
+        <div class="col-auto button-filter" *ngIf="cardService.isDetails">
+            <select class="form-select" name="conditions" id="conditions" [(ngModel)]="cardService.filter.condition"
+                (ngModelChange)="conta()">
+                <option value="0">
+                    {{cardService.filter.condition == 0 ? 'Min. Cond.' : 'All'}}
+                </option>
+                <option value="1">Mint</option>
+                <option value="2">Near
+                    Mint</option>
+                <option value="3">Excellent
+                </option>
+                <option value="4">Good</option>
+                <option value="5">Played</option>
+                <option value="6">Poor</option>
+            </select>
+        </div>
+
+
+        <div class="col-auto button-filter" *ngIf="cardService.isDetails">
+            <select class="form-select" name="language" id="language" [(ngModel)]="cardService.filter.language"
+                (ngModelChange)="conta()">
+                <option value="All">
+                    {{cardService.filter.language == 'All' ? 'Language' : 'All'}}
+                </option>
+                <option value="ENG">Eng</option>
+                <option value="JAP">Jap</option>
+            </select>
+        </div>
+
+
+        <div class="col-auto button-filter">
+            <select class="form-select" name="moa" id="moa" [(ngModel)]="cardService.filter.view">
+                <option value="0">
+                    {{cardService.filter.view == 0 ? 'View' : 'All'}}
+                </option>
+                <option value="1">Owned</option>
+                <option value="2">Missing</option>
+            </select>
+        </div>
+        <div *ngIf="isMobile" class="col-auto button-filter ">
+        </div>
+        <div class="col-auto button-filter" id="button-reset">
+            <button class="btn btn-outline-success " (click)="reset()">Reset</button>
+        </div>
+
+    </form>
+</div>

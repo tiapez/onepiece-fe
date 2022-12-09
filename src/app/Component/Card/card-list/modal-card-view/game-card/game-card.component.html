@@ -1,0 +1,23 @@
+<div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
+    <div class="face back">
+        <img src="assets/Img/{{card.setId}}/{{card.number}}.png">
+    </div>
+    <div class="face front ">
+        <h3 class="text-center text-wrap">{{card.name}}</h3>
+        <h5><b>Color: </b> <span> {{card.color}} </span> </h5>
+        <h5><b>Card Type: </b>{{card.cardType}}</h5>
+        <h5 style="height: auto"><b>Type: </b>{{card.type.replace('/',',')}}</h5>
+        <h5 *ngIf="card.role != ''"><b>Role: </b> {{card.role}} </h5>
+        <div class="description">
+            <p [innerHTML]="description"></p>
+        </div>
+        <div class="row-det">
+            <div class="col-2"><b>Cost: </b> {{card.cost}}</div>
+            <div class="col-5" style="text-align: center;"><b>Power: </b> {{card.power}}</div>
+            <div class="col-5" style="text-align: right;"><b>Counter: </b> {{card.counter}}</div>
+        </div>
+        <p class="number">
+            <b>{{cardService.filter.setName}}</b><span>: {{card.number.substring(0,3)}}</span>
+        </p>
+    </div>
+</div>

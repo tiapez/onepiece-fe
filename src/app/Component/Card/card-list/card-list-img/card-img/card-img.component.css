@@ -1,0 +1,107 @@
+.card-bg{
+		position:relative;
+		z-index: 1;
+		border-radius:10px;
+		overflow: hidden;
+}
+
+.card-container{
+	position:relative;
+	-webkit-box-shadow: 5px 5px 10px 0px #000000; -moz-box-shadow : 5px 5px
+	10px 0px #000000; -o-box-shadow : 5px 5px 10px 0px #000000; box-shadow
+	: 5px 5px 10px 0px #000000;
+	-moz-box-shadow: 5px 5px 10px 0px #000000;
+	-o-box-shadow: 5px 5px 10px 0px #000000;
+	box-shadow: 5px 5px 10px 0px #000000;
+	border-radius:10px;
+	z-index: 2;
+	padding: 5%;
+}
+
+.card-container img {
+	width: 100%;
+}
+
+.shine .card-container:hover::before {
+	content: '';
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: -500px;
+	width: 70px;
+	height: 100%;
+	background: rgba(255,255,255, 0.3);
+	transform: skewX(-30deg);
+	/*animation-name: slide;*/
+	animation-name: slide;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in-out;
+	background: linear-gradient(
+		to right, 
+		rgba(255, 255, 255, 0.13) 0%,
+		rgba(255, 255, 255, 0.13) 77%,
+		rgba(255, 255, 255, 0.5) 92%,
+		rgba(255, 255, 255, 0.0) 100%
+	  );
+	}
+	@keyframes slide {
+	  0% {
+		left: -200px;
+		top: 0;
+	  }
+	  50% {
+		left: 120px;
+		top: 0px;
+	  }
+	  100% {
+		left: 290px;
+		top: 0;
+	  }
+	}
+
+@keyframes slide {
+	100% {
+		left: 125%;
+	}
+}
+
+.grey-img {
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
+}
+
+.card-Red{
+	background: linear-gradient(rgba(198,0,0,0.5),rgba(198,0,0,0.7));
+}
+
+.card-Green{
+	background: linear-gradient(rgba(7,161,0,0.7),rgba(7,161,0,0.4));
+}
+
+.card-Blue{
+	background: linear-gradient(rgba(21, 0, 161, 0.7),rgba(0, 38, 161, 0.4));
+}
+
+.card-Purple{
+	background: linear-gradient(rgba(134, 0, 107, 0.7),rgba(158, 0, 161, 0.4));
+}
+
+.card-Red-Green{
+	background: linear-gradient(135deg,rgba(7,161,0,0.7) 30%,rgba(198,0,0,0.7) 60%);
+}
+
+.card-Slash{
+	background: linear-gradient(225deg, rgb(53, 0, 246,1),rgba(0, 0, 0, 0) 30%);
+}
+.card-Strike{
+	background: linear-gradient(225deg, rgb(246, 226, 0),rgb(0, 0, 0,0) 30%);
+}
+.card-Ranged{
+	background: linear-gradient(225deg, rgb(201, 42, 42),rgb(0, 0, 0,0) 30%);
+}
+.card-Special{
+	background: linear-gradient(225deg, rgb(180, 22, 247),rgb(0, 0, 0,0) 30%);
+}
+.card-Wisdom{
+	background: linear-gradient(225deg, green,rgb(0, 0, 0,0) 30%);
+}
