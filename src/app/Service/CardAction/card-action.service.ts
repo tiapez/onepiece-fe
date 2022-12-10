@@ -5,11 +5,13 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { UserCard, UserCardAdapter } from 'src/app/Model/UserCard/user-card.model';
+import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
 export class CardActionService {
-  private baseUrl = "http://localhost:9191/API/Action";
+  url = environment.apiUrl;
+  private baseUrl = this.url + "/API/Action/";
   public flag : boolean | undefined;
   constructor(private http: HttpClient,private cookieService: CookieService,
     private userCardDTO : UserCardAdapter) { }

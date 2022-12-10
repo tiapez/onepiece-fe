@@ -16,6 +16,8 @@ export class CardListComponent implements OnInit {
     private route: ActivatedRoute) { }
     set : any; 
   ngOnInit(){
+    if(this.cardService.view == null || this.cardService.view == undefined || this.cardService.view == '')
+      this.cardService.changeView();
     this.set = this.route.snapshot.paramMap.get('set');
     if(this.set!= null)
     {

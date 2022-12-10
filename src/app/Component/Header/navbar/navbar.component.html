@@ -1,22 +1,22 @@
 <div class="container-myside">
 	<div class="container-lg navbar-container  align-items-center">
-		<div class="navbar-brand" href="/">
+		<div class="navbar-brand" routerLink="/">
 			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
 			<div id="div-click" (click)="openNav()"></div>
 		</div>
 		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
 			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
-			<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-			<a href="/">Home</a>
-			<a href="/CardList">Card List</a>
+			<a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+			<a routerLink="/">Home</a>
+			<a routerLink="/CardList">Card List</a>
 			<a class="dropdown-toggle only-dk" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 				aria-expanded="false">User Card</a>
 			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<li> <a href="/UserCardClassic">Classic</a></li>
-				<li> <a href="/UserCardDetails">Details</a></li>
+				<li> <a routerLink="/UserCardClassic">Classic</a></li>
+				<li> <a routerLink="/UserCardDetails">Details</a></li>
 			</ul>
-			<a class="only-mb" href="/UserCardClassic">User Card Classic</a>
-			<a class="only-mb" href="/UserCardDetails">User Card Details</a>
+			<a class="only-mb" routerLink="/UserCardClassic">User Card Classic</a>
+			<a class="only-mb" routerLink="/UserCardDetails">User Card Details</a>
 			<a style="color: grey;">Deck (incoming)</a>  
 			<div class="navbar-button">
 

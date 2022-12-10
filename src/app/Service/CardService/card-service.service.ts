@@ -6,12 +6,14 @@ import { Card, CardAdapter, CardAdapterFromDTO } from 'src/app/Model/Card/card.m
 import { CardDetailsDTO, CardDetailsDTOAdapter, CardDetailsDTOAllAdapter } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
 import { CardDTO } from 'src/app/Model/CardDTO/card-dto.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardServiceService {
-  private baseUrl = "http://localhost:9191/card/";
+  url = environment.apiUrl;
+  private baseUrl = this.url + "/card/";
   constructor(private http: HttpClient, private adapterDTO: CardAdapterFromDTO, private adapterCard: CardAdapter, private cookieService: CookieService,
     private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter) { }
 
@@ -33,7 +35,7 @@ export class CardServiceService {
   }
 
   getAll(): Observable<CardDetailsDTO[]> {
-    const url = `https://onepiece-be.azurewebsites.net/card/all`;
+    const url = this.url + '/card/all';
     return this.http.get<CardDetailsDTO[]>(url).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cdall.adapt(item)))
     );

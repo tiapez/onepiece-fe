@@ -26,6 +26,7 @@ export class AllCardService {
   public isUserCard: boolean = false;
   public view: string = this.cookieService.get("view");
   public filter: Filter = new Filter();
+
   changeUrl() {
     this.isClassic = false;
     this.isDetails = false;

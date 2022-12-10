@@ -2,6 +2,7 @@ import { HttpClient, HttpContext, HttpErrorResponse, HttpParams, HttpResponse } 
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { User, UserAdapter } from '../../Model/User/user.model';
 import { UserService } from '../Utility/User/user.service';
 
@@ -9,7 +10,8 @@ import { UserService } from '../Utility/User/user.service';
   providedIn: 'root'
 })
 export class SignServiceService {
-  private baseUrl = "http://localhost:9191/API/User/";
+  url = environment.apiUrl;
+  private baseUrl = this.url + "/API/User/";
   constructor(private http: HttpClient, private adapter: UserAdapter,
     private userService: UserService) { }
 
