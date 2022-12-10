@@ -19,7 +19,7 @@ constructor(public activeModal: NgbActiveModal) {
 ngAfterViewInit(): void {
   const elements:any = document.querySelector(".super-card");
   VanillaTilt.init(elements);
-  if(this.modalCard.name.includes("Full") || this.modalCard.rarity.includes("secret")){
+  if(this.modalCard.name.includes("Parallel") || this.modalCard.rarity.includes("Secret")){
     const elements2:any = document.querySelector(".super-card-img");
     VanillaTilt.init(elements2,{glare:true,max:0});
   }
