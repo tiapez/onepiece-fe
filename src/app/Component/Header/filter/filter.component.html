@@ -8,7 +8,8 @@
 
     <form action="/addFilter" class="form-filter" method="POST" id="formFilter">
         <div class="col-auto button-filter">
-            <select class="form-select" name="set" id="set" (change)="cardService.callCard()" [(ngModel)]="cardService.filter.setName">
+            <select class="form-select" name="setOption" id="setOption" [(ngModel)]="cardService.filter.setOption" (change)="cardService.changeFilter()" >
+                <option value="Any" text="{{cardService.filter.setOption == 'Any' ? 'Set' : 'Any'}}"></option>
                 <option value="1/Romance Dawn">Romance Dawn</option>
                 <option value="2/paramount War">paramount War</option>
                 <option value="3/ST01 - Straw Hat Crew">ST01 - Straw Hat Crew</option>

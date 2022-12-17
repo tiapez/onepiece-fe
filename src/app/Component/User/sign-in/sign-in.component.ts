@@ -35,9 +35,7 @@ export class SignInComponent {
     this.nick = this.nick.split('/')[0];
     this.cookie.set(this.userService.nickCookie, this.userService.setNickCrypt(this.nick),{expires : 9999999999999});
     this.cookie.set("navType", this.navbar,{expires : 99999999999999});
-    this.router.navigate(['home', {esit: 'SignIn'}])
-    .then(() => {
-      window.location.reload();
-    });
+    this.router.navigate(['home', {esit: 'SignIn'}]);
+
   }
 }

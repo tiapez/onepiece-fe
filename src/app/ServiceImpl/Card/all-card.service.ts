@@ -49,18 +49,11 @@ if(this.view == '0'){
 }
   }
 
-  callCard()
-  {
+  changeFilter(){
+    this.filter.setName = this.filter.setOption.split('/')[1];
+    this.filter.setId = Number(this.filter.setOption.split('/')[0]);
+    this.getCardClassic();
     
-    this.router.navigate(['UserCardClassic', {set: this.filter.setName}])
-    .then(() => {
-      window.location.reload();
-    });
-  }
-
-  changeFilter(set : string){
-    this.filter.setName = set;
-    this.filter.setId = Number(set.split('/')[0]);
   }
 
   conta() {
@@ -74,19 +67,6 @@ if(this.view == '0'){
       cardDet.qty = c;
       c = 0;
     });
-  }
-
-  contaSingle(card : CardDetailsDTO) {
-    let c: number = 0;
-
-      card.cardDetails.forEach((dto: DetailsDTO) => {
-        if ((this.filter.condition == 0 || this.filter.condition >= dto.codCondition) && (this.filter.language.includes('All') || dto.language.includes(this.filter.language))) {
-          c = c + dto.qty;
-        }
-      })
-      card.qty = c;
-      c = 0;
-    ;
   }
 
   //CARD LIST SERVICE
@@ -111,8 +91,7 @@ if(this.view == '0'){
 
   getCardAll() {
     this.cardService.getCardList().subscribe({
-      next : data => { this.cardListDetails = data },
-      complete : () => console.log(this.cardListDetails)
+      next : data => { this.cardListDetails = data }
     }
     )
   }

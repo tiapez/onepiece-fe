@@ -34,12 +34,11 @@ export class SignUpComponent {
       userToSave.username = this.user.username.toLowerCase();
       userToSave.mail = this.user.mail.toLowerCase();
       userToSave.nick = this.user.nick.toLowerCase();
-      console.log(userToSave);
+
       userToSave.password = this.us.setPassCrypt(userToSave.password);
       userToSave.username = this.us.setUserCrypt(userToSave.username);
       userToSave.nick = this.us.setNickCrypt(userToSave.nick);
-      console.log(userToSave);
-      console.log(this.user);
+
       this.userService.saveUser(userToSave).subscribe({
         next: data => this.flag = data,
         error: err => this.error = err,

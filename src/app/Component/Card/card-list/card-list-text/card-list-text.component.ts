@@ -18,7 +18,7 @@ export class CardListTextComponent implements OnInit {
   }
   
   ngAfterViewInit(){
-    console.log(this.cardService.cardListDetails);
+
   }
 
 }

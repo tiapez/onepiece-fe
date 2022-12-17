@@ -19,30 +19,28 @@ export class CardListComponent implements OnInit {
 
     if(this.cardService.view == null || this.cardService.view == undefined || this.cardService.view == '')
       this.cardService.changeView();
+      this.cardService.changeUrl();
+
     this.set = this.route.snapshot.paramMap.get('set');
-    if(this.set!= null)
-    {
-      this.cardService.changeFilter(this.set);
-    }
       this.cardService.changeUrl();
       if (this.cardService.isDetails) {
         if (!this.userService.isLogged()) {
-          this.router.navigate(['/'])
-            .then(() => {
-              window.location.reload();
-            });     
+          this.router.navigate(['/']);   
         }
-        this.cardService.getCardDetails();
+        
       }
   
       if (this.cardService.isClassic) {
         if (!this.userService.isLogged()) {
-          this.router.navigate(['/'])
-            .then(() => {
-              window.location.reload();
-            });
+          this.router.navigate(['/']);
         }
         this.cardService.getCardClassic();
+      }
+      if (this.cardService.isDetails) {
+        if (!this.userService.isLogged()) {
+          this.router.navigate(['/']);
+        }
+        this.cardService.getCardDetails();
       }
       if (!this.cardService.isUserCard)
         this.cardService.getCardAll();

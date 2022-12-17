@@ -22,7 +22,7 @@ export class CardImgComponent {
   }
 
 ngAfterViewInit(){
-  console.log(this.cardService.cardListDetails)
+
 }
 
 ngOnDestroy() {

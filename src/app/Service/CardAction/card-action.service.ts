@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class CardActionService {
   url = environment.apiUrl;
-  private baseUrl = this.url + "/API/Action/";
+  private baseUrl = this.url + "/API/Action";
   public flag : boolean | undefined;
   constructor(private http: HttpClient,private cookieService: CookieService,
     private userCardDTO : UserCardAdapter) { }

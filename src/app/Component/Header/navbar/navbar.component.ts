@@ -29,7 +29,6 @@ export class NavbarComponent {
 		if (this.error == 1) {
 			this.toastService.userSaveSuccess();
 		}
-		console.log(this.userService.isLogged());
 	}
 
 	openNav() {

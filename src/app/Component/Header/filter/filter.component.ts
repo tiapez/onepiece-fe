@@ -4,7 +4,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { filter } from 'src/app/Component/Global/global';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -16,23 +16,11 @@ export class FilterComponent {
   filterHeight: string | undefined;
   filterWidth: string | undefined;
   isCollapsed: boolean = true;
-
+  filter = filter;
 
   ngOnInit() {
     if (this.isMobile) {
       this.filterWidth = "100%";
-    }
-  }
-
-  filterStuff() {
-    if (this.isMobile) {
-      this.openFilter();
-    } else {
-      if (this.filterHeight == "8em") {
-        this.filterHeight = "0";
-      } else {
-        this.filterHeight = "8em";
-      }
     }
   }
 
@@ -57,13 +45,6 @@ export class FilterComponent {
 
   conta() {
     this.cardService.conta();
-  }
-
-  callCard() {
-    if (this.cardService.isClassic)
-      this.cardService.getCardClassic();
-    if (this.cardService.isDetails)
-      this.cardService.getCardDetails();
   }
 
 }
