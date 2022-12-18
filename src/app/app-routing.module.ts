@@ -6,6 +6,7 @@ import { CardListImgComponent } from './Component/Card/card-list/card-list-img/c
 import { CardListComponent } from './Component/Card/card-list/card-list.component';
 import { SignInComponent } from './Component/User/sign-in/sign-in.component';
 import { HomeComponent } from './Component/Home/home.component';
+import { DeckComponent } from './Component/Deck/deck.component';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: "CardList", component: CardListComponent},
   {path: "UserCardClassic", component: CardListComponent},
   {path: "UserCardDetails", component: CardListComponent},
+  {path: "deck", component: DeckComponent},
   {path : "", redirectTo : "home", pathMatch: 'full'}
 ];
 

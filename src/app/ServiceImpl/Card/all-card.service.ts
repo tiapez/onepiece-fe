@@ -51,7 +51,7 @@ if(this.view == '0'){
 
   changeFilter(){
     this.filter.setName = this.filter.setOption.split('/')[1];
-    this.filter.setId = Number(this.filter.setOption.split('/')[0]);
+    this.filter.setId = this.filter.setOption.split('/')[0];
     this.getCardClassic();
     
   }

@@ -18,7 +18,7 @@ export class Card {
         public counter : number,
         public cost : number,
         public effect : string,
-        public setId : number,
+        public setId : string,
      ){}
 }
 

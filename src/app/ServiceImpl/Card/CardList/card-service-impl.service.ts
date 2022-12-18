@@ -26,11 +26,11 @@ export class CardServiceImplService {
 
   }
 
-  getUserCardClassic(set : number){
+  getUserCardClassic(set : string){
     return (this.cardService.getAllClassics(set));
   }
 
-  getUserCardDetails(set : number){
+  getUserCardDetails(set : string){
     return (this.cardService.getAllDetails(set));
   }
 

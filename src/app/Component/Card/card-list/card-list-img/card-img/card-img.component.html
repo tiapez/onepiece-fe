@@ -2,7 +2,7 @@
     class="{{ (cardDet.qty <= 0 && cardService.isUserCard ? 'grey-img ' : '') + 'card-bg card-' + cardDet.card.color}}{{cardDet.card.name.includes('Parallel') ? ' shine' : ''}}">
     <div class="{{'card-container card-' + cardDet.card.role}}">
         <img class="{{(cardDet.qty <= 0 && cardService.isUserCard ? 'grey-img ' : '')}}"
-            src="assets/Img/{{cardDet.card.setId}}/{{cardDet.card.number}}.png" 
+            src="./assets/Img/{{cardDet.card.setId}}/{{cardDet.card.number}}.png" 
             onerror="this.src='assets/Img/default.png';" width="360" 
             (click)="!cardService.isUserCard ? cardService.openView(cardDet.card) : ''" />
 

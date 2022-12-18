@@ -18,7 +18,7 @@ export class CardServiceService {
     private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter) { }
 
 
-  getAllDetails(set : number): Observable<CardDetailsDTO[]> {
+  getAllDetails(set : string): Observable<CardDetailsDTO[]> {
     const url = `${this.baseUrl}getAllDetails/`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("set",set);
     return this.http.get<CardDetailsDTO[]>(url, { params} ).pipe(
@@ -26,7 +26,7 @@ export class CardServiceService {
     );
   }
 
-  getAllClassics(set : number): Observable<CardDetailsDTO[]> {
+  getAllClassics(set : string): Observable<CardDetailsDTO[]> {
     const url = `${this.baseUrl}getAllClassic/`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("set",set);
     return this.http.get<CardDetailsDTO[]>(url, { params} ).pipe(
