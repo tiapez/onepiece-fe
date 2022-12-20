@@ -4,7 +4,7 @@ import { Adapter } from "src/app/Adapter/adapter";
 export class Filter {
 
     constructor(
-    public setId : string = 'Any',
+    public setId : string = 'OP01',
     public setName : string = "Romance Dawn",
     public color : string = "All",
     public role : string = "All",

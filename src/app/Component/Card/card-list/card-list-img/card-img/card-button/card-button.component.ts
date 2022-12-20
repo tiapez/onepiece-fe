@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Card } from 'src/app/Model/Card/card.model';
 import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
 import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
+import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
 
 
 
@@ -16,7 +17,7 @@ export class CardButtonComponent implements OnInit {
   @Input() card!:Card;
   @Input() cardDet!:CardDetailsDTO;
 
-  constructor(public cardService : AllCardService,
+  constructor(public cardService : AllCardService, public deckService : DeckImplService,
     public router: Router) { }
 
   ngOnInit(): void {

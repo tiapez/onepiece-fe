@@ -19,7 +19,7 @@ export class CardDetailsDTO {
     constructor(private detailsDTOAdapter : DetailsDTOAdapter){}
     adapt(item: any): CardDetailsDTO {
       let detailsList : DetailsDTO[];
-      detailsList = item.detailsDTO.map((data : any) => this.detailsDTOAdapter.adapt(data));
+      detailsList = item.detailsDTO.map((data : DetailsDTO) => this.detailsDTOAdapter.adapt(data));
       return new CardDetailsDTO( item.card,detailsList,0);
     }
 }

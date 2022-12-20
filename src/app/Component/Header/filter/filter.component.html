@@ -1,6 +1,15 @@
-<h1 class="text-center" style="color: white" (click)="openFilter()" [attr.aria-expanded]="!isCollapsed"
-    aria-controls="collapseExample">FILTRI
-</h1>
+
+    <h1 class="deckButton2" *ngIf="cardService.isDeck">
+        <button class="btn btn-light" (click)="openDeck()" id="deckbtn">
+            Show Deck
+        </button>
+    </h1>
+
+    <h1 (click)="openFilter()" [attr.aria-expanded]="!isCollapsed" 
+    aria-controls="collapseExample" class="{{cardService.isDeck ? 'left' : 'center'}}"
+    >FILTRI
+
+    </h1>
 
 <div class="sideFilter text-center" id="collapseExample" [ngbCollapse]="isCollapsed"
     [ngStyle]='{ width : filterWidth }'>
@@ -8,16 +17,17 @@
 
     <form action="/addFilter" class="form-filter" method="POST" id="formFilter">
         <div class="col-auto button-filter">
-            <select class="form-select" name="setOption" id="setOption" [(ngModel)]="cardService.filter.setOption" (change)="cardService.changeFilter()" >
+            <select class="form-select" name="setOption" id="setOption" [(ngModel)]="cardService.filter.setOption"
+                (change)="cardService.changeFilter()">
                 <option value="Any" text="{{cardService.filter.setOption == 'Any' ? 'Set' : 'Any'}}"></option>
-                <option value="1/Romance Dawn">Romance Dawn</option>
-                <option value="2/paramount War">paramount War</option>
-                <option value="3/ST01 - Straw Hat Crew">ST01 - Straw Hat Crew</option>
-                <option value="4/ST02 - Worst Generation">ST02 - Worst Generation</option>
-                <option value="5/ST03 - The Seven Warlords of the Sea">ST03 - The Seven Warlords of the Sea</option>
-                <option value="6/ST04 - Animal Kingdom Pirates">ST04 - Animal Kingdom Pirates</option>
-                <option value="7/ST05 - ONE PIECE FILM edition">ST05 - ONE PIECE FILM edition</option>
-                <option value="8/ST08 - The Navy">ST08 - The Navy</option>
+                <option value="OP01/Romance Dawn">Romance Dawn</option>
+                <option value="OP02/paramount War">paramount War</option>
+                <option value="ST01/ST01 - Straw Hat Crew">ST01 - Straw Hat Crew</option>
+                <option value="ST02/ST02 - Worst Generation">ST02 - Worst Generation</option>
+                <option value="ST03/ST03 - The Seven Warlords of the Sea">ST03 - The Seven Warlords of the Sea</option>
+                <option value="ST04/ST04 - Animal Kingdom Pirates">ST04 - Animal Kingdom Pirates</option>
+                <option value="ST05/ST05 - ONE PIECE FILM edition">ST05 - ONE PIECE FILM edition</option>
+                <option value="ST06/ST08 - The Navy">ST08 - The Navy</option>
             </select>
         </div>
 

@@ -6,6 +6,6 @@
             onerror="this.src='assets/Img/default.png';" width="360" 
             (click)="!cardService.isUserCard ? cardService.openView(cardDet.card) : ''" />
 
-            <app-card-button *ngIf="cardService.isUserCard" [cardDet]="cardDet"></app-card-button>
+            <app-card-button *ngIf="cardService.isUserCard || cardService.isDeck" [cardDet]="cardDet"></app-card-button>
     </div>
 </div>

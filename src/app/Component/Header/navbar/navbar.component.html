@@ -1,4 +1,4 @@
-<div class="container-myside">
+<div class="container-myside" id="navbar">
 	<div class="container-lg navbar-container  align-items-center">
 		<div class="navbar-brand" routerLink="/">
 			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
@@ -36,6 +36,6 @@
 
 	</div>
 	<div class="container-lg">
-		<app-filter *ngIf="this.router.url.includes('Card')"></app-filter>
+		<app-filter *ngIf="this.router.url.includes('Card') || cardService.isDeck"></app-filter>
 	</div>
 </div>

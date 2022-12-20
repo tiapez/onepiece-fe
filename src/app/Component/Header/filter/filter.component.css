@@ -5,6 +5,20 @@
   right: 0;
   top: 0;
 }
+
+.deckButton2{
+  float: right;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+
+center{
+  text-align: center;
+}
+
 .form-filter{
 	display: flex;
 	flex-direction: row;
@@ -23,6 +37,10 @@
 /***************************************************************************************************************************************/
 /* FILTRO MOBILE *//* FILTRO MOBILE *//* FILTRO MOBILE *//* FILTRO MOBILE *//* FILTRO MOBILE *//* FILTRO MOBILE *//* FILTRO MOBILE */
 /***************************************************************************************************************************************/
+
+.left{
+  text-align: left;
+}
 
 .sideFilter {
     height: 100%; /* 100% Full-height */

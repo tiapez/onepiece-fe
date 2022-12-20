@@ -11,7 +11,9 @@ import { filter } from 'src/app/Component/Global/global';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
+
   constructor(private deviceService: DeviceDetectorService, public cardService: AllCardService) { }
+
   isMobile: boolean = this.deviceService.isMobile();
   filterHeight: string | undefined;
   filterWidth: string | undefined;
@@ -29,9 +31,10 @@ export class FilterComponent {
       this.filterWidth = "100%";
       this.isCollapsed = false;
     }
-
-    else
-      this.isCollapsed = !this.isCollapsed;
+    else{
+      this.isCollapsed = !this.isCollapsed;   
+      this.startTimer();
+    }  
   }
 
   closeFilter() {
@@ -47,4 +50,36 @@ export class FilterComponent {
     this.cardService.conta();
   }
 
+  ngAfterViewInit(){
+    if(!this.isMobile){
+      this.cardService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
+      this.cardService.deckListHeight = window.innerHeight - this.cardService.deckListMargin;
+    }
+  }
+
+  interval: any;
+
+  startTimer() {
+    let time = 5000;
+      this.interval = setInterval(() => {
+        if(time > 0) {
+          time--;
+          this.cardService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
+          this.cardService.deckListHeight = window.innerHeight - this.cardService.deckListMargin;
+        } else {
+          clearInterval(this.interval);
+        }
+      },1)
+    }
+
+    openDeck(){
+      if(document.getElementById("deckbar")!.classList.contains("deckClose")){
+        document.getElementById("deckbar")!.classList.remove("deckClose");
+        document.getElementById("deckbtn")!.innerHTML = "Close Deck";
+      }else{
+        document.getElementById("deckbar")!.classList.add("deckClose");
+        document.getElementById("deckbtn")!.innerHTML = "Show Deck";
+      }
+
+    }
 }

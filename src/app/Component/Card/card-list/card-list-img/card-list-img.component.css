@@ -1,8 +1,10 @@
+
 .card-list-container-img{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
+
 
 .card-div{
 	max-width: 31%;

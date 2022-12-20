@@ -26,7 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CrypterService } from './Service/Utility/Crypt/crypter.service';
 import { GameCardComponent } from './Component/Card/card-list/modal-card-view/game-card/game-card.component';
 import { HomeComponent } from './Component/Home/home.component';
-import { DeckComponent } from './Component/Deck/deck.component';
+import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
 
 
 @NgModule({
@@ -48,7 +48,7 @@ import { DeckComponent } from './Component/Deck/deck.component';
     CardListComponent,
     GameCardComponent,
     HomeComponent,
-    DeckComponent,
+    DeckModifyComponent,
   ],
   imports: [
     BrowserModule,
