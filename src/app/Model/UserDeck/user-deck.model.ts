@@ -6,6 +6,7 @@ import { DeckCard, DeckCardAdapter } from "../DeckCard/deck-card.model";
 export class UserDeck {
     public deck! : Deck;
     public cardList! : DeckCard[];
+    public leader! : DeckCard;
     constructor(){}
 }
 
@@ -17,6 +18,7 @@ export class UserDeck {
     adapt(item : any): UserDeck {
       let userDeck = new UserDeck();
         userDeck.deck = this.deckAdapter.adapt(item.deck);
+        userDeck.leader = this.deckCardAdapter.adapt(item.leader);
         userDeck.cardList = item.cardList.map((data : any) => this.deckCardAdapter.adapt(data));
       return userDeck;
     }

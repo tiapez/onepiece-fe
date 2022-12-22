@@ -159,7 +159,8 @@
 
 
         <div class="col-auto button-filter">
-            <select class="form-select" name="moa" id="moa" [(ngModel)]="cardService.filter.view">
+            <select class="form-select" name="moa" id="moa" [(ngModel)]="cardService.filter.view"
+            (ngModelChange)="conta()">
                 <option value="0">
                     {{cardService.filter.view == 0 ? 'View' : 'All'}}
                 </option>

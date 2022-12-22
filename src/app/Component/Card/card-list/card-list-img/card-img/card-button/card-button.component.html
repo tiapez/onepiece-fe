@@ -3,7 +3,7 @@
         <button *ngIf="router.url.includes('Classic') && cardDet.qty <= 0" class="btn btn-dark" (click)="cardService.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>
         <button *ngIf="router.url.includes('Classic') && cardDet.qty > 0" class="btn btn-dark" (click)="cardService.removeClassic(cardDet)"> <i class="fas fa-minus"></i></button>
         <button *ngIf="router.url.includes('Details')" class="btn btn-dark" (click)="cardService.openAdd(cardDet)"> <i class="fas fa-bars"></i></button>
-        <button *ngIf="router.url.includes('deck')" class="btn btn-dark" (click)="deckService.create(cardDet)"> <i class="fas fa-plus"></i></button>
+        <button *ngIf="cardService.isDeck" class="btn btn-dark" (click)="deckService.create(cardDet)"> <i class="fas fa-plus"></i></button>
     </div>
     <div class="card-button text-center">
         <form ngNoForm
@@ -15,10 +15,10 @@
         </form>
     </div>
     <div class="card-button text-center">
-        <button *ngIf="!router.url.includes('deck')" (click)="cardService.openView(cardDet.card);" class="btn btn-dark">
+        <button *ngIf="!cardService.isDeck" (click)="cardService.openView(cardDet.card);" class="btn btn-dark">
             <i class="fas fa-image"></i>
         </button>
-        <button *ngIf="router.url.includes('deck')" class="btn btn-dark" (click)="deckService.removeDet(cardDet)"> <i class="fas fa-minus"></i></button>
+        <button *ngIf="cardService.isDeck" class="btn btn-dark" (click)="deckService.removeDet(cardDet)"> <i class="fas fa-minus"></i></button>
     </div>
 </div>
 

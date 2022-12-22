@@ -1,0 +1,43 @@
+<div class="container-lg">
+    <div class="deck-row">
+        <div *ngFor="let userDeck of cardService.userDeck" class="deck-container">
+            <div class="deck-box">
+                <div class="scene">
+                    <div class="box">
+                        <div class="box__face box__face--front Red">
+                            <img src="./../../../../../assets/Img/{{userDeck.leader.card.setId}}/{{userDeck.leader.card.number}}.png">
+                        </div>
+                        <div class="box__face box__face--back"></div>
+                        <div class="box__face box__face--right 
+                        {{userDeck.leader.card.color.split('-').length > 1 ?
+                     userDeck.leader.card.color.split('-')[1]: 
+                     userDeck.leader.card.color }}">
+                            <p class="deck-name">
+                                {{userDeck.deck.name}}
+                            </p>
+                        </div>
+                        <div class="box__face box__face--left"></div>
+                        <div class="box__face box__face--top {{userDeck.leader.card.color}}">DECK</div>
+                        <div class="box__face box__face--bottom"></div>
+                    </div>
+                </div>
+                <div class="deck-text">
+                    <div >
+                    <button class="btn btn-light">Modify</button>
+                    <button class="btn btn-light" style="float:right">Stat</button>
+                </div>
+                <div style="margin-top: 5%;">
+                    <button class="btn btn-light">Card List</button>
+                    <button class="btn btn-light" style="float:right">
+                        {{cardCounting(userDeck.cardList)}}
+                    </button>  
+                </div>
+                    <div class="deck-desc">
+                        <h5>DESC:</h5>
+                        <p>{{userDeck.deck.desc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,6 +15,7 @@ export class Deck {
   public side!: string;
   public note!: string;
   public format!: string;
+  public cond!: number;
   constructor() { }
 }
 
@@ -36,6 +37,7 @@ export class DeckAdapter implements Adapter<Deck> {
     deck.side = item.side;
     deck.format = item.format;
     deck.note = item.note;
+    deck.cond = item.cond;
     return deck;
   }
 }

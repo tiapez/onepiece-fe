@@ -6,6 +6,8 @@ import { CardListComponent } from './Component/Card/card-list/card-list.componen
 import { SignInComponent } from './Component/User/sign-in/sign-in.component';
 import { HomeComponent } from './Component/Home/home.component';
 import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
+import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
+import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create/deck-create.component'; 
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
@@ -15,7 +17,10 @@ const routes: Routes = [
   {path: "CardList", component: CardListComponent},
   {path: "UserCardClassic", component: CardListComponent},
   {path: "UserCardDetails", component: CardListComponent},
-  {path: "Deck/Modify", component: DeckModifyComponent},
+  {path: "Deck/CardList", component: DeckModifyComponent},
+  {path: "Deck", component: DeckListComponent},
+  {path: "Deck/Create", component: DeckCreateComponent},
+  {path: "Deck/Modify", component: DeckCreateComponent},
   {path : "", redirectTo : "home", pathMatch: 'full'}
 ];
 

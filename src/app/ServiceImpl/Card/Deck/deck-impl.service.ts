@@ -23,7 +23,8 @@ export class DeckImplService {
   getCardDeck() {
     this.deckService.getDeckCard().subscribe(
       {
-        next: data => { this.cardService.cardListDetails = data }
+        next: data => { this.cardService.cardListDetails = data },
+        complete: () => this.cardService.conta()
       }
     )
   }

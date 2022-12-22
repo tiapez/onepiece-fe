@@ -27,6 +27,8 @@ import { CrypterService } from './Service/Utility/Crypt/crypter.service';
 import { GameCardComponent } from './Component/Card/card-list/modal-card-view/game-card/game-card.component';
 import { HomeComponent } from './Component/Home/home.component';
 import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
+import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
+import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create/deck-create.component';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.com
     GameCardComponent,
     HomeComponent,
     DeckModifyComponent,
+    DeckListComponent,
+    DeckCreateComponent,
   ],
   imports: [
     BrowserModule,
