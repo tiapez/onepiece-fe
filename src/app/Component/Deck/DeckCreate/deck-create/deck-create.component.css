@@ -1,0 +1,11 @@
+.deck-modify-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: wheat;
+}
+
+.deck-modify-container{
+    width: 28%;
+    margin: 2.66%;
+}

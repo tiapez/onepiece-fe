@@ -67,7 +67,11 @@ export class AllCardService {
   changeFilter() {
     this.filter.setName = this.filter.setOption.split('/')[1];
     this.filter.setId = this.filter.setOption.split('/')[0];
+    this.cardListDetails = [];
+    if(this.isClassic)
     this.getCardClassic();
+    if(this.isDetails)
+    this.getCardDetails();
 
   }
 
