@@ -11,13 +11,13 @@ import { UserService } from '../Utility/User/user.service';
 })
 export class SignServiceService {
   url = environment.apiUrl;
-  private baseUrl = this.url + "/API/User/";
+  private baseUrl = this.url + "/api/user/";
   constructor(private http: HttpClient, private adapter: UserAdapter,
     private userService: UserService) { }
 
     //SIGNUP
   saveUser(user: User): Observable<boolean> {
-    const url = `${this.baseUrl}saveUser/`;
+    const url = `${this.baseUrl}saveUser`;
     const errorString: string = "";
     return this.http.post<boolean>(url, user).pipe(
       map((data: boolean) => { return data }),
@@ -28,7 +28,7 @@ export class SignServiceService {
   }
 
   checkUser(username: string): Observable<boolean> {
-      const url = `${this.baseUrl}userValidation/`;
+      const url = `${this.baseUrl}userValidation`;
       let params = new HttpParams().set("username", username);
       return this.http.post<boolean>(url, params).pipe(
         map((data: boolean) => { return data }),
@@ -39,7 +39,7 @@ export class SignServiceService {
   }
 
   checkNick(nick: string): Observable<boolean> {
-    const url = `${this.baseUrl}nickValidation/`;
+    const url = `${this.baseUrl}nickValidation`;
     let params = new HttpParams().set("nick", nick);
     return this.http.post<boolean>(url, params).pipe(
       map((data: boolean) => { return data }),
@@ -50,7 +50,7 @@ export class SignServiceService {
   }
 
   checkMail(mail: string) {
-      const url = `${this.baseUrl}mailValidation/`;
+      const url = `${this.baseUrl}mailValidation`;
       let params = new HttpParams().set("mail", mail);
       return this.http.post<boolean>(url, params).pipe(
         map((data: boolean) => { return data }),

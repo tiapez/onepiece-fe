@@ -36,6 +36,6 @@
 
 	</div>
 	<div class="container-lg">
-		<app-filter *ngIf="this.router.url.includes('Card') || cardService.isDeck"></app-filter>
+		<app-filter *ngIf="cardService.isUserCard|| cardService.isDeck"></app-filter>
 	</div>
 </div>

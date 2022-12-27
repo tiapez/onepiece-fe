@@ -7,6 +7,7 @@ export class DeckCard {
 public card! : Card;
 public qtyRequired! : number;
 public qtyOwned! : number;
+public qtyMax! : number;
 constructor(){}
 }
 
@@ -19,6 +20,8 @@ constructor(){}
         deckCard.card = item.card;
         deckCard.qtyOwned = item.qtyOwned;
         deckCard.qtyRequired = item.qtyRequired;
+        deckCard.qtyMax = item.qtyMax;
+        
       return deckCard;
     }
   }

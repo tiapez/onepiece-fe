@@ -14,36 +14,36 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class DeckService {
   url = environment.apiUrl;
-  private baseUrl = this.url + "/API/Deck/";
+  private baseUrl = this.url + "/api/deck/";
   constructor(private http: HttpClient, private cookieService: CookieService,
     private userDeckAdapter : UserDeckAdapter,
     private cardDetailsDTOAdapter : CardDetailsDTOAdapter) { }
 
 
   getUserDeck(): Observable<UserDeck[]> {
-    const url = `${this.baseUrl}test/`;
+    const url = `${this.baseUrl}userDecks`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
-    return this.http.get<UserDeck[]>(url).pipe(
+    return this.http.get<UserDeck[]>(url,{params}).pipe(
       map((data: UserDeck[]) => data.map((item) => this.userDeckAdapter.adapt(item)))
     );
   }
 
-  getDeckCard(): Observable<CardDetailsDTO[]> {
-    const url = `${this.baseUrl}test2/`;
+  getDeckCard(deck : Deck): Observable<CardDetailsDTO[]> {
+    const url = `${this.baseUrl}deckCardList`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
-    return this.http.get<CardDetailsDTO[]>(url).pipe(
+    return this.http.post<CardDetailsDTO[]>(url,deck,{params}).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cardDetailsDTOAdapter.adapt(item)))
     );
   }
 
   saveUserDeck(deck : UserDeck) {
-    const url = `${this.baseUrl}test3/`;
+    const url = `${this.baseUrl}saveUserDeck`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
     return this.http.post(url,deck).pipe();
   }
 
   saveOnlyDeck(deck : Deck) {
-    const url = `${this.baseUrl}test4/`;
+    const url = `${this.baseUrl}saveOnlyDeck`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
     return this.http.post(url,deck,{params}).pipe();
   }

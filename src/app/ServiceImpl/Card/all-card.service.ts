@@ -51,7 +51,7 @@ export class AllCardService {
       this.isClassic = true;
     if (this.router.url.includes('Details'))
       this.isDetails = true;
-    if (this.router.url.includes('Deck'))
+    if (this.router.url.includes('Deck/CardList'))
       this.isDeck = true;
   }
 

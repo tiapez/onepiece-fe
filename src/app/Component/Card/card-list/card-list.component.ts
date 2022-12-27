@@ -36,7 +36,7 @@ export class CardListComponent implements OnInit {
         this.cardService.getCardDetails();
       }
       if (this.cardService.isDeck) {
-        this.deckService.getCardDeck();
+        this.deckService.getCardDeck(this.cardService.deckSelected.deck);
         this.deckService.getUserDeck();
 
       }

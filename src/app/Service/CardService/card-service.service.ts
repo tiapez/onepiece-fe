@@ -13,14 +13,14 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class CardServiceService {
   url = environment.apiUrl;
-  private baseUrl = this.url + "/card/";
+  private baseUrl = this.url + "/api/card/";
   constructor(private http: HttpClient, private adapterDTO: CardAdapterFromDTO, private adapterCard: CardAdapter, private cookieService: CookieService,
     private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter,
     private cardAdapter : CardAdapter) { }
 
 
   getAllDetails(set : string): Observable<CardDetailsDTO[]> {
-    const url = `${this.baseUrl}getAllDetails/`;
+    const url = `${this.baseUrl}getAllDetails`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("set",set);
     return this.http.get<CardDetailsDTO[]>(url, { params} ).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cardDetailsDTOAdapter.adapt(item)))
@@ -28,7 +28,7 @@ export class CardServiceService {
   }
 
   getAllClassics(set : string): Observable<CardDetailsDTO[]> {
-    const url = `${this.baseUrl}getAllClassic/`;
+    const url = `${this.baseUrl}getAllClassic`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("set",set);
     return this.http.get<CardDetailsDTO[]>(url, { params} ).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cardDetailsDTOAdapter.adapt(item)))
@@ -36,14 +36,14 @@ export class CardServiceService {
   }
 
   getAll(): Observable<CardDetailsDTO[]> {
-    const url = this.url + '/card/all';
+    const url = `${this.baseUrl}getAll`;
     return this.http.get<CardDetailsDTO[]>(url).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cdall.adapt(item)))
     );
   }
 
   getLeader() : Observable<Card[]> {
-    const url = this.url + '/card/leader';
+    const url = `${this.baseUrl}getAllLeader`;
     return this.http.get<Card[]>(url).pipe(
       map((data: Card[]) => data.map((item) => this.cardAdapter.adapt(item)))
     );

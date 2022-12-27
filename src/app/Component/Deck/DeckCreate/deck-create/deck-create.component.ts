@@ -20,6 +20,8 @@ export class DeckCreateComponent implements OnInit {
     public name! : string;
 
   ngOnInit(): void {
+    this.leader = this.cardService.deckSelected.leader.card.id +'/' 
+    + this.cardService.deckSelected.leader.card.color;
     if(this.router.url.includes('Create'))
       this.name = 'Create';
     else
