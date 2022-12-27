@@ -15,7 +15,8 @@ export class CardServiceService {
   url = environment.apiUrl;
   private baseUrl = this.url + "/card/";
   constructor(private http: HttpClient, private adapterDTO: CardAdapterFromDTO, private adapterCard: CardAdapter, private cookieService: CookieService,
-    private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter) { }
+    private cardDetailsDTOAdapter : CardDetailsDTOAdapter,private  cdall : CardDetailsDTOAllAdapter,
+    private cardAdapter : CardAdapter) { }
 
 
   getAllDetails(set : string): Observable<CardDetailsDTO[]> {
@@ -38,6 +39,13 @@ export class CardServiceService {
     const url = this.url + '/card/all';
     return this.http.get<CardDetailsDTO[]>(url).pipe(
       map((data: CardDetailsDTO[]) => data.map((item) => this.cdall.adapt(item)))
+    );
+  }
+
+  getLeader() : Observable<Card[]> {
+    const url = this.url + '/card/leader';
+    return this.http.get<Card[]>(url).pipe(
+      map((data: Card[]) => data.map((item) => this.cardAdapter.adapt(item)))
     );
   }
 

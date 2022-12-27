@@ -36,8 +36,11 @@ export class CardServiceImplService {
 
   getCardList(){
     return (this.cardService.getAll());
-
  }
+
+ getLeaderList(){
+  return (this.cardService.getLeader());
+}
 
   openView(card : Card) {
     const modalRef = this.modalService.open(ModalCardComponent,{centered: true});

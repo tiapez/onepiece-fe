@@ -1,6 +1,6 @@
 <div class="container-lg">
     <div class="deck-row">
-        <div *ngFor="let userDeck of cardService.userDeck" class="deck-container">
+        <div *ngFor="let userDeck of cardService.deckList" class="deck-container">
             <div class="deck-box">
                 <div class="scene">
                     <div class="box">
@@ -23,11 +23,11 @@
                 </div>
                 <div class="deck-text">
                     <div >
-                    <button class="btn btn-light">Modify</button>
+                    <button class="btn btn-light" (click)="modify(userDeck)">Modify</button>
                     <button class="btn btn-light" style="float:right">Stat</button>
                 </div>
                 <div style="margin-top: 5%;">
-                    <button class="btn btn-light">Card List</button>
+                    <button class="btn btn-light" (click)="cardList(userDeck)">Card List</button>
                     <button class="btn btn-light" style="float:right">
                         {{cardCounting(userDeck.cardList)}}
                     </button>  
@@ -35,6 +35,24 @@
                     <div class="deck-desc">
                         <h5>DESC:</h5>
                         <p>{{userDeck.deck.desc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deck-container">
+            <div class="deck-box">
+                <div class="scene">
+                    <div class="box">
+                        <div class="box__face box__face--front">Image</div>
+                        <div class="box__face box__face--back"></div>
+                        <div class="box__face box__face--right">
+                            <p class="deck-name">
+                                Deck's name
+                            </p>
+                        </div>
+                        <div class="box__face box__face--left"></div>
+                        <div class="box__face box__face--top">Deck</div>
+                        <div class="box__face box__face--bottom"></div>
                     </div>
                 </div>
             </div>

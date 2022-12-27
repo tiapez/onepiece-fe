@@ -6,6 +6,7 @@
 
 .deck-container {
     width: 33%;
+    color: aliceblue;
 }
 
 .deck-box {
@@ -30,8 +31,8 @@
     margin-top: 10%;
     height: 279px;
     width: 200px;
-    perspective: 500px;
-    margin-left: 5em;
+    perspective: 800px;
+    margin-left: 25%;
 }
 
 .box {

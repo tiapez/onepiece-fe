@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
+import { Deck } from 'src/app/Model/Deck/deck.model';
 import { DeckCard } from 'src/app/Model/DeckCard/deck-card.model';
 import { DeckService } from 'src/app/Service/DeckService/deck.service';
 import { AllCardService } from '../all-card.service';
@@ -14,8 +15,7 @@ export class DeckImplService {
   getUserDeck() {
     this.deckService.getUserDeck().subscribe(
       {
-        next: data => { this.cardService.userDeck = data },
-        complete: () => { this.cardService.deckSelected = this.cardService.userDeck[0]; this.cardService.conta() }
+        next: data => { this.cardService.deckList = data },
       }
     )
   }
@@ -72,11 +72,16 @@ export class DeckImplService {
     })
   }
 
-  saveDeck(){
-    this.deckService.saveDeck(this.cardService.deckSelected).subscribe({
+  saveUserDeck(){
+    this.deckService.saveUserDeck(this.cardService.deckSelected).subscribe({
       error : err => console.log(err)
     });
   }
 
+  saveOnlyDeck(deck : Deck){
+    this.deckService.saveOnlyDeck(deck).subscribe({
+      error : err => console.log(err)
+    });
+  }
 
 }

@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { map, Observable } from 'rxjs';
 import { CardAdapter, CardAdapterFromDTO } from 'src/app/Model/Card/card.model';
 import { CardDetailsDTO,  CardDetailsDTOAdapter,  CardDetailsDTOAllAdapter } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
+import { Deck } from 'src/app/Model/Deck/deck.model';
 
 import { UserDeck, UserDeckAdapter } from 'src/app/Model/UserDeck/user-deck.model';
 import { environment } from 'src/environments/environment.prod';
@@ -35,11 +36,15 @@ export class DeckService {
     );
   }
 
-  saveDeck(deck : UserDeck) {
+  saveUserDeck(deck : UserDeck) {
     const url = `${this.baseUrl}test3/`;
     let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
     return this.http.post(url,deck).pipe();
-    
   }
 
+  saveOnlyDeck(deck : Deck) {
+    const url = `${this.baseUrl}test4/`;
+    let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    return this.http.post(url,deck,{params}).pipe();
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
+import { Router } from '@angular/router';
 import { DeckCard } from 'src/app/Model/DeckCard/deck-card.model';
+import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
 import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
 import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
 
@@ -11,7 +12,7 @@ import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service
 })
 export class DeckListComponent implements OnInit {
 
-  constructor(public cardService : AllCardService,
+  constructor(public router: Router,public cardService : AllCardService,
     public deckService : DeckImplService) { }
 
   ngOnInit(): void {
@@ -19,7 +20,6 @@ export class DeckListComponent implements OnInit {
   }
 
   cardCounting(cardList : DeckCard[]){
-    console.log(this.cardService.userDeck);
     let owned = 0;
     let req = 0;
     cardList.forEach(card => {
@@ -27,5 +27,15 @@ export class DeckListComponent implements OnInit {
       req = req + card.qtyRequired;
     });
     return owned + "/" + req;
+  }
+
+  modify(userDeck : UserDeck) {
+    this.cardService.deckSelected = userDeck;
+    this.router.navigate(['/Deck/Modify']);
+  }
+
+  cardList(userDeck : UserDeck){
+    this.cardService.deckSelected = userDeck;
+    this.router.navigate(['/Deck/CardList']);
   }
 }

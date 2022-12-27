@@ -25,10 +25,11 @@ export class AllCardService {
   public cardListDetails: CardDetailsDTO[] = [];
 
   //DECK
-  public userDeck: UserDeck[] = [];
+  public deckList: UserDeck[] = [];
   public deckSelected!: UserDeck;
   public deckListMargin!: any;
   public deckListHeight!: any;
+  public leaderList! : Card[];
 
   //FILTRI
   public isClassic: boolean = false;
@@ -113,6 +114,12 @@ export class AllCardService {
       next: data => { this.cardListDetails = data }
     }
     )
+  }
+
+  getLeader() {
+    this.cardService.getLeaderList().subscribe({
+      next: data => {this.leaderList = data}
+    })
   }
 
   //CARD ACTION
