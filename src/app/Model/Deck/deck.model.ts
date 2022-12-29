@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Adapter } from "src/app/Adapter/adapter";
-import { Card } from "../Card/card.model";
 
 export class Deck {
   public id!: number;

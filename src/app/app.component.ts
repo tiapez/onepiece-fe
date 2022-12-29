@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-op';
-
-  constructor(){}
   
 ngOnInit(){  
   console.warn(`🚨 Console output is disabled on production!`);

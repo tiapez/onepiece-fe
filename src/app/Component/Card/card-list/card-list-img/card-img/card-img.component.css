@@ -10,9 +10,6 @@
 	-webkit-box-shadow: 5px 5px 10px 0px #000000; -moz-box-shadow : 5px 5px
 	10px 0px #000000; -o-box-shadow : 5px 5px 10px 0px #000000; box-shadow
 	: 5px 5px 10px 0px #000000;
-	-moz-box-shadow: 5px 5px 10px 0px #000000;
-	-o-box-shadow: 5px 5px 10px 0px #000000;
-	box-shadow: 5px 5px 10px 0px #000000;
 	border-radius:10px;
 	z-index: 2;
 	padding: 5%;
@@ -30,7 +27,6 @@
 	left: -500px;
 	width: 70px;
 	height: 100%;
-	background: rgba(255,255,255, 0.3);
 	transform: skewX(-30deg);
 	/*animation-name: slide;*/
 	animation-name: slide;

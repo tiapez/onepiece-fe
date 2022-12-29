@@ -33,11 +33,5 @@ export class Filter {
       return new Filter();
       }
     }
-  /*
-  export class FilterAdapter implements Adapter<Filter> {
-    adapt(item: any): Filter {
-      return new Filter( item.setId,item.setName,item.color,item.role,item.type,item.subType,
-        item.name,item.rarity,item.effect,item.power,item.counter,item.cost,item.condition
-        ,item.language,item.missOrAll);
-    }*/
+
 

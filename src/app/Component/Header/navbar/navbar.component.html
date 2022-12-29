@@ -1,11 +1,11 @@
 <div class="container-myside" id="navbar">
 	<div class="container-lg navbar-container  align-items-center">
 		<div class="navbar-brand" routerLink="/">
-			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
+			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<div id="div-click" (click)="openNav()"></div>
 		</div>
 		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
-			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" />
+			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
 			<a routerLink="/">Home</a>
 			<a routerLink="/CardList">Card List</a>

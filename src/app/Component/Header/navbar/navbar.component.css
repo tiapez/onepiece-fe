@@ -109,12 +109,13 @@ color: white !important;
 .navbar-container{
   display: block;
 }
+
 .navbar-brand{
-  padding-top: 2%;
-  margin-bottom: 1%;
-  margin-right: 2%;
-  width: 10%;
   display: block;
+  width:50%;
+  margin: auto;
+  padding-top:2.5%;
+  padding-bottom:2.5%;
 }
 
 #div-click{
@@ -170,12 +171,7 @@ left: 0;
   margin-left: 50px;
 }
 
-.navbar-brand{
-		width:50%;
-	margin: auto;
-	padding-top:2.5%;
-	padding-bottom:2.5%;
-}
+
 
 .navbar-brand img{
 	width:100%;

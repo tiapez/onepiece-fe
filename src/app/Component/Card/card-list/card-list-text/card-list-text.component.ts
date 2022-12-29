@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { CardActionService } from 'src/app/Service/Implemented/CardAction/card-action.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { GlobalService } from 'src/app/Service/global.service';

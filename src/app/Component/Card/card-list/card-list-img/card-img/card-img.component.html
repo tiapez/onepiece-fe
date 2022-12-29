@@ -4,7 +4,7 @@
         <img class="{{(cardDet.qty <= 0 && globalService.isUserCard ? 'grey-img ' : '')}}"
             src="./assets/Img/{{cardDet.card.setId}}/{{cardDet.card.number}}.png" 
             onerror="this.src='assets/Img/default.png';" width="360" 
-            (click)="!globalService.isUserCard ? cardService.openView(cardDet.card) : ''" />
+            (click)="!globalService.isUserCard ? cardService.openView(cardDet.card) : ''" alt="{{cardDet.card.name}}"/>
 
             <app-card-button *ngIf="globalService.isUserCard || globalService.isDeck" [cardDet]="cardDet"></app-card-button>
     </div>
