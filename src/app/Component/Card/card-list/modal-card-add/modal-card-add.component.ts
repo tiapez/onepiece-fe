@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Card } from 'src/app/Model/Card/card.model';
 import VanillaTilt from 'vanilla-tilt';
-import { NgbActiveModal,NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserCard, UserCardAdapter } from 'src/app/Model/UserCard/user-card.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
 import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
+import { CardActionService } from 'src/app/Service/Implemented/CardAction/card-action.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 
 @Component({
   selector: 'app-modal-card-add',
@@ -15,16 +14,12 @@ import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
 export class ModalCardAddComponent {
 
   @Input() public modalCard! : CardDetailsDTO;
-  public detailsList : UserCard[] = [];
 
 
-  constructor(public activeModal: NgbActiveModal,public cardService : AllCardService) {
+  constructor(public activeModal: NgbActiveModal,private cardAction : CardActionService,public cardService : CardListService) {
   }
   
-  ngOnInit(){
-  }
-  
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     const elements:any = document.querySelector(".super-card");
     VanillaTilt.init(elements);
     const elements2:any = document.querySelector(".super-card-img");
@@ -32,12 +27,12 @@ export class ModalCardAddComponent {
   }
 
   add(card : CardDetailsDTO,details : DetailsDTO){
-    this.cardService.addDetails(card,details);
+    this.cardAction.addDetails(card,details);
   }
 
   remove(card : CardDetailsDTO,details : DetailsDTO){
     if(details.qty > 0)
-    this.cardService.removeDetails(card,details);
+    this.cardAction.removeDetails(card,details);
   }
 
 }

@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Card } from 'src/app/Model/Card/card.model';
+import { Component, Input } from '@angular/core';
 import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
+import { CardActionService } from 'src/app/Service/Implemented/CardAction/card-action.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 
 
@@ -13,15 +13,9 @@ import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service
   templateUrl: './card-button.component.html',
   styleUrls: ['./card-button.component.css']
 })
-export class CardButtonComponent implements OnInit {
-  @Input() card!:Card;
+export class CardButtonComponent{
   @Input() cardDet!:CardDetailsDTO;
 
-  constructor(public cardService : AllCardService, public deckService : DeckImplService,
-    public router: Router) { }
+  constructor(public cardService : CardListService, public deckService : DeckService,public globalService : GlobalService, public cardAction : CardActionService) { }
 
-  ngOnInit(): void {
-
-
-  }
 }

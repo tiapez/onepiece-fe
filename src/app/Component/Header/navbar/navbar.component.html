@@ -21,9 +21,9 @@
 			<div class="navbar-button">
 
 				<button *ngIf="router.url.includes('Card')" class="btn btn-outline-danger align-items-center"
-					(click)="cardService.changeView(); closeNav();">
+					(click)="globalService.changeView(); closeNav();">
 					<i class="fas fa-eye"></i>
-					{{cardService.view == '0' ? 'Text' : 'Img'}}
+					{{globalService.view == '0' ? 'Text' : 'Img'}}
 			</button>
 
 				<button class="btn btn-outline-success align-items-center" (click)="signUp()">
@@ -36,6 +36,6 @@
 
 	</div>
 	<div class="container-lg">
-		<app-filter *ngIf="cardService.isUserCard|| cardService.isDeck"></app-filter>
+		<app-filter *ngIf="globalService.isUserCard|| globalService.isDeck"></app-filter>
 	</div>
 </div>

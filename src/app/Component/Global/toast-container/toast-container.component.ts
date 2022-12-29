@@ -1,5 +1,5 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ToastService } from 'src/app/Service/Toast/toast.service';
+import { Component, TemplateRef } from '@angular/core';
+import { ToastIntService } from 'src/app/Service/Interface/Toast/toast-int.service';
 
 @Component({
   selector: 'app-toast-container',
@@ -7,15 +7,12 @@ import { ToastService } from 'src/app/Service/Toast/toast.service';
   styleUrls: ['./toast-container.component.css'],
   host: { class: 'toast-container position-fixed bottom-0 end-0 p-3', style: 'z-index: 1200' }
 })
-export class ToastContainerComponent implements OnInit {
+export class ToastContainerComponent {
 
-  constructor(public toastService: ToastService) { }
+  constructor(public toastService: ToastIntService) { }
 
   isTemplate(toast: { textOrTpl: any; }) {
 		return toast.textOrTpl instanceof TemplateRef;
 	}
-
-  ngOnInit(): void {
-  }
 
 }

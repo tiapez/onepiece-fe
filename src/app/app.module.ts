@@ -8,7 +8,7 @@ import { UserProfileComponent } from './Component/User/userProfile/user-profile.
 import { NavbarComponent } from './Component/Header/navbar/navbar.component';
 import { SignUpComponent } from './Component/User/sign-up/sign-up.component';
 import { SignInComponent } from './Component/User/sign-in/sign-in.component';
-import { SignServiceService } from './Service/SignService/sign-service.service';
+import { UserIntService } from './Service/Interface/User/user-int.service';
 import { CardListImgComponent } from './Component/Card/card-list/card-list-img/card-list-img.component';
 import { CardImgComponent } from './Component/Card/card-list/card-list-img/card-img/card-img.component';
 import { FilterComponent } from './Component/Header/filter/filter.component';
@@ -28,7 +28,7 @@ import { GameCardComponent } from './Component/Card/card-list/modal-card-view/ga
 import { HomeComponent } from './Component/Home/home.component';
 import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
 import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
-import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create/deck-create.component';
+import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component';
 
 
 @NgModule({
@@ -64,7 +64,7 @@ import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create/dec
     NgbModule,
     CommonModule
   ],
-  providers: [SignServiceService,NgbActiveModal,CookieService,CrypterService],
+  providers: [UserIntService,NgbActiveModal,CookieService,CrypterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

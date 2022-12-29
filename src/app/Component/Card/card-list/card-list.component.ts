@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/Service/Utility/User/user.service';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
+import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 
 @Component({
@@ -10,44 +11,39 @@ import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.css']
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent {
 
 
-  constructor(public router: Router, public cardService: AllCardService,
-    private userService: UserService, private deckService: DeckImplService,
+  constructor(private router: Router, public globalService: GlobalService, public cardService: CardListService,
+    private cryptService: CryptServiceImpl, private deckService: DeckService,
     private route: ActivatedRoute) { }
-  set: any;
   ngOnInit() {
     this.cardService.cardListDetails = [];
-    if (this.cardService.view == null || this.cardService.view == undefined || this.cardService.view == '')
-      this.cardService.changeView();
-    this.cardService.changeUrl();
+    if (this.globalService.view == null || this.globalService.view == undefined || this.globalService.view == '') {
+      this.globalService.changeView();
+    }
 
-    this.set = this.route.snapshot.paramMap.get('set');
-    this.cardService.changeUrl();
-    if (this.cardService.isUserCard || this.cardService.isDeck) {
-      if (!this.userService.isLogged()) {
+    this.globalService.changeUrl();
+
+    if (this.globalService.isUserCard || this.globalService.isDeck) {
+      if (!this.cryptService.isLogged()) {
         this.router.navigate(['/']);
       }
-      if (this.cardService.isClassic) {
+      if (this.globalService.isClassic) {
         this.cardService.getCardClassic();
       }
-      if (this.cardService.isDetails) {
+      if (this.globalService.isDetails) {
         this.cardService.getCardDetails();
       }
-      if (this.cardService.isDeck) {
-        this.deckService.getCardDeck(this.cardService.deckSelected.deck);
+      if (this.globalService.isDeck) {
+        this.cardService.getCardDeck(this.deckService.deckSelected.deck);
         this.deckService.getUserDeck();
-
       }
     } else {
       this.cardService.getCardAll();
     }
-    
 
-  }
 
-  ngOnDestroy() {
   }
 
 }

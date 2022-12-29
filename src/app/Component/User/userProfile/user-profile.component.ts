@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/Model/User/user.model';
-import { SignServiceService } from 'src/app/Service/SignService/sign-service.service';
-import { UserService } from 'src/app/Service/Utility/User/user.service';
-import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
+import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
+import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
+import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,9 +18,9 @@ export class UserProfileComponent {
   public esit!: any;
 
 
-  constructor(private userService: UserService, private cookieService: CookieService,
-    private signService: SignServiceService, private router: Router
-    , private toastService: ToastServiceImpl, private route: ActivatedRoute) { }
+  constructor(private cryptService: CryptServiceImpl, private cookieService: CookieService,
+    private userService: UserIntService, private router: Router
+    , private toastService: ToastService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -28,25 +28,25 @@ export class UserProfileComponent {
     if(this.esit == 'success'){
       this.toastService.userSaveSuccess();
     }
-    if (!this.userService.isLogged())
+    if (!this.cryptService.isLogged())
       this.router.navigate(['/']);
-    this.signService.getUser(this.userService.getCookieNick()).subscribe({
+    this.userService.getUser(this.cryptService.getCookieNick()).subscribe({
       next: data => { this.user = data; },
       complete: () => this.decodeUser()
     });
   }
 
   decodeUser() {
-    this.user.username = this.userService.getCryptUser(this.user.username);
-    this.user.nick = this.userService.getCryptNick(this.user.nick);
+    this.user.username = this.cryptService.getCryptUser(this.user.username);
+    this.user.nick = this.cryptService.getCryptNick(this.user.nick);
   }
 
 
 
   saveUserConfig() {
-    this.signService.saveUserConfig(this.user, this.userService.setNickCrypt(this.user.nick)).subscribe({
+    this.userService.saveUserConfig(this.user, this.cryptService.setNickCrypt(this.user.nick)).subscribe({
       next: data => this.cookieService.set("navType", data),
-      error: err => this.toastService.userSaveError(),
+      error: () => this.toastService.userSaveError(),
       complete: () => { this.redirect() }
     });
   }

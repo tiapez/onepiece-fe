@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeckCard } from 'src/app/Model/DeckCard/deck-card.model';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
+import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 
 @Component({
   selector: 'app-deck-list',
   templateUrl: './deck-list.component.html',
   styleUrls: ['./deck-list.component.css']
 })
-export class DeckListComponent implements OnInit {
+export class DeckListComponent{
 
-  constructor(public router: Router,public cardService : AllCardService,
-    public deckService : DeckImplService) { }
+  constructor(private router: Router,
+    public deckService : DeckService) { }
 
   ngOnInit(): void {
     this.deckService.getUserDeck();
@@ -30,12 +29,12 @@ export class DeckListComponent implements OnInit {
   }
 
   modify(userDeck : UserDeck) {
-    this.cardService.deckSelected = userDeck;
-    this.router.navigate(['/Deck/Modify']);
+    this.deckService.deckSelected = userDeck;
+    this.router.navigate(['/deck/modify']);
   }
 
   cardList(userDeck : UserDeck){
-    this.cardService.deckSelected = userDeck;
-    this.router.navigate(['/Deck/CardList']);
+    this.deckService.deckSelected = userDeck;
+    this.router.navigate(['/deck/cardList']);
   }
 }

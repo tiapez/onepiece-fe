@@ -5,14 +5,14 @@
 
 <div class="deckCard deckClose" id="deckbar">
 
-    <div class="cardlist"  [ngStyle]="{'margin-top.px': cardService.deckListMargin, 
-'height.px': cardService.deckListHeight}">
+    <div class="cardlist"  [ngStyle]="{'margin-top.px': deckService.deckListMargin, 
+'height.px': deckService.deckListHeight}">
 <a href="javascript:void(0)" class="closebtn" (click)="closeDeck()"><i class="fas fa-times-circle"></i></a>
         <button class="btn btn-success save-btn" (click)="deckService.saveUserDeck()"> SAVE </button>
-        <h3>{{cardService.deckSelected.deck.name}}</h3>
+        <h3>{{deckService.deckSelected.deck.name}}</h3>
         <div class="leader"></div>
-        <div *ngFor="let userCard of cardService.deckSelected.cardList" class="deck-card-row">
-            <div class="minus" (click)="deckService.remove(userCard)">
+        <div *ngFor="let userCard of deckService.deckSelected.cardList" class="deck-card-row">
+            <div class="minus" (click)="deckService.removeCard(userCard)">
                 <i class=" fas fa-minus"></i>
             </div>
             <div class="deck-card-row-inner">
@@ -23,7 +23,7 @@
                     {{userCard.qtyOwned + '/' + userCard.qtyRequired}}
                 </div>
             </div>
-            <div class="plus" (click)="deckService.add(userCard)">
+            <div class="plus" (click)="deckService.addCard(userCard)">
                 <i class=" fas fa-plus"></i>
             </div>
         </div>

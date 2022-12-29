@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from 'src/app/Model/Card/card.model';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 
 @Component({
   selector: 'app-deck-modify',
@@ -13,17 +11,17 @@ import { DeckImplService } from 'src/app/ServiceImpl/Card/Deck/deck-impl.service
 })
 export class DeckModifyComponent  {
 
-  constructor(public router: Router,public cardService : AllCardService,
-    public deckService : DeckImplService) { }
+  constructor(private router: Router,public cardService : CardListService,
+    public deckService : DeckService) { }
 
   ngOnInit(): void {
-    if(this.cardService.deckSelected == undefined)
+    if(this.deckService.deckSelected == undefined)
       this.router.navigate(["/Deck"]);
-    console.log(this.cardService.deckSelected)
+    console.log(this.deckService.deckSelected)
   }
 
   ngOnDestroy(): void {
-    this.cardService.deckSelected = new UserDeck();
+    this.deckService.deckSelected = new UserDeck();
   }
   
   closeDeck(){

@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { UserService } from 'src/app/Service/Utility/User/user.service';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
+import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service'; 
+import { GlobalService } from 'src/app/Service/global.service';
+import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -12,13 +12,13 @@ import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
 	styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-	constructor(private deviceService: DeviceDetectorService, public cardService: AllCardService
-		, public router: Router, public userService: UserService,
+	constructor(private deviceService: DeviceDetectorService, public globalService: GlobalService
+		, public router: Router, private cryptService: CryptServiceImpl,
 		private cookieService: CookieService, private route: ActivatedRoute,
-		private toastService: ToastServiceImpl) { }
+		private toastService: ToastService) { }
 
 	public navbarWidth: string = "";
-	public userLogged: string = this.userService.getCookieNick();
+	public userLogged: string = this.cryptService.getCookieNick();
 	public navbarImg: string = this.cookieService.get("navType");
 	error!: any;
 
@@ -41,7 +41,7 @@ export class NavbarComponent {
 	}
 
 	signUp() {
-		if (this.userService.isLogged()) {
+		if (this.cryptService.isLogged()) {
 			this.router.navigate(['/UserProfile'])
 		} else {
 			this.router.navigate(['/sign-in'])

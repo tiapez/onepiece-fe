@@ -6,13 +6,11 @@ import * as CryptoJS from 'crypto-js';
 })
 export class CrypterService {
 
-  constructor() { }
-
    //The set method is use for encrypt the value.
    set(value : any, keys: any){
-    var key = CryptoJS.enc.Utf8.parse(keys);
-    var iv = CryptoJS.enc.Utf8.parse(keys);
-    var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value.toString()), key,
+    let key = CryptoJS.enc.Utf8.parse(keys);
+    let iv = CryptoJS.enc.Utf8.parse(keys);
+    let encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value.toString()), key,
     {
         keySize: 128 / 8,
         iv: iv,
@@ -25,9 +23,9 @@ export class CrypterService {
 
   //The get method is use for decrypt the value.
   get(value : any, keys: any){
-    var key = CryptoJS.enc.Utf8.parse(keys);
-    var iv = CryptoJS.enc.Utf8.parse(keys);
-    var decrypted = CryptoJS.AES.decrypt(value, key, {
+    let key = CryptoJS.enc.Utf8.parse(keys);
+    let iv = CryptoJS.enc.Utf8.parse(keys);
+    let decrypted = CryptoJS.AES.decrypt(value, key, {
         keySize: 128 / 8,
         iv: iv,
         mode: CryptoJS.mode.CBC,

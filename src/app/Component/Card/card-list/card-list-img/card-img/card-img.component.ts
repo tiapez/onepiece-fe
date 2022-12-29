@@ -1,8 +1,8 @@
-import { Component,ElementRef,Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component,Input } from '@angular/core';
 import { Card } from 'src/app/Model/Card/card.model';
 import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 
 
@@ -13,21 +13,9 @@ import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
 })
 export class CardImgComponent {
 
-  constructor(public router: Router,public cardService : AllCardService,private elementRef: ElementRef){}
-  @Input() card!:Card;
+  constructor(public cardService : CardListService,public globalService : GlobalService){}
   @Input() cardDet!:CardDetailsDTO;
 
-
-  ngOnInit(){
-  }
-
-ngAfterViewInit(){
-
-}
-
-ngOnDestroy() {
-  this.elementRef.nativeElement.remove();
-}
 }
 
 

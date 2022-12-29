@@ -1,7 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Card } from 'src/app/Model/Card/card.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 
 export interface CardData {
   imageId: string;
@@ -30,16 +30,12 @@ export interface CardData {
   ]
 })
 
-
-
-
-
 export class GameCardComponent {
   data: CardData = {
     imageId: "pDGNBK9A0sk",
     state: "default"
   };
-  constructor(public cardService: AllCardService) { }
+  constructor(public cardService: CardListService) { }
   @Input() card!: Card;
   public description: string = "";
   cardClicked() {
@@ -106,7 +102,7 @@ export class GameCardComponent {
           string=string.replace(')', ')</b>');
         }
         if (string.includes(':')) {
-          let s : string  = " ";
+          let s! : string;
           s="<b>"+string.split(':')[0]+":</b>";
           string=s + string.split(':')[1];
         }

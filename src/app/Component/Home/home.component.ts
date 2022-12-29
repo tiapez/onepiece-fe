@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
+import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public esit : any;
-  constructor(private route: ActivatedRoute, private toastService: ToastServiceImpl) { }
+  constructor(private route: ActivatedRoute, private toastService : ToastService) { }
 
   ngOnInit(): void {
     this.esit = this.route.snapshot.paramMap.get('esit');

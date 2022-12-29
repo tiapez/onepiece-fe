@@ -7,9 +7,9 @@
 				<th class="d-none d-lg-table-cell ">Type</th>
 				<th class="d-none d-lg-table-cell ">Rarity</th>
 				<th class="d-none d-lg-table-cell ">Effect</th>
-				<th *ngIf="cardService.isUserCard">Add</th>
-				<th *ngIf="cardService.isUserCard">Buy</th>
-				<th *ngIf="cardService.isUserCard">View</th>
+				<th *ngIf="globalService.isUserCard">Add</th>
+				<th *ngIf="globalService.isUserCard">Buy</th>
+				<th *ngIf="globalService.isUserCard">View</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -20,14 +20,14 @@
 				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
 				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
 				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
-				<td *ngIf="cardService.isUserCard">
+				<td *ngIf="globalService.isUserCard">
 					<div class="card-button text-center">
-						<button *ngIf="router.url.includes('Classic') && cardDet.qty <= 0" class="btn btn-dark" (click)="cardService.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>
-						<button *ngIf="router.url.includes('Classic') && cardDet.qty > 0" class="btn btn-dark" (click)="cardService.removeClassic(cardDet)"> <i class="fas fa-minus"></i></button>
-						<button *ngIf="router.url.includes('Details')" class="btn btn-dark" (click)="cardService.openAdd(cardDet)"> <i class="fas fa-bars"></i></button>
+						<button *ngIf="globalService.isClassic && cardDet.qty <= 0" class="btn btn-dark" (click)="cardAction.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>
+						<button *ngIf="globalService.isClassic && cardDet.qty > 0" class="btn btn-dark" (click)="cardAction.removeClassic(cardDet)"> <i class="fas fa-minus"></i></button>
+						<button *ngIf="globalService.isDetails" class="btn btn-dark" (click)="cardService.openAdd(cardDet)"> <i class="fas fa-bars"></i></button>
 					</div>
 				</td>
-				<td *ngIf="cardService.isUserCard">
+				<td *ngIf="globalService.isUserCard">
 					<form ngNoForm
 						action="{{'https://www.ebay.it/sch/onepiece tcg ' + cardDet.card.name+ ' ' + cardDet.card.number.substring(0,3)}}"
 						target="_blank">
@@ -36,7 +36,7 @@
 						</button>
 					</form>
 				</td>
-				<td *ngIf="cardService.isUserCard">
+				<td *ngIf="globalService.isUserCard">
 					<button (click)="cardService.openView(cardDet.card);" class="btn btn-dark">
 						<i class="fas fa-image"></i>
 					</button>

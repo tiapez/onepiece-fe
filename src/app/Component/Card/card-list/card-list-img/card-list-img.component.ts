@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
-import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
-import { UserService } from 'src/app/Service/Utility/User/user.service';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-card-list-img',
@@ -11,10 +8,7 @@ import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
   styleUrls: ['./card-list-img.component.css']
 })
 export class CardListImgComponent {
-  constructor(public router: Router, public cardService: AllCardService) { }
-  ngOnInit() {
-
-  }
+  constructor( public cardService: CardListService,public globalService : GlobalService) { }
 
 }
 

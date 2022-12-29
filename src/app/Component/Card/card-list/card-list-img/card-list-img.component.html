@@ -3,8 +3,8 @@
 	<div class="card-div" *ngFor="let cardDet of cardService.cardListDetails">
 		<div class="card-box" *ngIf=" cardDet.card.name.includes(cardService.filter.name) && (cardService.filter.rarity.includes('All') || cardDet.card.rarity.includes(cardService.filter.rarity)) 
 		&& (cardDet.card.setId.includes(cardService.filter.setId) || cardService.filter.setOption == 'Any')
-		&& (( (cardService.isDetails) ||(cardService.isClassic) ) && (cardService.filter.view == 0 || (cardService.filter.view == 1 && cardDet.qty >0) || (cardService.filter.view == 2 && cardDet.qty ==0)) ||
-		(!cardService.isUserCard  && (cardService.filter.color.includes('All') || cardDet.card.color.includes(cardService.filter.color)) && (cardService.filter.role.includes('All') || cardDet.card.role.includes(cardService.filter.role)) && (cardService.filter.cardType.includes('All') || cardDet.card.cardType.includes(cardService.filter.cardType)) && (cardDet.card.type.includes(cardService.filter.type))
+		&& (( (globalService.isDetails) ||(globalService.isClassic) ) && (cardService.filter.view == 0 || (cardService.filter.view == 1 && cardDet.qty >0) || (cardService.filter.view == 2 && cardDet.qty ==0)) ||
+		(!globalService.isUserCard  && (cardService.filter.color.includes('All') || cardDet.card.color.includes(cardService.filter.color)) && (cardService.filter.role.includes('All') || cardDet.card.role.includes(cardService.filter.role)) && (cardService.filter.cardType.includes('All') || cardDet.card.cardType.includes(cardService.filter.cardType)) && (cardDet.card.type.includes(cardService.filter.type))
 		 &&  (cardService.filter.power == -1 || cardDet.card.power == cardService.filter.power) && (cardService.filter.counter == -1 || cardDet.card.counter == cardService.filter.counter) && (cardService.filter.cost == -1 || cardDet.card.cost == cardService.filter.cost))
 		)">
 			<app-card-img [cardDet]="cardDet"></app-card-img>

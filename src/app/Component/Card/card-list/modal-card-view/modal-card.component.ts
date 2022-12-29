@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Card } from 'src/app/Model/Card/card.model';
 import VanillaTilt from 'vanilla-tilt';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-card',

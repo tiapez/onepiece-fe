@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbRefDirective } from '@ng-bootstrap/ng-bootstrap/accordion/accordion';
 import { User } from 'src/app/Model/User/user.model';
-import { SignServiceService } from 'src/app/Service/SignService/sign-service.service';
-import { UserService } from 'src/app/Service/Utility/User/user.service';
-import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
+import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
+import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
+import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,8 +12,8 @@ import { ToastServiceImpl } from 'src/app/ServiceImpl/Card/Toast/toast.service';
 })
 
 export class SignUpComponent {
-  constructor(private userService: SignServiceService, private us: UserService,
-    private ts: ToastServiceImpl, private router: Router) { }
+  constructor(private userService: UserIntService, private cryptServiceImpl: CryptServiceImpl,
+    private ts: ToastService, private router: Router) { }
   public flag!: boolean;
   public flagUser1!: boolean;
   public flagUser2!: boolean;
@@ -35,9 +34,9 @@ export class SignUpComponent {
       userToSave.mail = this.user.mail.toLowerCase();
       userToSave.nick = this.user.nick.toLowerCase();
 
-      userToSave.password = this.us.setPassCrypt(userToSave.password);
-      userToSave.username = this.us.setUserCrypt(userToSave.username);
-      userToSave.nick = this.us.setNickCrypt(userToSave.nick);
+      userToSave.password = this.cryptServiceImpl.setPassCrypt(userToSave.password);
+      userToSave.username = this.cryptServiceImpl.setUserCrypt(userToSave.username);
+      userToSave.nick = this.cryptServiceImpl.setNickCrypt(userToSave.nick);
 
       this.userService.saveUser(userToSave).subscribe({
         next: data => this.flag = data,

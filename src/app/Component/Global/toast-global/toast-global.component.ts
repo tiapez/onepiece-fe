@@ -1,11 +1,11 @@
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
-import { ToastService } from 'src/app/Service/Toast/toast.service';
+import { ToastIntService } from 'src/app/Service/Interface/Toast/toast-int.service';
 
 
 
 @Component({ selector: 'ngbd-toast-global', templateUrl: './toast-global.component.html' })
 export class NgbdToastGlobal implements OnDestroy {
-	constructor(public toastService: ToastService) {}
+	constructor(private toastService: ToastIntService) {}
 
 	showStandard() {
 		this.toastService.show('I am a standard toast');

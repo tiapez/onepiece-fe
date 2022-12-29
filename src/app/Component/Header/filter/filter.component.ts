@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component} from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Filter } from 'src/app/Model/Filter/filter.model';
-import { AllCardService } from 'src/app/ServiceImpl/Card/all-card.service';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { filter } from 'src/app/Component/Global/global';
+import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
+import { GlobalService } from 'src/app/Service/global.service';
+
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -12,13 +12,12 @@ import { filter } from 'src/app/Component/Global/global';
 })
 export class FilterComponent {
 
-  constructor(private deviceService: DeviceDetectorService, public cardService: AllCardService) { }
+  constructor(private deviceService: DeviceDetectorService, public cardService: CardListService, private deckService : DeckService, public globalService: GlobalService) { }
 
   isMobile: boolean = this.deviceService.isMobile();
   filterHeight: string | undefined;
   filterWidth: string | undefined;
   isCollapsed: boolean = true;
-  filter = filter;
 
   ngOnInit() {
     if (this.isMobile) {
@@ -52,8 +51,8 @@ export class FilterComponent {
 
   ngAfterViewInit(){
     if(!this.isMobile){
-      this.cardService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
-      this.cardService.deckListHeight = window.innerHeight - this.cardService.deckListMargin;
+      this.deckService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
+      this.deckService.deckListHeight = window.innerHeight - this.deckService.deckListMargin;
     }
   }
 
@@ -64,8 +63,8 @@ export class FilterComponent {
       this.interval = setInterval(() => {
         if(time > 0) {
           time--;
-          this.cardService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
-          this.cardService.deckListHeight = window.innerHeight - this.cardService.deckListMargin;
+          this.deckService.deckListMargin = document.getElementById('navbar')?.clientHeight; 
+          this.deckService.deckListHeight = window.innerHeight - this.deckService.deckListMargin;
         } else {
           clearInterval(this.interval);
         }
