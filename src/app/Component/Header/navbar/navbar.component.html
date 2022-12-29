@@ -8,19 +8,19 @@
 			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
 			<a routerLink="/">Home</a>
-			<a routerLink="/CardList">Card List</a>
+			<a routerLink="/cardList">Card List</a>
 			<a class="dropdown-toggle only-dk" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 				aria-expanded="false">User Card</a>
 			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<li> <a routerLink="/UserCardClassic">Classic</a></li>
-				<li> <a routerLink="/UserCardDetails">Details</a></li>
+				<li> <a routerLink="/userCard/classic">Classic</a></li>
+				<li> <a routerLink="/userCard/details">Details</a></li>
 			</ul>
-			<a class="only-mb" routerLink="/UserCardClassic">User Card Classic</a>
-			<a class="only-mb" routerLink="/UserCardDetails">User Card Details</a>
-			<a routerLink="/Deck">Deck </a>  
+			<a class="only-mb" routerLink="/userCard/classic">User Card Classic</a>
+			<a class="only-mb" routerLink="/userCard/details">User Card Details</a>
+			<a routerLink="/deck">Deck </a>  
 			<div class="navbar-button">
 
-				<button *ngIf="router.url.includes('Card')" class="btn btn-outline-danger align-items-center"
+				<button *ngIf="globalService.isCardList" class="btn btn-outline-danger align-items-center"
 					(click)="globalService.changeView(); closeNav();">
 					<i class="fas fa-eye"></i>
 					{{globalService.view == '0' ? 'Text' : 'Img'}}
@@ -36,6 +36,6 @@
 
 	</div>
 	<div class="container-lg">
-		<app-filter *ngIf="globalService.isUserCard|| globalService.isDeck"></app-filter>
+		<app-filter *ngIf="globalService.isCardList"></app-filter>
 	</div>
 </div>

@@ -26,6 +26,6 @@ export class Details {
   })
   export class DetailsAdapterFromDTO implements Adapter<Details> {
     adapt(item : any): Details {
-      return new Details( item.details.id, item.details.language, item.details.condition,item.details.codCondition,item.details.qty,item.details.userCardId);
+      return new Details( item.detailsDTO.id, item.detailsDTO.language, item.detailsDTO.condition,item.detailsDTO.codCondition,item.detailsDTO.qty,item.detailsDTO.userCardId);
     }
   }

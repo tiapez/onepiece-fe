@@ -12,6 +12,7 @@ export class GlobalService {
     private deviceService: DeviceDetectorService,) { }
 
   //FILTRI
+  public isCardList: boolean = false;
   public isClassic: boolean = false;
   public isDetails: boolean = false;
   public isUserCard: boolean = false;
@@ -23,15 +24,32 @@ export class GlobalService {
     this.isClassic = false;
     this.isDetails = false;
     this.isUserCard = false;
+    this.isCardList = false;
     this.isDeck = false;
-    if (this.router.url.includes('userCard'))
+    
+    if (this.router.url.includes('userCard')) {
+      this.isCardList = true;
       this.isUserCard = true;
-    if (this.router.url.includes('userCard/classic'))
+    }
+
+    if (this.router.url.includes('userCard/classic')) {
+      this.isCardList = true;
       this.isClassic = true;
-    if (this.router.url.includes('userCard/details'))
+    }
+
+    if (this.router.url.includes('userCard/details')) {
+      this.isCardList = true;
       this.isDetails = true;
-    if (this.router.url.includes('deck/cardList'))
+    }
+
+    if (this.router.url.includes('deck/cardList')) {
+      this.isCardList = true;
       this.isDeck = true;
+    }
+
+    if (this.router.url.includes('cardList')) {
+      this.isCardList = true;
+    }
   }
 
   changeView() {

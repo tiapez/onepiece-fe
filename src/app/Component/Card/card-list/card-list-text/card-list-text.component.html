@@ -1,13 +1,13 @@
 <div class="card-list-container-text card-list container-lg">
 	<table class="table">
-		<caption>{{cardService.filter.setName}</caption>
+		<caption>{{cardService.filter.setName}}</caption>
 		<thead>
 			<tr>
 				<th>#</th>
 				<th>Name</th>
-				<th class="d-none d-lg-table-cell ">Type</th>
 				<th class="d-none d-lg-table-cell ">Rarity</th>
-				<th class="d-none d-lg-table-cell ">Effect</th>
+				<th class="d-none d-lg-table-cell ">Card Type</th>
+				<th class="d-none d-lg-table-cell ">Role</th>
 				<th *ngIf="globalService.isUserCard">Add</th>
 				<th *ngIf="globalService.isUserCard">Buy</th>
 				<th *ngIf="globalService.isUserCard">View</th>
@@ -15,12 +15,13 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let cardDet of cardService.cardListDetails"
-				class="{{(cardDet.qty <= 0 ? 'grey-tr ' : '') + ' tr-' + cardDet.card.color}}">
+				class="{{(cardDet.qty <= 0 ? 'grey-tr ' : '') + ' tr-' + cardDet.card.color
+			+ (display(cardDet) ? '' : ' invisible')}}">
 				<td>{{cardDet.card.number.substring(0,3)}}</td>
 				<td>{{cardDet.card.name}}</td>
-				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
-				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
-				<td class="d-none d-lg-table-cell">{{cardDet.card.name}}</td>
+				<td class="d-none d-lg-table-cell">{{cardDet.card.rarity}}</td>
+				<td class="d-none d-lg-table-cell">{{cardDet.card.cardType}}</td>
+				<td class="d-none d-lg-table-cell">{{cardDet.card.role}}</td>
 				<td *ngIf="globalService.isUserCard">
 					<div class="card-button text-center">
 						<button *ngIf="globalService.isClassic && cardDet.qty <= 0" class="btn btn-dark" (click)="cardAction.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>

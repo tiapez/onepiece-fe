@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
@@ -15,8 +15,7 @@ export class CardListComponent {
 
 
   constructor(private router: Router, public globalService: GlobalService, public cardService: CardListService,
-    private cryptService: CryptServiceImpl, private deckService: DeckService,
-    private route: ActivatedRoute) { }
+    private cryptService: CryptServiceImpl, private deckService: DeckService) { }
   ngOnInit() {
     this.cardService.cardListDetails = [];
     if (this.globalService.view == null || this.globalService.view == undefined || this.globalService.view == '') {
@@ -40,6 +39,7 @@ export class CardListComponent {
         this.deckService.getUserDeck();
       }
     } else {
+      this.cardService.filter.setOption='Any';
       this.cardService.getCardAll();
     }
 

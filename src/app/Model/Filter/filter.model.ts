@@ -19,7 +19,7 @@ export class Filter {
     public condition : number = 0,
     public language : string = "All",
     public view : number = 0,
-    public setOption : string = "Any",
+    public setOption : string = "OP01/Romance Dawn",
     ){}
 
 }
