@@ -7,7 +7,6 @@ export class UserDeck {
     public deck! : Deck;
     public cardList! : DeckCard[];
     public leader! : DeckCard;
-    constructor(){}
 }
 
 @Injectable({

@@ -11,7 +11,6 @@ export class User {
   public language!: string;
   public condition!: number;
   public image!: Blob;
-  constructor() { }
 }
 
 @Injectable({

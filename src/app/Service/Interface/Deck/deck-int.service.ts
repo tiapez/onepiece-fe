@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { map, Observable } from 'rxjs';
 import { Card, CardAdapter } from 'src/app/Model/Card/card.model';
-import { CardDetailsDTO,  CardDetailsDTOAdapter } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
 import { Deck } from 'src/app/Model/Deck/deck.model';
-
 import { UserDeck, UserDeckAdapter } from 'src/app/Model/UserDeck/user-deck.model';
 import { environment } from 'src/environments/environment.prod';
 

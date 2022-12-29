@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from 'src/app/Model/Card/card.model';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
+import { CardDetails } from 'src/app/Model/CardDetails/card-details.model';
 import { Deck } from 'src/app/Model/Deck/deck.model';
 import { DeckCard } from 'src/app/Model/DeckCard/deck-card.model';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
@@ -17,7 +17,7 @@ export class DeckService {
   public deckListMargin!: any;
   public deckListHeight!: any;
   public leaderList! : Card[];
-  public cardListDetails! : CardDetailsDTO[];
+  public cardListDetails! : CardDetails[];
 
   getUserDeck() {
     this.deckIntService.getUserDeck().subscribe(
@@ -50,7 +50,7 @@ export class DeckService {
     }
   }
 
-  createCard(card: CardDetailsDTO) {
+  createCard(card: CardDetails) {
     let flag = true;
     this.deckSelected.cardList.forEach(card2 => {
       if (card.card.id == card2.card.id) {
@@ -68,7 +68,7 @@ export class DeckService {
     }
   }
 
-  removeDet(card: CardDetailsDTO) {
+  removeDet(card: CardDetails) {
     this.deckSelected.cardList.forEach(card2 => {
       if (card.card.id == card2.card.id) {
         this.removeCard(card2);

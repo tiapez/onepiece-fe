@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
+import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { UserCard, UserCardAdapter } from 'src/app/Model/UserCard/user-card.model';
 import { environment } from 'src/environments/environment.prod';
@@ -42,7 +42,7 @@ removeCard(cardId : number): Observable<boolean> {
 );
 }
 
-addCardDetails(cardId : number,details : DetailsDTO): Observable<boolean> {
+addCardDetails(cardId : number,details : Details): Observable<boolean> {
   const url = `${this.baseUrl}/addDetails`;
   let params = new HttpParams().set("cardId",cardId)
   .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("language",details.language).set("condition",details.codCondition);
@@ -54,7 +54,7 @@ addCardDetails(cardId : number,details : DetailsDTO): Observable<boolean> {
 );
 }
 
-removeCardDetails(cardId : number,details : DetailsDTO): Observable<boolean> {
+removeCardDetails(cardId : number,details : Details): Observable<boolean> {
 const url = `${this.baseUrl}/removeDetails`;
 let params = new HttpParams().set("cardId",cardId)
 .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("language",details.language).set("condition",details.codCondition);

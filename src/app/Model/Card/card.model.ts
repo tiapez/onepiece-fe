@@ -19,7 +19,6 @@ export class Card {
   public cost !: number;
   public effect !: string;
   public setId !: string;
-  constructor(){}
 }
 
 @Injectable({

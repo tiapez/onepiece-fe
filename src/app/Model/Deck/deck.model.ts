@@ -15,7 +15,6 @@ export class Deck {
   public note!: string;
   public format!: string;
   public cond!: number;
-  constructor() { }
 }
 
 @Injectable({

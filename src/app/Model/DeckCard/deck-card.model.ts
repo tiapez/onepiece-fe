@@ -8,7 +8,6 @@ public card! : Card;
 public qtyRequired! : number;
 public qtyOwned! : number;
 public qtyMax! : number;
-constructor(){}
 }
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
-import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
+import { CardDetails } from 'src/app/Model/CardDetails/card-details.model';
+import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { CardActionIntService } from 'src/app/Service/Interface/CardAction/card-action-int.service';
 import { ToastService } from '../Toast/toast.service';
@@ -13,7 +13,7 @@ export class CardActionService {
   constructor(private actionService: CardActionIntService, private toastService: ToastService) { }
 
 
-  addClassic(card: CardDetailsDTO) {
+  addClassic(card: CardDetails) {
 
     this.actionService.addCard(card.card.id).subscribe({
       next: () => { this.toastService.addSuccess() },
@@ -22,7 +22,7 @@ export class CardActionService {
     });
   }
 
-  removeClassic(card: CardDetailsDTO) {
+  removeClassic(card: CardDetails) {
 
     this.actionService.removeCard(card.card.id).subscribe({
       next: () => { this.toastService.removeSuccess() },
@@ -31,7 +31,7 @@ export class CardActionService {
     });
   }
 
-  addDetails(card: CardDetailsDTO, details: DetailsDTO) {
+  addDetails(card: CardDetails, details: Details) {
 
     this.actionService.addCardDetails(card.card.id, details).subscribe({
       next: () => { this.toastService.addSuccess() },
@@ -40,7 +40,7 @@ export class CardActionService {
     });
   }
 
-  removeDetails(card: CardDetailsDTO, details: DetailsDTO) {
+  removeDetails(card: CardDetails, details: Details) {
 
     this.actionService.removeCardDetails(card.card.id, details).subscribe({
       next: () => { this.toastService.removeSuccess(); },

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import VanillaTilt from 'vanilla-tilt';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
-import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
+import { CardDetails } from 'src/app/Model/CardDetails/card-details.model';
+import { Details } from 'src/app/Model/Details/details.model';
 import { CardActionService } from 'src/app/Service/Implemented/CardAction/card-action.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 
@@ -13,7 +13,7 @@ import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.
 })
 export class ModalCardAddComponent {
 
-  @Input() public modalCard! : CardDetailsDTO;
+  @Input() public modalCard! : CardDetails;
 
 
   constructor(public activeModal: NgbActiveModal,private cardAction : CardActionService,public cardService : CardListService) {
@@ -26,11 +26,11 @@ export class ModalCardAddComponent {
     VanillaTilt.init(elements2,{glare:true,max:0});
   }
 
-  add(card : CardDetailsDTO,details : DetailsDTO){
+  add(card : CardDetails,details : Details){
     this.cardAction.addDetails(card,details);
   }
 
-  remove(card : CardDetailsDTO,details : DetailsDTO){
+  remove(card : CardDetails,details : Details){
     if(details.qty > 0)
     this.cardAction.removeDetails(card,details);
   }

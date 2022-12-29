@@ -4,9 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalCardAddComponent } from 'src/app/Component/Card/card-list/modal-card-add/modal-card-add.component';
 import { ModalCardComponent } from 'src/app/Component/Card/card-list/modal-card-view/modal-card.component';
 import { Card } from 'src/app/Model/Card/card.model';
-import { CardDetailsDTO } from 'src/app/Model/CardDetailsDTO/card-details-dto.model';
+import { CardDetails } from 'src/app/Model/CardDetails/card-details.model';
 import { Deck } from 'src/app/Model/Deck/deck.model';
-import { DetailsDTO } from 'src/app/Model/DetailsDTO/details-dto.model';
+import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { CardListIntService } from 'src/app/Service/Interface/CardList/card-list-int.service';
 
@@ -19,7 +19,7 @@ export class CardListService {
 
   constructor(private cardListIntService : CardListIntService
     ,private modalService: NgbModal, public router: Router){}
-  public cardListDetails: CardDetailsDTO[] = [];
+  public cardListDetails: CardDetails[] = [];
   public filter: Filter = new Filter();
 
   getCardDetails() {
@@ -62,15 +62,15 @@ export class CardListService {
     modalRef.componentInstance.modalCard = card;
   }
 
-  openAdd(cardDet : CardDetailsDTO) {
+  openAdd(cardDet : CardDetails) {
     const modalRef = this.modalService.open(ModalCardAddComponent,{centered: true});
     modalRef.componentInstance.modalCard = cardDet;
   }
 
   conta() {
     let c: number = 0;
-    this.cardListDetails.forEach((cardDet: CardDetailsDTO) => {
-      cardDet.cardDetails.forEach((dto: DetailsDTO) => {
+    this.cardListDetails.forEach((cardDet: CardDetails) => {
+      cardDet.cardDetails.forEach((dto: Details) => {
         if ((this.filter.condition == 0 || this.filter.condition >= dto.codCondition) && (this.filter.language.includes('All') || dto.language.includes(this.filter.language))) {
           c = c + dto.qty;
         }
