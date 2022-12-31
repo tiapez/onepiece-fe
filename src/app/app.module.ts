@@ -29,6 +29,7 @@ import { HomeComponent } from './Component/Home/home.component';
 import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
 import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component';
+import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.com
     DeckModifyComponent,
     DeckListComponent,
     DeckCreateComponent,
+    ImportCardComponent,
   ],
   imports: [
     BrowserModule,

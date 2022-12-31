@@ -6,22 +6,25 @@ import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { UserCard, UserCardAdapter } from 'src/app/Model/UserCard/user-card.model';
 import { environment } from 'src/environments/environment.prod';
+import { GlobalService } from '../../global.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CardActionIntService {
+
+  constructor(private http: HttpClient, private userCardDTO : UserCardAdapter, private globalService: GlobalService) { }
+
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/card";
-  public flag : boolean | undefined;
-  constructor(private http: HttpClient,private cookieService: CookieService,
-    private userCardDTO : UserCardAdapter) { }
+  httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
+
+
 
  
  
    addCard(cardId : number): Observable<boolean> {
     const url = `${this.baseUrl}/addDetails`;
-    let params = new HttpParams().set("cardId",cardId)
-    .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    let params = this.httpParams.set("cardId",cardId);
     return this.http.post<boolean>(url,params).pipe(      
       map((data: boolean) => { return data }),
     catchError((error: HttpErrorResponse) => {
@@ -32,8 +35,7 @@ export class CardActionIntService {
 
 removeCard(cardId : number): Observable<boolean> {
   const url = `${this.baseUrl}/removeDetails`;
-  let params = new HttpParams().set("cardId",cardId)
-  .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+  let params = this.httpParams.set("cardId",cardId);
   return this.http.post<boolean>(url,params).pipe(      
     map((data: boolean) => { return data }),
   catchError((error: HttpErrorResponse) => {
@@ -44,8 +46,7 @@ removeCard(cardId : number): Observable<boolean> {
 
 addCardDetails(cardId : number,details : Details): Observable<boolean> {
   const url = `${this.baseUrl}/addDetails`;
-  let params = new HttpParams().set("cardId",cardId)
-  .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("language",details.language).set("condition",details.codCondition);
+  let params = this.httpParams.set("cardId",cardId).set("language",details.language).set("condition",details.codCondition);
   return this.http.post<boolean>(url,params).pipe(      
     map((data: boolean) => { return data }),
   catchError((error: HttpErrorResponse) => {
@@ -56,8 +57,7 @@ addCardDetails(cardId : number,details : Details): Observable<boolean> {
 
 removeCardDetails(cardId : number,details : Details): Observable<boolean> {
 const url = `${this.baseUrl}/removeDetails`;
-let params = new HttpParams().set("cardId",cardId)
-.set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw==")).set("language",details.language).set("condition",details.codCondition);
+let params = this.httpParams.set("cardId",cardId).set("language",details.language).set("condition",details.codCondition);
 return this.http.post<boolean>(url,params).pipe(      
   map((data: boolean) => { return data }),
 catchError((error: HttpErrorResponse) => {
@@ -68,8 +68,7 @@ catchError((error: HttpErrorResponse) => {
 
 getCardDetails(cardId : number,filter : Filter): Observable<UserCard[]> {
   const url = `${this.baseUrl}/getDetailsCard`;
-  let params = new HttpParams().set("cardId",cardId)
-  .set("nick",this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+  let params = this.httpParams.set("cardId",cardId);
  return this.http.post<UserCard[]>(url,filter,{params}).pipe(      
     map((data: UserCard[]) => data.map((item) => this.userCardDTO.adapt(item))),
   catchError((error: HttpErrorResponse) => {

@@ -1,9 +1,10 @@
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { User, UserAdapter } from '../../../Model/User/user.model';
+import { GlobalService } from '../../global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { User, UserAdapter } from '../../../Model/User/user.model';
 export class UserIntService {
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/user/";
-  constructor(private http: HttpClient, private adapter: UserAdapter,
+  constructor(private http: HttpClient, private adapter: UserAdapter,private globalService : GlobalService,
     private cookieService: CookieService) { }
 
     //SIGNUP
@@ -94,7 +95,7 @@ export class UserIntService {
   //USER PROFILE
   getUser(nick: string): Observable<User> {
     const url = `${this.baseUrl}getUser/`;
-    let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    let params = new HttpParams().set("nick", this.globalService.getNickDecoded());
     return this.http.get<User>(url, { params }).pipe(
       map((data: User) => { return this.adapter.adapt(data) }),
       catchError((error: HttpErrorResponse) => {
@@ -105,7 +106,7 @@ export class UserIntService {
 
   saveUserConfig(user: User, nick: string): Observable<string> {
     const url = `${this.baseUrl}saveUserConfig/`;
-    let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    let params = new HttpParams().set("nick", this.globalService.getNickDecoded());
     return this.http.put<string>(url, user, { params }).pipe(
       map((data: string) => { return data }),
       catchError((error: HttpErrorResponse) => {

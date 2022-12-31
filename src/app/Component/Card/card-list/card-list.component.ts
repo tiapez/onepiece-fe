@@ -37,6 +37,7 @@ export class CardListComponent {
       if (this.globalService.isDeck) {
         this.cardService.getCardDeck(this.deckService.deckSelected.deck);
         this.deckService.getUserDeck();
+        this.cardService.filter.setOption='Any';
       }
     } else {
       this.cardService.filter.setOption='Any';

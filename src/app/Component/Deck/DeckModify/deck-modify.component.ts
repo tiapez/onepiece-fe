@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
+import { GlobalService } from 'src/app/Service/global.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 
@@ -12,12 +13,12 @@ import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 export class DeckModifyComponent  {
 
   constructor(private router: Router,public cardService : CardListService,
-    public deckService : DeckService) { }
+    public deckService : DeckService,private globalService : GlobalService) { }
 
   ngOnInit(): void {
     if(this.deckService.deckSelected == undefined)
       this.router.navigate(["/Deck"]);
-    console.log(this.deckService.deckSelected)
+    this.globalService.changeUrl();
   }
 
   ngOnDestroy(): void {
@@ -28,6 +29,9 @@ export class DeckModifyComponent  {
     document.getElementById("deckbar")!.classList.add("deckClose");
     document.getElementById("deckbtn")!.innerHTML = "Show Deck";
   }
-
+  
+  goBack() {
+    this.router.navigate(['/deck']);
+  }
 
 }

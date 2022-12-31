@@ -4,6 +4,7 @@ import { Filter } from 'src/app/Model/Filter/filter.model';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { GlobalService } from 'src/app/Service/global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter',
@@ -12,7 +13,7 @@ import { GlobalService } from 'src/app/Service/global.service';
 })
 export class FilterComponent {
 
-  constructor(private deviceService: DeviceDetectorService, public cardService: CardListService, private deckService : DeckService, public globalService: GlobalService) { }
+  constructor(private deviceService: DeviceDetectorService, public cardService: CardListService, private deckService : DeckService, public globalService: GlobalService,private router : Router) { }
 
   isMobile: boolean = this.deviceService.isMobile();
   filterHeight: string | undefined;
@@ -80,5 +81,9 @@ export class FilterComponent {
         document.getElementById("deckbtn")!.innerHTML = "Show Deck";
       }
 
+    }
+
+    back(){
+      console.log(this.router.url);
     }
 }

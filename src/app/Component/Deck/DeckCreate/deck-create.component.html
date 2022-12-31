@@ -1,5 +1,6 @@
 <div class="container-lg">
     <h1 class="text-center">{{name}}</h1>
+    <button class="btn btn-light" (click)="goBack()">  <i class="fas fa-undo"> </i> Back </button>
     <div class="deck-modify-row">
         <div class="deck-modify-container">
             <div class="">
@@ -53,6 +54,11 @@
                 <textarea class="form-control" [(ngModel)]="deck.note">
                 </textarea>
             </div>
+        </div>
+        <div class="deck-modify-container">
+            <p>Deck Picture: </p>
+            <img *ngIf="deck.image != null" [src]="'data:image/png;base64,'+deck.image" width="360" alt="deck pic">
+            <input #imageInput type="file" accept="image/*" (change)="imageChange(imageInput)">
         </div>
     </div>
     <button class="btn btn-light" (click)="saveDeck()"> SAVE </button>

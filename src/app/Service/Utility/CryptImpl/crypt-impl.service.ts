@@ -13,7 +13,7 @@ export class CryptServiceImpl {
   private passKey = "1234567890123456";
   private userKey = "6543210987654321";
   private nickKey = "a54321098765432z";
-  public nickCookie = "U3RpbmtvU3Rhbmtvcw==";
+  public nickCookie = "nachotibbers";
   
   isLogged() {
     return !(this.cs.get(this.nickCookie) == null || this.cs.get(this.nickCookie) == "");

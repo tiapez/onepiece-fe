@@ -7,16 +7,16 @@
 		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
 			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-			<a routerLink="/">Home</a>
-			<a routerLink="/cardList">Card List</a>
+			<a routerLink="/" (click)="closeNav()">Home</a>
+			<a routerLink="/cardList" (click)="closeNav()">Card List</a>
 			<a class="dropdown-toggle only-dk" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 				aria-expanded="false">User Card</a>
 			<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<li> <a routerLink="/userCard/classic">Classic</a></li>
 				<li> <a routerLink="/userCard/details">Details</a></li>
 			</ul>
-			<a class="only-mb" routerLink="/userCard/classic">User Card Classic</a>
-			<a class="only-mb" routerLink="/userCard/details">User Card Details</a>
+			<a class="only-mb" routerLink="/userCard/classic" (click)="closeNav()">User Card Classic</a>
+			<a class="only-mb" routerLink="/userCard/details" (click)="closeNav()">User Card Details</a>
 			<a routerLink="/deck">Deck </a>  
 			<div class="navbar-button">
 
@@ -26,7 +26,7 @@
 					{{globalService.view == '0' ? 'Text' : 'Img'}}
 			</button>
 
-				<button class="btn btn-outline-success align-items-center" (click)="signUp()">
+				<button class="btn btn-outline-success align-items-center" (click)="signUp();closeNav()">
 					<i class="fas fa-user-circle"></i>
 					{{userLogged.length == 0 ? 'Guest' :' ' + userLogged |titlecase}}
 				</button>

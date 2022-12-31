@@ -6,6 +6,7 @@ import { Card, CardAdapter } from 'src/app/Model/Card/card.model';
 import { Deck } from 'src/app/Model/Deck/deck.model';
 import { UserDeck, UserDeckAdapter } from 'src/app/Model/UserDeck/user-deck.model';
 import { environment } from 'src/environments/environment.prod';
+import { GlobalService } from '../../global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,18 @@ import { environment } from 'src/environments/environment.prod';
 export class DeckIntService {
   
   constructor(private http: HttpClient, private cookieService: CookieService,
-    private userDeckAdapter : UserDeckAdapter,
+    private userDeckAdapter : UserDeckAdapter, private globalService : GlobalService,
     private cardAdapter : CardAdapter) { }
 
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/deck/";
+  httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
 
 
 
   getUserDeck(): Observable<UserDeck[]> {
     const url = `${this.baseUrl}userDecks`;
-    let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    let params = this.httpParams;
     return this.http.get<UserDeck[]>(url,{params}).pipe(
       map((data: UserDeck[]) => data.map((item) => this.userDeckAdapter.adapt(item)))
     );
@@ -38,7 +40,7 @@ export class DeckIntService {
 
   saveOnlyDeck(deck : Deck) {
     const url = `${this.baseUrl}saveOnlyDeck`;
-    let params = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    let params = this.httpParams;
     return this.http.post(url,deck,{params}).pipe();
   }
 

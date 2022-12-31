@@ -1,13 +1,20 @@
-<h1 class="deckButton2" *ngIf="globalService.isDeck">
-    <button class="btn btn-light" (click)="openDeck()" id="deckbtn">
+<!-- <h1 class="backButton" *ngIf="!globalService.isMobile">
+    <button class="btn btn-light" (click)="back()">
+        <i class="fas fa-undo"> </i> Back
+    </button>
+</h1> -->
+
+<h1 class="deckButton" *ngIf="globalService.isDeck">
+    <button class="btn btn-light" (click)="openDeck()">
         Show Deck
     </button>
 </h1>
 
 <h1 (click)="openFilter()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"
     class="{{globalService.isDeck ? 'left' : 'center'}}">FILTER
-
 </h1>
+
+
 
 <div class="sideFilter text-center" id="collapseExample" [ngbCollapse]="isCollapsed"
     [ngStyle]='{ width : filterWidth }'>

@@ -5,6 +5,7 @@ import { User } from 'src/app/Model/User/user.model';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,12 +21,12 @@ export class UserProfileComponent {
 
   constructor(private cryptService: CryptServiceImpl, private cookieService: CookieService,
     private userService: UserIntService, private router: Router
-    , private toastService: ToastService, private route: ActivatedRoute) { }
+    , private toastService: ToastService, private route: ActivatedRoute, private globalService: GlobalService) { }
 
 
   ngOnInit() {
     this.esit = this.route.snapshot.paramMap.get('esit');
-    if(this.esit == 'success'){
+    if (this.esit == 'success') {
       this.toastService.userSaveSuccess();
     }
     if (!this.cryptService.isLogged())
@@ -34,6 +35,7 @@ export class UserProfileComponent {
       next: data => { this.user = data; },
       complete: () => this.decodeUser()
     });
+    this.globalService.changeUrl();
   }
 
   decodeUser() {

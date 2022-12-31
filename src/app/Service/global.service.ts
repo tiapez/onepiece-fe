@@ -62,4 +62,8 @@ export class GlobalService {
     }
   }
 
+  getNickDecoded(){
+   return this.cookieService.get("nachotibbers");
+  }
+
 }

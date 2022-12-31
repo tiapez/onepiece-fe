@@ -6,8 +6,12 @@
   top: 0;
 }
 
-.deckButton2{
+.deckButton{
   float: right;
+}
+
+.backButton{
+  float: left;
 }
 
 h1{
@@ -15,8 +19,8 @@ h1{
   text-align: center;
 }
 
-center{
-  text-align: center;
+.center{
+text-align: center;
 }
 
 .form-filter{

@@ -9,3 +9,15 @@
     width: 28%;
     margin: 2.66%;
 }
+
+
+@media (max-width: 1000px) {
+    .deck-modify-row{
+        flex-direction: column;
+    }
+    
+    .deck-modify-container{
+        width: 90%;
+        margin: 5%;
+    }
+}

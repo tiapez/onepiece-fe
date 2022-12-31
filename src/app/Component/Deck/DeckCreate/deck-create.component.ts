@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Deck } from 'src/app/Model/Deck/deck.model';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
+import { GlobalService } from 'src/app/Service/global.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 export class DeckCreateComponent {
 
   constructor(private router: Router,
-    public deckService: DeckService) { }
+    public deckService: DeckService,private globalService : GlobalService) { }
 
   public deck: Deck = new Deck();
   public leader!: string;
@@ -21,13 +22,20 @@ export class DeckCreateComponent {
   ngOnInit(): void {
     this.leader = this.deckService.deckSelected.leader.card.id + '/'
       + this.deckService.deckSelected.leader.card.color;
-    if (this.router.url.includes('create'))
-      this.name = 'create';
-    else
-      this.name = 'modify'
+    if (this.router.url.includes('create')){
+      this.name = 'CREATE';
+    }
+
+    else{
+      this.name = 'MODIFY'
+    }
+
     this.deckService.getLeader();
-    if (this.deckService.deckSelected != undefined)
+    if (this.deckService.deckSelected != undefined){
       this.deck = this.deckService.deckSelected.deck;
+    }
+
+      this.globalService.changeUrl();
   }
 
   ngOnDestroy(): void {
@@ -52,4 +60,19 @@ export class DeckCreateComponent {
   saveDeck() {
     this.deckService.saveOnlyDeck(this.deck);
   }
+
+  goBack() {
+    this.router.navigate(['/deck']);
+  }
+
+  imageChange(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64String: string = (reader.result as string).replace('data:', '').replace(/^.+,/, '');
+      this.deck.image = base64String as unknown as Blob;
+    };
+  }
+
 }

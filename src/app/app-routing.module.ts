@@ -8,6 +8,7 @@ import { HomeComponent } from './Component/Home/home.component';
 import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.component';
 import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component'; 
+import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: "deck", component: DeckListComponent},
   {path: "deck/create", component: DeckCreateComponent},
   {path: "deck/modify", component: DeckCreateComponent},
+  {path: "import", component: ImportCardComponent},
   {path : "", redirectTo : "home", pathMatch: 'full'}
 ];
 

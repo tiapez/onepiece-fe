@@ -8,8 +8,7 @@
         <h5><b>Card Type: </b>{{card.cardType}}</h5>
         <h5 style="height: auto"><b>Type: </b>{{card.type.replace('/',',')}}</h5>
         <h5 *ngIf="card.role != ''"><b>Role: </b> {{card.role}} </h5>
-        <div class="description">
-            <p [innerHTML]="description"></p>
+        <div class="description" [innerHTML]="description">
         </div>
         <div class="row-det">
             <div class="col-2"><b>Cost: </b> {{card.cost}}</div>

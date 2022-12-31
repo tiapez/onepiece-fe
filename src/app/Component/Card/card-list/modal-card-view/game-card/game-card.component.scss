@@ -55,11 +55,15 @@ h5 {
     padding: 1%;
     border: 1px solid black;
     height: 40%;
-    font-size: auto;
 }
-.description p{
-    margin: 0 !important;
-    margin-block: 0 !important;
+
+.description div{
+margin-bottom: 5%;
+}
+
+.trigger {
+background-color: black;
+color: aliceblue;
 }
 
 .row-det {
@@ -69,7 +73,13 @@ h5 {
     font-size: medium;
 }
 
+.bg-counter{
+    background-color: orange;
+}
 
+.bg-trigger{
+    background-color: yellow;
+}
 
 .number {
     text-align: center;
@@ -78,4 +88,12 @@ h5 {
     left: 0;
     right: 0;
     height: 5%;
+}
+
+
+
+@media (max-width: 1000px){
+.description {
+    font-size: smaller;
+}
 }

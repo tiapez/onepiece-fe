@@ -1,5 +1,5 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Card } from 'src/app/Model/Card/card.model';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 
@@ -12,6 +12,7 @@ export interface CardData {
   selector: 'app-game-card',
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('cardFlip', [
       state('default', style({
@@ -52,16 +53,29 @@ export class GameCardComponent {
     let descRows: string[] = this.card.effect.split('@');
 
     descRows.forEach(row => {
+      if(row.length <2)
+        return;
+      let flag = row.includes('/Trigger/');
+
+      if(flag){
+        desc = desc.concat("<div class='trigger'>");
+      }else{
+        desc = desc.concat("<div class='row-text'>");
+      }
+      
       let rowDesc: string[] = row.split('/');
-      desc = desc.concat("<p>");
+
       rowDesc.forEach(descs => {
         let part: string = "";
         part = this.createBadge(descs);
         desc = desc.concat(part);
       }
       );
-      desc = desc.concat("</p>");
+      
+        desc = desc.concat("</div>");
+
     });
+    desc = "<ng-content>" + desc + "</ng-content>";
     return desc;
 
   }
@@ -69,7 +83,8 @@ export class GameCardComponent {
 
 
   createBadge(string: string) {
-    let part = "";
+    let part;
+    let flag = false;
     switch (string) {
       case ("DON!! x1"):
       case ("DON!! x2"):
@@ -82,31 +97,41 @@ export class GameCardComponent {
       case "Blocker": case "Rush": case "Banish": case "Double Attack":
         part = "<span class='badge bg-warning'>" + string + "</span>";
         break;
-      case "Once Per Turn": 
+      case "Once Per Turn":
         part = "<span class='badge bg-danger'>" + string + "</span>";
         break;
       case "1": case "2": case "3":
         part = "<span class='badge bg-light rounded-pill text-dark border border-dark'>" + string + "</span>";
         break;
+      case "Counter":
+        part = "<span class='badge bg-counter rounded-pill text-dark border border-dark'><i class='fas fa-bolt'></i>" + string + "</span>";
+        break;
+      case "Trigger":
+        part = "<span class='badge bg-trigger rounded-pill text-dark border border-dark'>" + string + "</span>";
+        break;
       default:
+        if (string.includes('<')) {
+          string = string.replace('<', '');
+          string = string.replace('>', '');
+        }
         if (string.includes('[')) {
-          string=string.replace('[', '<b>[');
-          string=string.replace(']', ']</b>');
+          string = string.replace('[', '<b>[');
+          string = string.replace(']', ']</b>');
         }
         if (string.includes('{')) {
-          string=string.replace('{', '<b>{');
-          string=string.replace('}', '}</b>');
+          string = string.replace('{', '<b>{');
+          string = string.replace('}', '}</b>');
         }
         if (string.includes('(')) {
-          string=string.replace('(', '<b>(');
-          string=string.replace(')', ')</b>');
+          string = string.replace('(', '<b>(');
+          string = string.replace(')', ')</b>');
         }
         if (string.includes(':')) {
-          let s! : string;
-          s="<b>"+string.split(':')[0]+":</b>";
-          string=s + string.split(':')[1];
+          let s!: string;
+          s = "<b>" + string.split(':')[0] + ":</b>";
+          string = s + string.split(':')[1];
         }
-        part = "<span>" + string + "</span>";
+        part = string ;
         break;
     }
     return part;

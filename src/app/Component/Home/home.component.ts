@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GlobalService } from 'src/app/Service/global.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 })
 export class HomeComponent {
   public esit : any;
-  constructor(private route: ActivatedRoute, private toastService : ToastService) { }
+  constructor(private route: ActivatedRoute, private toastService : ToastService,private globalService : GlobalService) { }
 
   ngOnInit(): void {
     this.esit = this.route.snapshot.paramMap.get('esit');
@@ -19,6 +20,7 @@ export class HomeComponent {
     if(this.esit == 'SignIn'){
       this.toastService.userLogin();
     }
+    this.globalService.changeUrl();
   }
 
 }

@@ -4,6 +4,7 @@ import { User } from 'src/app/Model/User/user.model';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
 export class SignUpComponent {
   constructor(private userService: UserIntService, private cryptServiceImpl: CryptServiceImpl,
-    private ts: ToastService, private router: Router) { }
+    private ts: ToastService, private router: Router,private globalService : GlobalService) { }
   public flag!: boolean;
   public flagUser1!: boolean;
   public flagUser2!: boolean;
@@ -24,6 +25,11 @@ export class SignUpComponent {
   public flagNick2!: boolean;
   public error: string = "";
   user: User = new User();
+
+ngOnInit(){
+  this.globalService.changeUrl();
+}
+
 
   saveUser() {
     this.convalidateUser();

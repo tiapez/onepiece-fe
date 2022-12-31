@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { CardDetails, CardDetailsAdapter, CardDetailsAdapterVoid } from 'src/app/Model/CardDetails/card-details.model';
 import { Deck } from 'src/app/Model/Deck/deck.model';
 import { environment } from 'src/environments/environment.prod';
+import { GlobalService } from '../../global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class CardListIntService {
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/card/";
   constructor(private http: HttpClient,private cookieService: CookieService,
-    private cardDetailsAdapter : CardDetailsAdapter,private  cardDetailsAdapterVoid : CardDetailsAdapterVoid) { }
-    httpParams = new HttpParams().set("nick", this.cookieService.get("U3RpbmtvU3Rhbmtvcw=="));
+    private cardDetailsAdapter : CardDetailsAdapter,private  cardDetailsAdapterVoid : CardDetailsAdapterVoid, private globalService : GlobalService) { }
+    httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
 
   getAllDetails(set : string): Observable<CardDetails[]> {
     const url = `${this.baseUrl}allDetails`;

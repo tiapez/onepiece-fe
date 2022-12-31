@@ -21,7 +21,7 @@ export class CardListService {
     ,private modalService: NgbModal, public router: Router){}
   public cardListDetails: CardDetails[] = [];
   public filter: Filter = new Filter();
-
+  
   getCardDetails() {
 
     this.cardListIntService.getAllDetails(this.filter.setId).subscribe({

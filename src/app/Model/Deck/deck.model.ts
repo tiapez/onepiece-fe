@@ -14,6 +14,7 @@ export class Deck {
   public note!: string;
   public format!: string;
   public cond!: number;
+  public image!: Blob;
 }
 
 @Injectable({
@@ -34,6 +35,7 @@ export class DeckAdapter implements Adapter<Deck> {
     deck.format = item.format;
     deck.note = item.note;
     deck.cond = item.cond;
+    deck.image = item.image;
     return deck;
   }
 }
