@@ -9,6 +9,7 @@ import { Deck } from 'src/app/Model/Deck/deck.model';
 import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { CardListIntService } from 'src/app/Service/Interface/CardList/card-list-int.service';
+import { GlobalService } from '../../global.service';
 
 
 
@@ -18,7 +19,7 @@ import { CardListIntService } from 'src/app/Service/Interface/CardList/card-list
 export class CardListService {
 
   constructor(private cardListIntService : CardListIntService
-    ,private modalService: NgbModal, public router: Router){}
+    ,private modalService: NgbModal, public router: Router,private globalService : GlobalService){}
   public cardListDetails: CardDetails[] = [];
   public filter: Filter = new Filter();
   
@@ -86,6 +87,18 @@ export class CardListService {
     this.filter.setName = this.filter.setOption.split('/')[1];
     this.filter.setId = this.filter.setOption.split('/')[0];
     this.cardListDetails = [];
+    if(this.globalService.isClassic){
+      this.getCardClassic();
+    }else{
+      if(this.globalService.isDetails){
+        this.getCardDetails();
+      }else{
+        if(this.globalService.isCardList){
+          this.getCardAll();
+        }
+      }
+
+    }
   }
 
 
