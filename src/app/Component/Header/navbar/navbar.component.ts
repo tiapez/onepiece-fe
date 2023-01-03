@@ -18,13 +18,10 @@ export class NavbarComponent {
 		private toastService: ToastService) { }
 
 	public navbarWidth: string = "";
-	public userLogged: string = this.cryptService.getCookieNick();
-	public navbarImg: string = this.cookieService.get("navType");
 	error!: any;
 
 	ngOnInit() {
-		if (this.navbarImg == "")
-			this.navbarImg = 'Light';
+		this.globalService.f();
 		this.error = this.route.snapshot.paramMap.get('error');
 		if (this.error == 1) {
 			this.toastService.userSaveSuccess();

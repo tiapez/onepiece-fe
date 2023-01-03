@@ -1,11 +1,11 @@
 <div class="container-myside" id="navbar">
 	<div class="container-lg navbar-container  align-items-center">
 		<div class="navbar-brand" routerLink="/">
-			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
+			<img src="{{'./assets/Img/OP-navbar-'+globalService.navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<div id="div-click" (click)="openNav()"></div>
 		</div>
 		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
-			<img src="{{'./assets/Img/OP-navbar-'+navbarImg+'.png'}}" alt="onepiece-logo"/>
+			<img src="{{'./assets/Img/OP-navbar-'+globalService.navbarImg+'.png'}}" alt="onepiece-logo"/>
 			<a routerLink="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
 			<a routerLink="/" (click)="closeNav()">Home</a>
 			<a routerLink="/cardList" (click)="closeNav()">Card List</a>
@@ -28,7 +28,7 @@
 
 				<button class="btn btn-outline-success align-items-center" (click)="signUp();closeNav()">
 					<i class="fas fa-user-circle"></i>
-					{{userLogged.length == 0 ? 'Guest' :' ' + userLogged |titlecase}}
+					{{globalService.userLogged.length == 0 ? 'Guest' :' ' + globalService.userLogged |titlecase}}
 				</button>
 
 			</div>

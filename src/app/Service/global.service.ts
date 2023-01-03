@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { CryptServiceImpl } from './Utility/CryptImpl/crypt-impl.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class GlobalService {
 
   constructor(private router: Router, private cookieService: CookieService,
-    private deviceService: DeviceDetectorService,) { }
+    private deviceService: DeviceDetectorService, private cryptService: CryptServiceImpl) { }
 
+    public userLogged! : string;
+    public navbarImg! : string;
+    
   //FILTRI
   public isCardList: boolean = false;
   public isClassic: boolean = false;
@@ -63,7 +67,22 @@ export class GlobalService {
   }
 
   getNickDecoded(){
-   return this.cookieService.get("nachotibbers");
+   return this.cookieService.get("jver3894ksdf2");
   }
 
+  public isLogged(): boolean {      
+   
+    return this.cookieService.get('isLogged') == "true";     
+   
+    } 
+
+    f(){
+      if(this.isLogged()){
+        this.userLogged = this.cryptService.getCookieNick();
+        this.navbarImg = this.cookieService.get("navType");
+      }else{
+      this.userLogged = "Guest";
+      this.navbarImg = "Light";
+      }
+    }
 }

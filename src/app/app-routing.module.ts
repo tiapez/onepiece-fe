@@ -9,20 +9,23 @@ import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.com
 import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component'; 
 import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
+import { 
+  AuthGuardService as AuthGuard 
+} from './Component/Auth/auth-guard.service';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "signUp", component: SignUpComponent},
   {path: "signIn", component: SignInComponent},
-  {path: "userProfile", component: UserProfileComponent},
+  {path: "userProfile", component: UserProfileComponent, canActivate : [AuthGuard]},
   {path: "cardList", component: CardListComponent},
-  {path: "userCard/classic", component: CardListComponent},
-  {path: "userCard/details", component: CardListComponent},
-  {path: "deck/cardList", component: DeckModifyComponent},
-  {path: "deck", component: DeckListComponent},
-  {path: "deck/create", component: DeckCreateComponent},
-  {path: "deck/modify", component: DeckCreateComponent},
-  {path: "import", component: ImportCardComponent},
+  {path: "userCard/classic", component: CardListComponent, canActivate : [AuthGuard]},
+  {path: "userCard/details", component: CardListComponent, canActivate : [AuthGuard]},
+  {path: "deck/cardList", component: DeckModifyComponent, canActivate : [AuthGuard]},
+  {path: "deck", component: DeckListComponent, canActivate : [AuthGuard]},
+  {path: "deck/create", component: DeckCreateComponent, canActivate : [AuthGuard]},
+  {path: "deck/modify", component: DeckCreateComponent, canActivate : [AuthGuard]},
+  {path: "import", component: ImportCardComponent, canActivate : [AuthGuard]},
   {path : "", redirectTo : "home", pathMatch: 'full'}
 ];
 

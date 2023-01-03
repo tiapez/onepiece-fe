@@ -86,18 +86,15 @@ export class CardListService {
   changeFilter() {
     this.filter.setName = this.filter.setOption.split('/')[1];
     this.filter.setId = this.filter.setOption.split('/')[0];
-    this.cardListDetails = [];
+
     if(this.globalService.isClassic){
+      this.cardListDetails = [];
       this.getCardClassic();
     }else{
       if(this.globalService.isDetails){
+        this.cardListDetails = [];
         this.getCardDetails();
-      }else{
-        if(this.globalService.isCardList){
-          this.getCardAll();
-        }
       }
-
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { isObservable } from 'rxjs';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 
@@ -34,7 +35,7 @@ export class SignInComponent {
     this.nick = this.nick.split('/')[0];
     this.cookie.set(this.cryptServiceImpl.nickCookie, this.cryptServiceImpl.setNickCrypt(this.nick),{expires : 9999999999999});
     this.cookie.set("navType", this.navbar,{expires : 99999999999999});
+    this.cookie.set("isLogged", "true",{expires : 99999999999999});
     this.router.navigate(['home', {esit: 'SignIn'}]);
-
   }
 }

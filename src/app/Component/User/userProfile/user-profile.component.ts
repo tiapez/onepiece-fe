@@ -16,21 +16,14 @@ import { GlobalService } from 'src/app/Service/global.service';
 export class UserProfileComponent {
   public user!: User;
   selectedFile!: Blob;
-  public esit!: any;
 
 
   constructor(private cryptService: CryptServiceImpl, private cookieService: CookieService,
-    private userService: UserIntService, private router: Router
-    , private toastService: ToastService, private route: ActivatedRoute, private globalService: GlobalService) { }
+    private userService: UserIntService
+    , private toastService: ToastService, private globalService: GlobalService) { }
 
 
   ngOnInit() {
-    this.esit = this.route.snapshot.paramMap.get('esit');
-    if (this.esit == 'success') {
-      this.toastService.userSaveSuccess();
-    }
-    if (!this.cryptService.isLogged())
-      this.router.navigate(['/']);
     this.userService.getUser(this.cryptService.getCookieNick()).subscribe({
       next: data => { this.user = data; },
       complete: () => this.decodeUser()
@@ -49,7 +42,7 @@ export class UserProfileComponent {
     this.userService.saveUserConfig(this.user, this.cryptService.setNickCrypt(this.user.nick)).subscribe({
       next: data => this.cookieService.set("navType", data),
       error: () => this.toastService.userSaveError(),
-      complete: () => { this.redirect() }
+      complete: () => {this.saveUserPost() }
     });
   }
 
@@ -63,11 +56,9 @@ export class UserProfileComponent {
     };
   }
 
-  redirect() {
-    this.router.navigate(['UserProfile', { esit: 'success' }])
-      .then(() => {
-        window.location.reload();
-      });
-  }
+  saveUserPost(){
+    this.globalService.f();
+    this.toastService.userSaveSuccess();
 
+  }
 }
