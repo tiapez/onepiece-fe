@@ -1,6 +1,5 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { User, UserAdapter } from '../../../Model/User/user.model';
@@ -12,8 +11,7 @@ import { GlobalService } from '../../global.service';
 export class UserIntService {
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/user/";
-  constructor(private http: HttpClient, private adapter: UserAdapter,private globalService : GlobalService,
-    private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private adapter: UserAdapter,private globalService : GlobalService) { }
 
     //SIGNUP
   saveUser(user: User): Observable<boolean> {

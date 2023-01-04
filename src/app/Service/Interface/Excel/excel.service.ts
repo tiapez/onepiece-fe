@@ -1,7 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { UserAdapter } from 'src/app/Model/User/user.model';
 import { environment } from 'src/environments/environment.prod';
 import { GlobalService } from '../../global.service';
 

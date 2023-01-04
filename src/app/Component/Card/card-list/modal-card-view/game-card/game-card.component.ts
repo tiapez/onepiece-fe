@@ -83,58 +83,49 @@ export class GameCardComponent {
 
 
   createBadge(string: string) {
-    let part;
-    let flag = false;
     switch (string) {
       case ("DON!! x1"):
       case ("DON!! x2"):
       case ("DON!! x3"):
-        part = "<span class='badge bg-dark'>" + string + "</span>";
+        string = "<span class='badge bg-dark'>" + string + "</span>";
         break;
       case "Your Turn": case "Activate: Main": case "On Play": case "On K.O.": case "When Attacking": case "On Opponent Turn": case "On Block": case "Main": case "Opponent's Turn": case "End of Your Turn":
-        part = "<span class='badge bg-primary'>" + string + "</span>";
+        string = "<span class='badge bg-primary'>" + string + "</span>";
         break;
       case "Blocker": case "Rush": case "Banish": case "Double Attack":
-        part = "<span class='badge bg-warning'>" + string + "</span>";
+        string = "<span class='badge bg-warning'>" + string + "</span>";
         break;
       case "Once Per Turn":
-        part = "<span class='badge bg-danger'>" + string + "</span>";
+        string = "<span class='badge bg-danger'>" + string + "</span>";
         break;
       case "1": case "2": case "3":
-        part = "<span class='badge bg-light rounded-pill text-dark border border-dark'>" + string + "</span>";
+        string = "<span class='badge bg-light rounded-pill text-dark border border-dark'>" + string + "</span>";
         break;
       case "Counter":
-        part = "<span class='badge bg-counter rounded-pill text-dark border border-dark'><i class='fas fa-bolt'></i>" + string + "</span>";
+        string = "<span class='badge bg-counter'><i class='fas fa-bolt'></i>" + string + "</span>";
         break;
       case "Trigger":
-        part = "<span class='badge bg-trigger rounded-pill text-dark border border-dark'>" + string + "</span>";
+        string = "<span class='badge bg-trigger'>" + string + "</span>";
         break;
       default:
-        if (string.includes('<')) {
           string = string.replace('<', '');
           string = string.replace('>', '');
-        }
-        if (string.includes('[')) {
+
           string = string.replace('[', '<b>[');
           string = string.replace(']', ']</b>');
-        }
-        if (string.includes('{')) {
+
           string = string.replace('{', '<b>{');
           string = string.replace('}', '}</b>');
-        }
-        if (string.includes('(')) {
+
           string = string.replace('(', '<b>(');
           string = string.replace(')', ')</b>');
-        }
+        
         if (string.includes(':')) {
-          let s!: string;
-          s = "<b>" + string.split(':')[0] + ":</b>";
-          string = s + string.split(':')[1];
+          string = "<b>" + string.split(':')[0] + ":</b>" + string.split(':')[1];
         }
-        part = string ;
         break;
     }
-    return part;
+    return string;
   }
 
 }

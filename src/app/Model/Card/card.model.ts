@@ -47,21 +47,9 @@ export class Card {
   providedIn: "root",
 })
 export class CardAdapterFromDTO implements Adapter<Card> {
+  constructor(private cardAdapter : CardAdapter){}
   adapt(item : Card) : Card {
-    let card = new Card( );
-    card.id = item.id; 
-    card.number = item.number; 
-    card.name = item.name;
-    card.color = item.color;
-    card.role = item.role;
-    card.rarity = item.rarity;
-    card.effect = item.effect;
-    card.setId = item.setId;
-    card.cost = item.cost;
-    card.counter = item.counter;
-    card.power = item.power;
-    card.cardType = item.cardType;
-    card.type = item.type;
+    let card = this.cardAdapter.adapt(item);
     card.qty = item.qty;
     card.condition = item.condition;
     card.language = item.language;

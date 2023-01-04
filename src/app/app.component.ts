@@ -11,7 +11,7 @@ export class AppComponent {
   
 ngOnInit(){  
   console.warn(`🚨 Console output is disabled on production!`);
-  //console.log = function (): void { };
+  console.log = function (): void { };
   console.debug = function (): void { };
   console.warn = function (): void { };
   console.info = function (): void { };

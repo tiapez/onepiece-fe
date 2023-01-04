@@ -41,14 +41,12 @@ uploadFile(excellInput: any) {
 }
 
 downloadFile(){
-  //let url = window.URL.createObjectURL(this.file);
   let a = document.createElement('a');
   document.body.appendChild(a);
   a.setAttribute('style', 'display: none');
   a.href = "./assets/Excel/RomanceDawn.xlsx";
   a.download = "RomanceDawn";
   a.click();
- // window.URL.revokeObjectURL(url);
   a.remove();
 }
   d2(){
