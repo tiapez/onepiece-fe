@@ -15,7 +15,7 @@ export class CardListComponent {
 
 
   constructor(private router: Router, public globalService: GlobalService, public cardService: CardListService,
-    private cryptService: CryptServiceImpl, private deckService: DeckService,private titleService:Title) { }
+    private deckService: DeckService,private titleService:Title) { }
   ngOnInit() {
     this.cardService.cardListDetails = [];
     if (this.globalService.view == null || this.globalService.view == undefined || this.globalService.view == '') {
@@ -25,7 +25,7 @@ export class CardListComponent {
     this.globalService.changeUrl();
 
     if (this.globalService.isUserCard || this.globalService.isDeck) {
-      if (!this.cryptService.isLogged()) {
+      if (!this.globalService.isLogged()) {
         this.router.navigate(['/']);
       }
       if (this.globalService.isClassic) {

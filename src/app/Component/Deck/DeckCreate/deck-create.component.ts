@@ -21,22 +21,22 @@ export class DeckCreateComponent {
   public name!: string;
 
   ngOnInit(): void {
-    this.leader = this.deckService.deckSelected.leader.card.id + '/'
-      + this.deckService.deckSelected.leader.card.color;
+
     if (this.router.url.includes('create')){
       this.name = 'CREATE';
       this.titleService.setTitle("Onepiece TCG - Create Deck");
+      this.deck.name = '';
     }
 
     else{
       this.name = 'MODIFY';
       this.titleService.setTitle("Onepiece TCG - Modify Deck");
+      this.leader = this.deckService.deckSelected.leader.card.id + '/'
+      + this.deckService.deckSelected.leader.card.color;
+      this.deck = this.deckService.deckSelected.deck;
     }
 
     this.deckService.getLeader();
-    if (this.deckService.deckSelected != undefined){
-      this.deck = this.deckService.deckSelected.deck;
-    }
 
       this.globalService.changeUrl();
   }

@@ -38,7 +38,9 @@ ngOnInit(){
   redirect() {
     this.navbar = this.nick.split('/')[1];
     this.nick = this.nick.split('/')[0];
-    this.cookie.set(this.cryptServiceImpl.nickCookie, this.cryptServiceImpl.setNickCrypt(this.nick),{expires : 9999999999999});
+    this.nick = this.cryptServiceImpl.setNickCrypt(this.nick);
+    console.error(this.nick);
+    localStorage.setItem(this.cryptServiceImpl.nickCookie, this.nick);
     this.cookie.set("navType", this.navbar,{expires : 99999999999999});
     this.cookie.set("isLogged", "true",{expires : 99999999999999});
     this.router.navigate(['home', {esit: 'SignIn'}]);

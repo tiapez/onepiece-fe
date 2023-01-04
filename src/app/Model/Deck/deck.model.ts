@@ -15,6 +15,7 @@ export class Deck {
   public format!: string;
   public cond!: number;
   public image!: Blob;
+  constructor(){}
 }
 
 @Injectable({

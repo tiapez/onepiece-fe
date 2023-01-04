@@ -15,9 +15,6 @@ export class CryptServiceImpl {
   private nickKey = "a54321098765432z";
   public nickCookie = "jver3894ksdf2";
   
-  isLogged() {
-    return !(this.cs.get(this.nickCookie) == null || this.cs.get(this.nickCookie) == "");
-  }
 
   getPassCrypt(pass: string) {
     return this.cryptService.get(pass, this.passKey);

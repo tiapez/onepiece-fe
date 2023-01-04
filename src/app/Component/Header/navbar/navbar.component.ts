@@ -38,7 +38,7 @@ export class NavbarComponent {
 	}
 
 	signUp() {
-		if (this.cryptService.isLogged()) {
+		if (this.globalService.isLogged()) {
 			this.router.navigate(['/userProfile'])
 		} else {
 			this.router.navigate(['/signIn'])
