@@ -5,6 +5,7 @@ import { UserIntService } from 'src/app/Service/Interface/User/user-int.service'
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 import { GlobalService } from 'src/app/Service/global.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ import { GlobalService } from 'src/app/Service/global.service';
 
 export class SignUpComponent {
   constructor(private userService: UserIntService, private cryptServiceImpl: CryptServiceImpl,
-    private ts: ToastService, private router: Router,private globalService : GlobalService) { }
+    private ts: ToastService, private router: Router, private globalService: GlobalService, private titleService: Title) { }
   public flag!: boolean;
   public flagUser1!: boolean;
   public flagUser2!: boolean;
@@ -26,9 +27,10 @@ export class SignUpComponent {
   public error: string = "";
   user: User = new User();
 
-ngOnInit(){
-  this.globalService.changeUrl();
-}
+  ngOnInit() {
+    this.globalService.changeUrl();
+    this.titleService.setTitle("Onepiece TCG - Sign Up");
+  }
 
 
   saveUser() {
@@ -99,7 +101,7 @@ ngOnInit(){
   }
 
   redirect() {
-    this.router.navigate(['home', {esit: 'SignUp'}])
+    this.router.navigate(['home', { esit: 'SignUp' }])
       .then(() => {
         window.location.reload();
       });

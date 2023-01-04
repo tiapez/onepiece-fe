@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ExcelService } from 'src/app/Service/Interface/Excel/excel.service';
-import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-import-card',
@@ -9,10 +9,16 @@ import { UserIntService } from 'src/app/Service/Interface/User/user-int.service'
 })
 export class ImportCardComponent {
 
-  constructor(private excelService : ExcelService) { }
+  constructor(private excelService : ExcelService, private titleService : Title) { }
   private excell! : Blob;
   private file! : File;
   
+ngOnInit(){
+  this.titleService.setTitle("Onepiece TCG - Import");
+}
+
+
+
   changeFile(file : any) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { isObservable } from 'rxjs';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,13 +12,18 @@ import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.s
 })
 export class SignInComponent {
   constructor(private userService: UserIntService, private router: Router, private cookie: CookieService
-    , private cryptServiceImpl: CryptServiceImpl) { }
+    , private cryptServiceImpl: CryptServiceImpl, private titleService : Title) { }
   public user: string = "";
   public password: string = "";
   public error: string = "";
   public nick: string = "";
   public navbar : string = "";
   public headers!: Headers;
+
+ngOnInit(){
+  this.titleService.setTitle("Onepiece TCG - Sign In");
+}
+
 
   loginButton() {
     const user = this.cryptServiceImpl.setUserCrypt(this.user);

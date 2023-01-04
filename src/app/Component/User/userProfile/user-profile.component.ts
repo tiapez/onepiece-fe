@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/Model/User/user.model';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 import { GlobalService } from 'src/app/Service/global.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,7 +20,7 @@ export class UserProfileComponent {
 
   constructor(private cryptService: CryptServiceImpl, private cookieService: CookieService,
     private userService: UserIntService
-    , private toastService: ToastService, private globalService: GlobalService) { }
+    , private toastService: ToastService, private globalService: GlobalService, private titleService : Title) { }
 
 
   ngOnInit() {
@@ -29,6 +29,7 @@ export class UserProfileComponent {
       complete: () => this.decodeUser()
     });
     this.globalService.changeUrl();
+    this.titleService.setTitle("Onepiece TCG - User Profile");
   }
 
   decodeUser() {

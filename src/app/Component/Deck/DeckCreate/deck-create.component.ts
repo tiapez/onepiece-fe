@@ -4,6 +4,7 @@ import { Deck } from 'src/app/Model/Deck/deck.model';
 import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
 import { GlobalService } from 'src/app/Service/global.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-deck-create',
@@ -13,7 +14,7 @@ import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 export class DeckCreateComponent {
 
   constructor(private router: Router,
-    public deckService: DeckService,private globalService : GlobalService) { }
+    public deckService: DeckService,private globalService : GlobalService, private titleService : Title) { }
 
   public deck: Deck = new Deck();
   public leader!: string;
@@ -24,10 +25,12 @@ export class DeckCreateComponent {
       + this.deckService.deckSelected.leader.card.color;
     if (this.router.url.includes('create')){
       this.name = 'CREATE';
+      this.titleService.setTitle("Onepiece TCG - Create Deck");
     }
 
     else{
-      this.name = 'MODIFY'
+      this.name = 'MODIFY';
+      this.titleService.setTitle("Onepiece TCG - Modify Deck");
     }
 
     this.deckService.getLeader();

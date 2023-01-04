@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from 'src/app/Service/global.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
@@ -10,7 +11,7 @@ import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 })
 export class HomeComponent {
   public esit : any;
-  constructor(private route: ActivatedRoute, private toastService : ToastService,private globalService : GlobalService) { }
+  constructor(private route: ActivatedRoute, private toastService : ToastService,private globalService : GlobalService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.esit = this.route.snapshot.paramMap.get('esit');
@@ -21,6 +22,8 @@ export class HomeComponent {
       this.toastService.userLogin();
     }
     this.globalService.changeUrl();
+    this.titleService.setTitle("Onepiece TCG - Home")
   }
+
 
 }
