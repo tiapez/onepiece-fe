@@ -98,7 +98,7 @@ export class GameCardComponent {
       case "Once Per Turn":
         string = "<span class='badge bg-danger'>" + string + "</span>";
         break;
-      case "1": case "2": case "3":
+      case "1": case "2": case "3": case "4":
         string = "<span class='badge bg-light rounded-pill text-dark border border-dark'>" + string + "</span>";
         break;
       case "Counter":
