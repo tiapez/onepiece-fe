@@ -20,10 +20,8 @@ export class ModalCardAddComponent {
   }
   
   ngAfterViewInit() {
-    const elements:any = document.querySelector(".super-card");
-    VanillaTilt.init(elements);
-    const elements2:any = document.querySelector(".super-card-img");
-    VanillaTilt.init(elements2,{glare:true,max:0});
+
+    console.log(this.modalCard);
   }
 
   add(card : CardDetails,details : Details){

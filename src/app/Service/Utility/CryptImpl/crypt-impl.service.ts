@@ -40,7 +40,7 @@ export class CryptServiceImpl {
     return this.cryptService.set(nick, this.nickKey)
   }
 
-  getCookieNick() {
+  getNickCookieDecoded() {
     return this.getCryptNick(this.cs.get(this.nickCookie));
   }
 

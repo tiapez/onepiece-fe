@@ -42,18 +42,22 @@ export class CardListService {
   }
 
   getCardAll() {
-    this.cardListIntService.getAll().subscribe({
-      next: data => { this.cardListDetails = data }
-    }
-    )
+    return this.cardListIntService.getAll();
   }
 
+  getSet() {
+    return this.cardListIntService.getSet();
+  }
+
+  getDeckSet(format : string) {
+    return this.cardListIntService.getDeckSet(format);
+  }
   
   getCardDeck(deck: Deck) {
     this.cardListIntService.getDeckCard(deck).subscribe(
       {
         next: data => { this.cardListDetails = data },
-        complete: () => this.conta()
+        complete: () => {this.conta();}
       }
     )
   }
@@ -61,11 +65,16 @@ export class CardListService {
   openView(card : Card) {
     const modalRef = this.modalService.open(ModalCardComponent,{centered: true});
     modalRef.componentInstance.modalCard = card;
+    modalRef.componentInstance.modalSet = this.filter.setName;
+    if(this.globalService.isCardListAll){
+      modalRef.componentInstance.modalSet = "PROVA2";
+    }
   }
 
   openAdd(cardDet : CardDetails) {
     const modalRef = this.modalService.open(ModalCardAddComponent,{centered: true});
     modalRef.componentInstance.modalCard = cardDet;
+
   }
 
   conta() {
@@ -98,7 +107,16 @@ export class CardListService {
     }
   }
 
-
+  cardIf(cardDet : CardDetails){
+    return cardDet.card.name.toLocaleLowerCase().includes(this.filter.name) && (this.filter.rarity.includes('All') || cardDet.card.rarity.includes(this.filter.rarity)) 
+    && (this.filter.setId.includes(cardDet.card.setId) || this.filter.setId == 'Any') && cardDet.qtyMax != 0
+    && (( (this.globalService.isDetails) ||(this.globalService.isClassic) ) && (this.filter.view == 0 || (this.filter.view == 1 && cardDet.qty > 0) || (this.filter.view == 2 && cardDet.qty == 0)) 
+    ||
+    (!this.globalService.isUserCard  && (this.filter.color.includes('All') || cardDet.card.color.includes(this.filter.color)) && (this.filter.role.includes('All') || cardDet.card.role.includes(this.filter.role)) 
+    && (this.filter.cardType.includes('All') || cardDet.card.cardType.includes(this.filter.cardType)) && (cardDet.card.type.toLocaleLowerCase().includes(this.filter.type))
+     &&  (this.filter.power == -1 || cardDet.card.power == this.filter.power) && (this.filter.counter == -1 || cardDet.card.counter == this.filter.counter) && (this.filter.cost == -1 || cardDet.card.cost == this.filter.cost))
+    );
+  }
 
   
 

@@ -13,6 +13,7 @@ export class Deck {
   public side!: string;
   public note!: string;
   public format!: string;
+  public language!: string;
   public cond!: number;
   public image!: Blob;
   constructor(){}
@@ -36,6 +37,7 @@ export class DeckAdapter implements Adapter<Deck> {
     deck.format = item.format;
     deck.note = item.note;
     deck.cond = item.cond;
+    deck.language = item.language;
     deck.image = item.image;
     return deck;
   }

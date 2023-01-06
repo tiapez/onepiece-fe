@@ -10,6 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalCardComponent {
 @Input() public modalCard! : Card;
+@Input() public modalSet! : string;
 
 constructor(public activeModal: NgbActiveModal) {
 }

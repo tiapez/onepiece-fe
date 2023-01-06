@@ -38,7 +38,9 @@ export class GameCardComponent {
   };
   constructor(public cardService: CardListService) { }
   @Input() card!: Card;
+  @Input() set!: string;
   public description: string = "";
+
   cardClicked() {
     if (this.data.state === "default") {
       this.data.state = "flipped";
@@ -90,22 +92,22 @@ export class GameCardComponent {
         string = "<span class='badge bg-dark'>" + string + "</span>";
         break;
       case "Your Turn": case "Activate: Main": case "On Play": case "On K.O.": case "When Attacking": case "On Opponent Turn": case "On Block": case "Main": case "Opponent's Turn": case "End of Your Turn":
-        string = "<span class='badge bg-primary'>" + string + "</span>";
+        string = "<span class='badge bg-blue'>" + string + "</span>";
         break;
       case "Blocker": case "Rush": case "Banish": case "Double Attack":
-        string = "<span class='badge bg-warning'>" + string + "</span>";
+        string = "<span class='badge  bg-orange'>" + string + "</span>";
         break;
       case "Once Per Turn":
-        string = "<span class='badge bg-danger'>" + string + "</span>";
+        string = "<span class='badge  bg-red'>" + string + "</span>";
         break;
       case "1": case "2": case "3": case "4":
-        string = "<span class='badge bg-light rounded-pill text-dark border border-dark'>" + string + "</span>";
+        string = "<span class='badge rounded-pill text-dark border border-dark'>" + string + "</span>";
         break;
       case "Counter":
         string = "<span class='badge bg-counter'><i class='fas fa-bolt'></i>" + string + "</span>";
         break;
       case "Trigger":
-        string = "<span class='badge bg-trigger'>" + string + "</span>";
+        string = "<span class='badge bg-yellow'>" + string + "</span>";
         break;
       default:
           string = string.replace('<', '');

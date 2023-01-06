@@ -17,8 +17,9 @@ export class DeckModifyComponent  {
 
   ngOnInit(): void {
     if(this.deckService.deckSelected == undefined)
-      this.router.navigate(["/Deck"]);
+      this.router.navigate(["/deck"]);
     this.globalService.changeUrl();
+    
   }
 
   ngOnDestroy(): void {

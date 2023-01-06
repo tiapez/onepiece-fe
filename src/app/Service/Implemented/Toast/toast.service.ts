@@ -11,7 +11,7 @@ export class ToastService {
   constructor(public toastService: ToastIntService, public cryptService: CryptServiceImpl) { }
   
   addSuccess(){
-    this.toastService.show('Card Added Succesfully', { classname: 'bg-success text-light', delay: 3000 });
+    this.toastService.show('Card Added Succesfully!', { classname: 'bg-success text-light', delay: 3000 });
   }
 
   addError(){
@@ -19,7 +19,7 @@ export class ToastService {
   }
 
   removeSuccess(){
-    this.toastService.show('Card Removed Succesfully', { classname: 'bg-success text-light', delay: 3000 });
+    this.toastService.show('Card Removed Succesfully!', { classname: 'bg-success text-light', delay: 3000 });
   }
 
   removeError(){
@@ -30,12 +30,16 @@ export class ToastService {
     this.toastService.show('Error Saving User', { classname: 'bg-danger text-light', delay: 3000 });
   }
 
+  userCreatedSuccess(){
+    this.toastService.show('User Created Succesfully!', { classname: 'bg-success text-light', delay: 3000 });
+  }
+
   userSaveSuccess(){
-    this.toastService.show('user Created', { classname: 'bg-success text-light', delay: 3000 });
+    this.toastService.show('User Saved Succesfully!', { classname: 'bg-success text-light', delay: 3000 });
   }
 
   userNotValid(){
-    this.toastService.show('User Not Valid', { classname: 'bg-danger text-light', delay: 3000 });
+    this.toastService.show('User Not Valid!', { classname: 'bg-danger text-light', delay: 3000 });
   }
 
   userLogin(){
@@ -43,8 +47,17 @@ export class ToastService {
   }
 
   loginName(){
-    let nick = this.cryptService.getCookieNick();
+    let nick = this.cryptService.getNickCookieDecoded();
     nick = nick[0].toUpperCase() + nick.slice(1);
     return nick;
   }
+
+  deckSuccess(){
+    this.toastService.show('Deck Saved Succesfully!', { classname: 'bg-success text-light', delay: 3000 });
+  }
+
+  deckError(){
+    this.toastService.show('Deck saving error', { classname: 'bg-danger text-light', delay: 3000 });
+  }
+
 }

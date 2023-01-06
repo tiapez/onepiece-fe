@@ -1,8 +1,6 @@
 import { Component} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service'; 
 import { GlobalService } from 'src/app/Service/global.service';
 import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 
@@ -13,15 +11,14 @@ import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
 })
 export class NavbarComponent {
 	constructor(private deviceService: DeviceDetectorService, public globalService: GlobalService
-		, public router: Router, private cryptService: CryptServiceImpl,
-		private cookieService: CookieService, private route: ActivatedRoute,
+		, public router: Router, private route: ActivatedRoute,
 		private toastService: ToastService) { }
 
 	public navbarWidth: string = "";
 	error!: any;
 
 	ngOnInit() {
-		this.globalService.f();
+		this.globalService.setUser();
 		this.error = this.route.snapshot.paramMap.get('error');
 		if (this.error == 1) {
 			this.toastService.userSaveSuccess();

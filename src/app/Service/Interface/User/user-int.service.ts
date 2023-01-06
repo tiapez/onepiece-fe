@@ -93,7 +93,7 @@ export class UserIntService {
   //USER PROFILE
   getUser(nick: string): Observable<User> {
     const url = `${this.baseUrl}getUser/`;
-    let params = new HttpParams().set("nick", this.globalService.getNickDecoded());
+    let params = new HttpParams().set("nick", this.globalService.getNickCookie());
     return this.http.get<User>(url, { params }).pipe(
       map((data: User) => { return this.adapter.adapt(data) }),
       catchError((error: HttpErrorResponse) => {
@@ -104,7 +104,7 @@ export class UserIntService {
 
   saveUserConfig(user: User, nick: string): Observable<string> {
     const url = `${this.baseUrl}saveUserConfig/`;
-    let params = new HttpParams().set("nick", this.globalService.getNickDecoded());
+    let params = new HttpParams().set("nick", this.globalService.getNickCookie());
     return this.http.put<string>(url, user, { params }).pipe(
       map((data: string) => { return data }),
       catchError((error: HttpErrorResponse) => {
@@ -116,7 +116,7 @@ export class UserIntService {
 
 //ERRORI
   private handleErrorUserExist(error: HttpErrorResponse) {
-    console.log(error);
+    console.error(error);
     if (error.status == 500) {
       return throwError(() => new Error('User Already Exist'));
     }

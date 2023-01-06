@@ -15,7 +15,7 @@ export class CardActionIntService {
 
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/card";
-  httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
+  httpParams = new HttpParams().set("nick", this.globalService.getNickCookie());
 
 
 

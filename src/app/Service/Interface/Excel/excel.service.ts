@@ -12,7 +12,7 @@ export class ExcelService {
   
   constructor(private http: HttpClient, private globalService: GlobalService) { }
 
-    httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
+    httpParams = new HttpParams().set("nick", this.globalService.getNickCookie());
 
   importExcel(file : File){
     let params = this.httpParams;

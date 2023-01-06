@@ -5,6 +5,7 @@ import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { GlobalService } from 'src/app/Service/global.service';
 import { Router } from '@angular/router';
+import { Set } from 'src/app/Model/Set/set.model';
 
 @Component({
   selector: 'app-filter',
@@ -20,10 +21,24 @@ export class FilterComponent {
   filterWidth: string | undefined;
   isCollapsed: boolean = true;
 
+  setList : Set[] = [];
+
+  numberList : number[] = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000];
+
   ngOnInit() {
     if (this.isMobile) {
       this.filterWidth = "100%";
     }
+    if(this.globalService.isDeck){
+      this.cardService.getDeckSet(this.deckService.deckSelected.deck.format).subscribe({
+        next : data => {this.setList = data}
+      });
+    }else{
+      this.cardService.getSet().subscribe({
+        next : data => {this.setList = data}
+      });
+    }
+
   }
 
   openFilter() {
@@ -80,10 +95,6 @@ export class FilterComponent {
         document.getElementById("deckbar")!.classList.add("deckClose");
         document.getElementById("deckbtn")!.innerHTML = "Show Deck";
       }
-
     }
 
-    back(){
-      console.log(this.router.url);
-    }
 }

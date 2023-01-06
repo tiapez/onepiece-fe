@@ -3,7 +3,6 @@ import { Adapter } from "src/app/Adapter/adapter";
 
 export class Details {
     constructor(
-        public id:number,
         public language:string,
         public condition:string,
         public codCondition : number,
@@ -17,7 +16,7 @@ export class Details {
   })
   export class DetailsAdapter implements Adapter<Details> {
     adapt(item : Details): Details {
-      return new Details( item.id, item.language, item.condition,item.codCondition,item.qty,item.userCardId);
+      return new Details( item.language, item.condition,item.codCondition,item.qty,item.userCardId);
     }
   }
 
@@ -26,6 +25,6 @@ export class Details {
   })
   export class DetailsAdapterFromDTO implements Adapter<Details> {
     adapt(item : any): Details {
-      return new Details( item.detailsDTO.id, item.detailsDTO.language, item.detailsDTO.condition,item.detailsDTO.codCondition,item.detailsDTO.qty,item.detailsDTO.userCardId);
+      return new Details(  item.detailsDTO.language, item.detailsDTO.condition,item.detailsDTO.codCondition,item.detailsDTO.qty,item.detailsDTO.userCardId);
     }
   }

@@ -18,19 +18,12 @@
         <div class="col-auto button-filter">
             <select class="form-select" name="setOption" id="setOption" [(ngModel)]="cardService.filter.setOption"
                 (change)="cardService.changeFilter()">
-                <option value="Any" text="{{cardService.filter.setOption == 'Any' ? 'Set' : 'Any'}}"></option>
-                <option value="OP01/Romance Dawn">Romance Dawn</option>
-                <option value="OP02/paramount War">paramount War</option>
-                <option value="ST01/Straw Hat Crew">ST01 - Straw Hat Crew</option>
-                <option value="ST02/Worst Generation">ST02 - Worst Generation</option>
-                <option value="ST03/The Seven Warlords of the Sea">ST03 - The Seven Warlords of the Sea</option>
-                <option value="ST04/Animal Kingdom Pirates">ST04 - Animal Kingdom Pirates</option>
-                <option value="ST05/ONE PIECE FILM edition">ST05 - ONE PIECE FILM edition</option>
-                <option value="ST06/The Navy">ST08 - The Navy</option>
+                <option value="Any/Any" text="{{cardService.filter.setOption.includes('Any/Any') ? 'Set' : 'Any'}}"></option>
+                <option *ngFor="let set of setList" value="{{set.id + '/' + set.name}}"> {{set.name}}</option>
             </select>
         </div>
 
-        <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
+        <div class="col-auto button-filter" *ngIf="!globalService.isUserCard && !globalService.isDeck">
             <select class="form-select" name="color" id="color" [(ngModel)]="cardService.filter.color">
                 <option value="All" text="{{cardService.filter.color == 'All' ? 'Color' : 'All'}}"></option>
                 <option value="Red">Red</option>
@@ -62,21 +55,13 @@
                 <option value="Leader">Leader</option>
                 <option value="Character">Character</option>
                 <option value="Event">Event</option>
+                <option value="Stage">Stage</option>
             </select>
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="type" id="type" [(ngModel)]="cardService.filter.type">
-                <option value="">
-                    {{cardService.filter.type == '' ? 'Type' : 'All'}}
-                </option>
-                <option value="Supernovas">Supernovas
-                </option>
-                <option value="Straw Hat Crew">Straw
-                    Hat Crew</option>
-                <option value="Film">Film</option>
-                <option value="stand">stand</option>
-            </select>
+            <input type="text" placeholder="Type..." id="type" name="type" class="form-control"
+                th:value="${session.filter.type}}" [(ngModel)]="cardService.filter.type">
         </div>
 
         <div class="col-auto button-filter">
@@ -101,8 +86,7 @@
                 <option value=-1>
                     {{cardService.filter.power == -1 ? 'Power' : 'Any'}}
                 </option>
-                <option th:each="i : ${#numbers.sequence(1, 10)}}" th:value="${i*1000}}" th:text="${i*1000}}"
-                    th:selected="${session.filter.Cost == i}}">
+                <option *ngFor="let n of numberList" value="{{n}}"> {{n}} </option>
             </select>
         </div>
 
@@ -111,18 +95,16 @@
                 <option value=-1>
                     {{cardService.filter.counter == -1 ? 'Counter' : 'Any'}}
                 </option>
-                <option th:each="i : ${#numbers.sequence(1, 5)}}" th:value="${i*1000}}" th:text="${i*1000}}"
-                    th:selected="${session.filter.Cost == i}}">
+                <option *ngFor="let n of numberList" value="{{n}}"> {{n}} </option>
             </select>
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
             <select class="form-select" name="cost" id="cost" [(ngModel)]="cardService.filter.cost">
                 <option value=-1>
-                    {{cardService.filter.power == -1 ? 'Cost' : 'Any'}}
+                    {{cardService.filter.cost == -1 ? 'Cost' : 'Any'}}
                 </option>
-                <option th:each="i : ${#numbers.sequence(1, 12)}}" th:value="${i}}" th:text="${i}}"
-                    th:selected="${session.filter.Cost == i}}">
+                <option *ngFor="let n of numberList" value="{{n/1000}}"> {{n/1000}} </option>
             </select>
         </div>
 
@@ -157,7 +139,7 @@
         </div>
 
 
-        <div class="col-auto button-filter">
+        <div class="col-auto button-filter" *ngIf="globalService.isUserCard">
             <select class="form-select" name="moa" id="moa" [(ngModel)]="cardService.filter.view"
                 (ngModelChange)="conta()">
                 <option value="0">

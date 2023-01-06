@@ -64,6 +64,7 @@ margin-bottom: 5%;
 .trigger {
 background-color: black;
 color: aliceblue;
+border-radius: 5px;
 }
 
 .row-det {
@@ -74,11 +75,28 @@ color: aliceblue;
 }
 
 .bg-counter{
-    background-color: orange;
+    background-color: #DD0011;
 }
 
-.bg-trigger{
-    background-color: yellow;
+.bg-orange{
+    background-color: #e76f12;
+}
+
+.bg-yellow{
+    background-color: #fcea23;
+    color: black;
+}
+
+.bg-black{
+    background-color: rgb(0, 0, 0);
+}
+
+.bg-blue{
+    background-color: #097FAF;
+}
+
+.bg-red{
+    background-color: #DE4162;
 }
 
 .number {

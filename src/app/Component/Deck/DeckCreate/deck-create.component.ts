@@ -5,6 +5,8 @@ import { UserDeck } from 'src/app/Model/UserDeck/user-deck.model';
 import { GlobalService } from 'src/app/Service/global.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 import { Title } from '@angular/platform-browser';
+import { ToastService } from 'src/app/Service/Implemented/Toast/toast.service';
+import { DeckIntService } from 'src/app/Service/Interface/Deck/deck-int.service';
 
 @Component({
   selector: 'app-deck-create',
@@ -14,7 +16,7 @@ import { Title } from '@angular/platform-browser';
 export class DeckCreateComponent {
 
   constructor(private router: Router,
-    public deckService: DeckService,private globalService : GlobalService, private titleService : Title) { }
+    public deckService: DeckService, private globalService: GlobalService, private titleService: Title) { }
 
   public deck: Deck = new Deck();
   public leader!: string;
@@ -22,23 +24,23 @@ export class DeckCreateComponent {
 
   ngOnInit(): void {
 
-    if (this.router.url.includes('create')){
+    if (this.router.url.includes('create')) {
       this.name = 'CREATE';
       this.titleService.setTitle("Onepiece TCG - Create Deck");
       this.deck.name = '';
     }
 
-    else{
+    else {
       this.name = 'MODIFY';
       this.titleService.setTitle("Onepiece TCG - Modify Deck");
       this.leader = this.deckService.deckSelected.leader.card.id + '/'
-      + this.deckService.deckSelected.leader.card.color;
+        + this.deckService.deckSelected.leader.card.color;
       this.deck = this.deckService.deckSelected.deck;
     }
 
     this.deckService.getLeader();
 
-      this.globalService.changeUrl();
+    this.globalService.changeUrl();
   }
 
   ngOnDestroy(): void {
@@ -49,7 +51,7 @@ export class DeckCreateComponent {
     this.deck.leader = Number(this.leader.split('/')[0]);
     let color = this.leader.split('/')[1];
     if (color != undefined) {
-      console.log(color);
+
       if (color.includes("-")) {
         this.deck.color1 = color.split("-")[0];
         this.deck.color2 = color.split("-")[1];
@@ -61,7 +63,14 @@ export class DeckCreateComponent {
   }
 
   saveDeck() {
-    this.deckService.saveOnlyDeck(this.deck);
+    if (this.deckFlag()) {
+      if(this.deck.format == 'Global'){
+        this.deck.language = 'Eng';
+      }else{
+        this.deck.language = 'Jap';
+      }
+      this.deckService.saveOnlyDeck(this.deck);
+    }
   }
 
   goBack() {
@@ -78,4 +87,11 @@ export class DeckCreateComponent {
     };
   }
 
+  deckFlag() {
+    return (this.deck.name.length > 0 && this.deck.leader != undefined && this.deck.format != undefined && this.deck.cond != undefined);
+  }
+
+  deleteDeck() {
+    this.deckService.deleteDeck(this.deck.id);
+  }
 }

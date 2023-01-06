@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserIntService } from 'src/app/Service/Interface/User/user-int.service';
 import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { Title } from '@angular/platform-browser';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +13,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class SignInComponent {
   constructor(private userService: UserIntService, private router: Router, private cookie: CookieService
-    , private cryptServiceImpl: CryptServiceImpl, private titleService : Title) { }
+    , private cryptServiceImpl: CryptServiceImpl, private titleService : Title, private globalService : GlobalService) { }
   public user: string = "";
   public password: string = "";
   public error: string = "";
@@ -41,8 +42,10 @@ ngOnInit(){
     this.nick = this.cryptServiceImpl.setNickCrypt(this.nick);
     console.error(this.nick);
     localStorage.setItem(this.cryptServiceImpl.nickCookie, this.nick);
+    this.cookie.set(this.cryptServiceImpl.nickCookie, this.nick,{expires : 99999999999999});
     this.cookie.set("navType", this.navbar,{expires : 99999999999999});
     this.cookie.set("isLogged", "true",{expires : 99999999999999});
+    this.globalService.setUser();
     this.router.navigate(['home', {esit: 'SignIn'}]);
   }
 }

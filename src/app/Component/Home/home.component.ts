@@ -16,7 +16,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.esit = this.route.snapshot.paramMap.get('esit');
     if(this.esit == 'success'){
-      this.toastService.userSaveSuccess();
+      this.toastService.userCreatedSuccess();
     }
     if(this.esit == 'SignIn'){
       this.toastService.userLogin();

@@ -17,6 +17,7 @@ export class GlobalService {
     
   //FILTRI
   public isCardList: boolean = false;
+  public isCardListAll: boolean = false;
   public isClassic: boolean = false;
   public isDetails: boolean = false;
   public isUserCard: boolean = false;
@@ -30,6 +31,7 @@ export class GlobalService {
     this.isUserCard = false;
     this.isCardList = false;
     this.isDeck = false;
+    this.isCardListAll = false;
     
     if (this.router.url.includes('userCard')) {
       this.isCardList = true;
@@ -51,8 +53,9 @@ export class GlobalService {
       this.isDeck = true;
     }
 
-    if (this.router.url.includes('cardList')) {
+    if (this.router.url.includes('cardList') && !this.router.url.includes('deck')) {
       this.isCardList = true;
+      this.isCardListAll = true;
     }
   }
 
@@ -66,8 +69,8 @@ export class GlobalService {
     }
   }
 
-  getNickDecoded(){
-   return this.cookieService.get("jver3894ksdf2");
+  getNickCookie(){
+    return this.cookieService.get(this.cryptService.nickCookie);
   }
 
   public isLogged(): boolean {      
@@ -76,13 +79,15 @@ export class GlobalService {
    
     } 
 
-    f(){
+    setUser(){
       if(this.isLogged()){
-        this.userLogged = this.cryptService.getCookieNick();
+        this.userLogged = this.cryptService.getNickCookieDecoded();
         this.navbarImg = this.cookieService.get("navType");
       }else{
       this.userLogged = "Guest";
       this.navbarImg = "Light";
       }
     }
+
+
 }

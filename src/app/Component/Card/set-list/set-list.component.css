@@ -1,0 +1,9 @@
+h1{
+    color: aliceblue;
+    text-align: center;
+}
+
+.loading{
+    display: flex;
+    margin: auto;
+}

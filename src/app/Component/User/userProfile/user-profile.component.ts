@@ -24,7 +24,7 @@ export class UserProfileComponent {
 
 
   ngOnInit() {
-    this.userService.getUser(this.cryptService.getCookieNick()).subscribe({
+    this.userService.getUser(this.cryptService.getNickCookieDecoded()).subscribe({
       next: data => { this.user = data; },
       complete: () => this.decodeUser()
     });
@@ -58,7 +58,7 @@ export class UserProfileComponent {
   }
 
   saveUserPost(){
-    this.globalService.f();
+    this.globalService.setUser();
     this.toastService.userSaveSuccess();
 
   }

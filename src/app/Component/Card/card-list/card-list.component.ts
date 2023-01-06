@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { CryptServiceImpl } from 'src/app/Service/Utility/CryptImpl/crypt-impl.service';
 import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 import { DeckService } from 'src/app/Service/Implemented/Deck/deck.service';
 import { GlobalService } from 'src/app/Service/global.service';
 import {Title} from "@angular/platform-browser";
+import { SetCard } from 'src/app/Model/SetCard/set-card.model';
+import { CardDetails } from 'src/app/Model/CardDetails/card-details.model';
+import { Filter } from 'src/app/Model/Filter/filter.model';
 
 @Component({
   selector: 'app-card-list',
@@ -16,8 +18,11 @@ export class CardListComponent {
 
   constructor(private router: Router, public globalService: GlobalService, public cardService: CardListService,
     private deckService: DeckService,private titleService:Title) { }
-  ngOnInit() {
-    this.cardService.cardListDetails = [];
+
+    @Input() setCardList : CardDetails[] = [];
+
+
+    ngOnInit() {
     if (this.globalService.view == null || this.globalService.view == undefined || this.globalService.view == '') {
       this.globalService.changeView();
     }
@@ -28,6 +33,7 @@ export class CardListComponent {
       if (!this.globalService.isLogged()) {
         this.router.navigate(['/']);
       }
+      this.cardService.filter = new Filter();
       if (this.globalService.isClassic) {
         this.cardService.getCardClassic();
         this.titleService.setTitle("Onepiece TCG - Classic")
@@ -38,17 +44,17 @@ export class CardListComponent {
       }
       if (this.globalService.isDeck) {
         this.cardService.getCardDeck(this.deckService.deckSelected.deck);
-        this.deckService.getUserDeck();
-        this.cardService.filter.setOption='Any';
+        this.cardService.filter.setOption="Any/Any";
+        this.cardService.changeFilter();
         this.titleService.setTitle("Onepiece TCG - DeckCard")
       }
     } else {
-      this.cardService.filter.setOption='Any';
-      this.cardService.getCardAll();
       this.titleService.setTitle("Onepiece TCG - Card List")
     }
+  }
 
-
+  ngOnDestroy(){
+    this.cardService.cardListDetails = []; 
   }
 
 }

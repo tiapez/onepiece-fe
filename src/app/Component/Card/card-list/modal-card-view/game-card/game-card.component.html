@@ -16,7 +16,7 @@
             <div class="col-5" style="text-align: right;"><b>Counter: </b> {{card.counter}}</div>
         </div>
         <p class="number">
-            <b>{{cardService.filter.setName}}</b><span>: {{card.number.substring(0,3)}}</span>
+            <b>{{set}}</b><span>: {{(this.card.number.endsWith('a') || this.card.number.endsWith('b')) ? this.card.number.substring(0,this.card.number.length-1) : this.card.number}}</span>
         </p>
     </div>
 </div>

@@ -19,7 +19,7 @@ export class DeckIntService {
 
   url = environment.apiUrl;
   private baseUrl = this.url + "/api/deck/";
-  httpParams = new HttpParams().set("nick", this.globalService.getNickDecoded());
+  httpParams = new HttpParams().set("nick", this.globalService.getNickCookie());
 
 
 
@@ -49,6 +49,12 @@ export class DeckIntService {
     return this.http.get<Card[]>(url).pipe(
       map((data: Card[]) => data.map((item) => this.cardAdapter.adapt(item)))
     );
+  }
+
+  deleteDeck(deckId : number){
+    const url = `${this.baseUrl}deleteDeck`;
+    let params = this.httpParams.set("id",deckId);
+    return this.http.delete(url,{params}).pipe();
   }
 
 }

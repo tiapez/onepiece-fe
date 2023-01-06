@@ -9,6 +9,7 @@ import { DeckModifyComponent } from './Component/Deck/DeckModify/deck-modify.com
 import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component';
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component'; 
 import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
+import { SetListComponent } from './Component/Card/set-list/set-list.component';
 import { 
   AuthGuardService as AuthGuard 
 } from './Component/Auth/auth-guard.service';
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path: "signUp", component: SignUpComponent},
   {path: "signIn", component: SignInComponent},
   {path: "userProfile", component: UserProfileComponent, canActivate : [AuthGuard]},
-  {path: "cardList", component: CardListComponent},
+  {path: "cardList", component: SetListComponent},
   {path: "userCard/classic", component: CardListComponent, canActivate : [AuthGuard]},
   {path: "userCard/details", component: CardListComponent, canActivate : [AuthGuard]},
   {path: "deck/cardList", component: DeckModifyComponent, canActivate : [AuthGuard]},
