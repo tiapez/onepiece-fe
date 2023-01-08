@@ -19,11 +19,14 @@ export class Card {
   public cost !: number;
   public effect !: string;
   public setId !: string;
+  public setName ! : string;
+
 }
 
 @Injectable({
     providedIn: "root",
   })
+
   export class CardAdapter implements Adapter<Card> {
     adapt(item: Card) : Card {
       let card = new Card( );
@@ -43,6 +46,7 @@ export class Card {
         return card;
       }
 }
+
 @Injectable({
   providedIn: "root",
 })

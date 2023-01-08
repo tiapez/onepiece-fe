@@ -42,6 +42,14 @@ export class CardListIntService {
     );
   }
 
+  getAll2(): Observable<SetCard[]> {
+    let json_url = "./assets/cardList.json";
+    return this.http.get<SetCard[]>(json_url).pipe(
+      map((data: SetCard[]) => data.map((item) => this.setCardAdapter.adapt(item)))
+    );
+  }
+
+
   getDeckCard(deck: Deck): Observable<CardDetails[]> {
     const url = `${this.baseUrl}deckCardList`;
     let params = this.httpParams;
@@ -56,6 +64,14 @@ export class CardListIntService {
       map((data: Set[]) => data.map((item) => this.setAdapter.adapt(item)))
     );
   }
+
+  getSet2(): Observable<Set[]> {
+    let json_url = "./assets/setList.json";
+    return this.http.get<Set[]>(json_url).pipe(
+      map((data: Set[]) => data.map((item) => this.setAdapter.adapt(item)))
+    );
+  }
+
 
   getDeckSet(format : string): Observable<Set[]> {
     const url = `${this.baseUrl}deckSet`;

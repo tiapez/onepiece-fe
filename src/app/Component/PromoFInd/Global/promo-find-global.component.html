@@ -1,0 +1,201 @@
+<div class="container-lg">
+    <h1 class="text-center">GLOBAL PROMO</h1>
+    <div class="row-c" >
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/001a.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Participating:
+                    <li>Super Pre Release</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/001b.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Winning:
+                    <li>Super Pre Release</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-c" *ngFor="let s of promo_pack_1">
+            <div class="pic">
+                <img src="./assets/Img/P/{{s}}.png">
+            </div>
+
+            <div class="text">
+               From Promotion Pack 2022 obtainable:
+                <ul>
+                    Participating:
+                    <li [innerHTML]="tutorial"></li>
+                    <li>Super Pre Release</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c" *ngFor="let s of tournament_pack_1">
+            <div class="pic">
+                <img src="./assets/Img/P/{{s}}.png">
+            </div>
+
+            <div class="text">
+                Random from Tournament Pack Vol 1 obtainable:
+                <ul>
+                    Participating
+                    <li [innerHTML]="store_tournament_1"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c" *ngFor="let s of winner_pack_1">
+            <div class="pic">
+                <img src="./assets/Img/P/{{s}}.png">
+            </div>
+
+            <div class="text">
+                Random from Winner Pack Vol 1 obtainable:
+                <ul>
+                    Participating
+                    <li [innerHTML]="store_tournament_1"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c" *ngFor="let s of uta_deck">
+            <div class="pic">
+                <img src="./assets/Img/P/{{s}}.png">
+            </div>
+
+            <div class="text">
+                From Uta's deck obtainable:
+                <ul>
+                    Participating
+                    <li [innerHTML]="store_tournament_1 + 'Only on December'"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/024.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Participating
+                    <li [innerHTML]="pirates_party_22"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c" *ngFor="let s of event_pack_1">
+            <div class="pic">
+                <img src="./assets/Img/P/{{s}}.png">
+            </div>
+
+            <div class="text">
+                Random from Event Pack Vol 1 obtainable:
+                <ul>
+                    Participating
+                    <li [innerHTML]="treasure_cup_22"></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/ST01-001a.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Top 8:
+                    <li [innerHTML]="treasure_cup_22"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/ST01-013.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Top 8:
+                    <li [innerHTML]="treasure_cup_22"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/ST01-004.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Top 16:
+                    <li [innerHTML]="treasure_cup_22"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/ST01-006.png">
+            </div>
+
+            <div class="text">
+                <ul>
+                    Top 64:
+                    <li [innerHTML]="treasure_cup_22"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1>GLOBAL PACK</h1>
+    <div class="row-c">
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/pack/g_promo_pack_1.png">
+            </div>
+            <div class="text">
+            Promotion Pack 2022 Vol.1
+        </div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/pack/g_event_pack_1.png">
+            </div>
+            <div class="text">
+            Event Pack 2022 Vol.1</div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/pack/g_tournament_pack_1.png">
+            </div>
+            <div class="text">
+            Torunamente Pack 2022 Vol.1</div>
+        </div>
+
+        <div class="col-c">
+            <div class="pic">
+                <img src="./assets/Img/P/pack/g_winner_pack_1.png">
+            </div>
+            <div class="text">
+            Tournament Winner Pack 2022 Vol.1</div>
+        </div>
+</div>

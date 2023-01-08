@@ -12,9 +12,10 @@ export class GlobalService {
   constructor(private router: Router, private cookieService: CookieService,
     private deviceService: DeviceDetectorService, private cryptService: CryptServiceImpl) { }
 
-    public userLogged! : string;
-    public navbarImg! : string;
-    
+  public userLogged!: string;
+  public navbarImg!: string;
+
+
   //FILTRI
   public isCardList: boolean = false;
   public isCardListAll: boolean = false;
@@ -32,7 +33,7 @@ export class GlobalService {
     this.isCardList = false;
     this.isDeck = false;
     this.isCardListAll = false;
-    
+
     if (this.router.url.includes('userCard')) {
       this.isCardList = true;
       this.isUserCard = true;
@@ -69,25 +70,25 @@ export class GlobalService {
     }
   }
 
-  getNickCookie(){
+  getNickCookie() {
     return this.cookieService.get(this.cryptService.nickCookie);
   }
 
-  public isLogged(): boolean {      
-   
-    return this.cookieService.get('isLogged') == "true";     
-   
-    } 
+  public isLogged(): boolean {
 
-    setUser(){
-      if(this.isLogged()){
-        this.userLogged = this.cryptService.getNickCookieDecoded();
-        this.navbarImg = this.cookieService.get("navType");
-      }else{
+    return this.cookieService.get('isLogged') == "true";
+
+  }
+
+  setUser() {
+    if (this.isLogged()) {
+      this.userLogged = this.cryptService.getNickCookieDecoded();
+      this.navbarImg = this.cookieService.get("navType");
+    } else {
       this.userLogged = "Guest";
       this.navbarImg = "Light";
-      }
     }
+  }
 
 
 }

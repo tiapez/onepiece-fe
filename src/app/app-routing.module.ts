@@ -10,6 +10,8 @@ import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component'; 
 import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
 import { SetListComponent } from './Component/Card/set-list/set-list.component';
+import { PromoFindJapComponent } from './Component/PromoFInd/Jap/promo-find-jap.component';
+import { PromoFindGlobalComponent } from './Component/PromoFInd/Global/promo-find-global.component';
 import { 
   AuthGuardService as AuthGuard 
 } from './Component/Auth/auth-guard.service';
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path: "deck/create", component: DeckCreateComponent, canActivate : [AuthGuard]},
   {path: "deck/modify", component: DeckCreateComponent, canActivate : [AuthGuard]},
   {path: "import", component: ImportCardComponent, canActivate : [AuthGuard]},
-  {path : "", redirectTo : "home", pathMatch: 'full'}
+  {path: "promo/jap", component: PromoFindJapComponent},
+  {path: "promo/global", component: PromoFindGlobalComponent},
+  {path : "", redirectTo : "cardList", pathMatch: 'full'}
 ];
 
 @NgModule({

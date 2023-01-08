@@ -17,7 +17,11 @@ export class SetCard {
     adapt(item : any): SetCard {
       let setCard = new SetCard();
         setCard.set = item.set;
-        setCard.cardList = item.cardList.map((data : Card) => this.cardAdapter.adapt(data));
+        setCard.cardList = item.cardList.map((data : Card) => {
+          data.setName = setCard.set.name ;
+          return this.cardAdapter.adapt(data);
+        }
+        );
         
       return setCard;
     }

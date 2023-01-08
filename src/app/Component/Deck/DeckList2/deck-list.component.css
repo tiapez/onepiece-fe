@@ -10,7 +10,7 @@
 }
 
 .deck-box {
-    min-height: 380px;
+    min-height: 500px;
     margin: 5%;
     border: 1px solid black;
 }
@@ -24,13 +24,15 @@
     font-variant-ligatures: discretionary-ligatures;
     text-align: center;
     font-style: italic;
+
 }
 
 .scene {
     margin-top: 10%;
-    height: 300px;
-    width: 100%;
+    height: 279px;
+    width: 200px;
     perspective: 800px;
+    margin-left: 25%;
 }
 
 .box {
@@ -40,7 +42,6 @@
     transform-style: preserve-3d;
     transition: transform 1s;
     transform: rotateY(-40deg) rotateX(-20deg) rotateZ(15deg);
-    margin: auto;
 }
 
 .box.show-front {

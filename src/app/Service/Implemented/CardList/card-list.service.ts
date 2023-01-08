@@ -10,6 +10,7 @@ import { Details } from 'src/app/Model/Details/details.model';
 import { Filter } from 'src/app/Model/Filter/filter.model';
 import { CardListIntService } from 'src/app/Service/Interface/CardList/card-list-int.service';
 import { GlobalService } from '../../global.service';
+import { Set } from 'src/app/Model/Set/set.model';
 
 
 
@@ -20,11 +21,12 @@ export class CardListService {
 
   constructor(private cardListIntService : CardListIntService
     ,private modalService: NgbModal, public router: Router,private globalService : GlobalService){}
-  public cardListDetails: CardDetails[] = [];
+ 
+    public cardListDetails: CardDetails[] = [];
   public filter: Filter = new Filter();
-  
-  getCardDetails() {
+  public setList!: Set[];
 
+  getCardDetails() {
     this.cardListIntService.getAllDetails(this.filter.setId).subscribe({
       next: data => { this.cardListDetails = data },
       complete: () => this.conta()
@@ -45,8 +47,16 @@ export class CardListService {
     return this.cardListIntService.getAll();
   }
 
+  getCardAll2() {
+    return this.cardListIntService.getAll2();
+  }
+
   getSet() {
     return this.cardListIntService.getSet();
+  }
+
+  getSet2() {
+    return this.cardListIntService.getSet2();
   }
 
   getDeckSet(format : string) {
@@ -108,6 +118,7 @@ export class CardListService {
   }
 
   cardIf(cardDet : CardDetails){
+    console.log(cardDet);
     return cardDet.card.name.toLocaleLowerCase().includes(this.filter.name) && (this.filter.rarity.includes('All') || cardDet.card.rarity.includes(this.filter.rarity)) 
     && (this.filter.setId.includes(cardDet.card.setId) || this.filter.setId == 'Any') && cardDet.qtyMax != 0
     && (( (this.globalService.isDetails) ||(this.globalService.isClassic) ) && (this.filter.view == 0 || (this.filter.view == 1 && cardDet.qty > 0) || (this.filter.view == 2 && cardDet.qty == 0)) 
@@ -118,6 +129,11 @@ export class CardListService {
     );
   }
 
+  setSetList(){
+   this.getSet2().subscribe({
+    next : data => {this.setList = data}
+   });
+  }
   
 
 

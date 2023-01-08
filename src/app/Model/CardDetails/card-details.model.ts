@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Adapter } from "../../Adapter/adapter";
-import { Card } from "../Card/card.model";
+import { Card, CardAdapter } from "../Card/card.model";
 import { Details, DetailsAdapter } from "../Details/details.model";
 
 export class CardDetails {
@@ -24,6 +24,7 @@ export class CardDetailsAdapter implements Adapter<CardDetails> {
     cd.cardDetails = detailsList;
     cd.qty = 0;
     cd.qtyMax = item.qtyMax;
+    cd.card.setName = item.setName
     return cd;
   }
 }
@@ -33,6 +34,7 @@ export class CardDetailsAdapter implements Adapter<CardDetails> {
   providedIn: "root",
 })
 export class CardDetailsAdapterVoid implements Adapter<CardDetails> {
+  constructor(private cardAdapter: CardAdapter) { }
   adapt(item: Card): CardDetails {
     let cd = new CardDetails();
     cd.card = item;

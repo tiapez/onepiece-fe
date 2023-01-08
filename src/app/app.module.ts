@@ -31,6 +31,8 @@ import { DeckListComponent } from './Component/Deck/DeckList/deck-list.component
 import { DeckCreateComponent } from './Component/Deck/DeckCreate/deck-create.component';
 import { ImportCardComponent } from './Component/Excel/import-card/import-card.component';
 import { SetListComponent } from './Component/Card/set-list/set-list.component';
+import { PromoFindJapComponent } from './Component/PromoFInd/Jap/promo-find-jap.component';
+import { PromoFindGlobalComponent } from './Component/PromoFInd/Global/promo-find-global.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { SetListComponent } from './Component/Card/set-list/set-list.component';
     DeckCreateComponent,
     ImportCardComponent,
     SetListComponent,
+    PromoFindJapComponent,
+    PromoFindGlobalComponent,
   ],
   imports: [
     BrowserModule,

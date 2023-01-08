@@ -5,6 +5,8 @@
 
     <div *ngIf="(setCard.set.name.includes(cardService.filter.setName) || cardService.filter.setName.includes('Any'))">
         <h1>{{setCard.set.name}}</h1>
+        <h3>Card: {{setCard.set.nCard}}</h3>
+        <h3>Parallel: {{setCard.set.nParallel}}</h3>
 
         <app-card-list [setCardList]="setCard.cardList">
         </app-card-list>

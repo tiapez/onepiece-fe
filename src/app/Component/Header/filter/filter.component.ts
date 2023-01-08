@@ -34,7 +34,7 @@ export class FilterComponent {
         next : data => {this.setList = data}
       });
     }else{
-      this.cardService.getSet().subscribe({
+      this.cardService.getSet2().subscribe({
         next : data => {this.setList = data}
       });
     }
