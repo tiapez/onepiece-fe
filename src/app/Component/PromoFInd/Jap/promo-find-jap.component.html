@@ -1,15 +1,17 @@
 <div class="container-lg">
     <h1 class="text-center">JAPANESE PROMO</h1>
+
     <div class="row-c">
-        <div class="col-c">
+
+        <div class="col-c" *ngFor="let s of promo_pack_1">
             <div class="pic">
-                <img src="./assets/Img/P/001.png">
+                <img src="./assets/Img/P/{{s}}.png">
             </div>
 
             <div class="text">
-                From Promotion Pack 2022 obtainable:
+                From Promotion Pack 2022 obtainable <br>
+                Participating:
                 <ul>
-                    Participating:
                     <li [innerHTML]="teaching_tour_22"></li>
                     <li [innerHTML]="meet_up_aug_22"></li>
                     <li [innerHTML]="rookie_tour_oct_22"></li>
@@ -17,108 +19,18 @@
                     <li [innerHTML]="national_teaching_tour"></li>
                     <li [innerHTML]="flag_ship_battle_dcm_22"></li>
                 </ul>
+                As gift from:
                 <ul>
-                    Gift:
                     <li [innerHTML]="meet_up_o_22"></li>
                 </ul>
             </div>
         </div>
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/002.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="teaching_tour_22"></li>
-                    <li [innerHTML]="meet_up_aug_22"></li>
-                    <li [innerHTML]="rookie_tour_oct_22"></li>
-                    <li [innerHTML]="flag_ship_oct_22"></li>
-                    <li [innerHTML]="national_teaching_tour"></li>
-                    <li [innerHTML]="flag_ship_battle_dcm_22"></li>
-                </ul>
-                <ul>
-                    Gift:
-                    <li [innerHTML]="meet_up_o_22"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/003.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="teaching_tour_22"></li>
-                    <li [innerHTML]="meet_up_aug_22"></li>
-                    <li [innerHTML]="rookie_tour_oct_22"></li>
-                    <li [innerHTML]="flag_ship_oct_22"></li>
-                    <li [innerHTML]="national_teaching_tour"></li>
-                    <li [innerHTML]="flag_ship_battle_dcm_22"></li>
-                </ul>
-                <ul>
-                    Gift:
-                    <li [innerHTML]="meet_up_o_22"></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/004.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="teaching_tour_22"></li>
-                    <li [innerHTML]="meet_up_aug_22"></li>
-                    <li [innerHTML]="rookie_tour_oct_22"></li>
-                    <li [innerHTML]="flag_ship_oct_22"></li>
-                    <li [innerHTML]="national_teaching_tour"></li>
-                    <li [innerHTML]="flag_ship_battle_dcm_22"></li>
-                </ul>
-                <ul>
-                    Gift:
-                    <li [innerHTML]="meet_up_o_22"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/005.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="teaching_tour_22"></li>
-                    <li [innerHTML]="meet_up_aug_22"></li>
-                    <li [innerHTML]="rookie_tour_oct_22"></li>
-                    <li [innerHTML]="flag_ship_oct_22"></li>
-                    <li [innerHTML]="national_teaching_tour"></li>
-                    <li [innerHTML]="flag_ship_battle_dcm_22"></li>
-                </ul>
-                <ul>
-                    Gift:
-                    <li [innerHTML]="meet_up_o_22"></li>
-                </ul>
-            </div>
-        </div>
+        
 
         <div class="col-c">
             <div class="pic">
                 <img src="./assets/Img/P/006.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li>Promotional card sold with the September 2022 issue of V Jump magazine released July 21 2021
@@ -128,11 +40,10 @@
             </div>
         </div>
 
-        <div class="col-c">
+        <div class="col-c" *ngFor="let s of jump_pack_1">
             <div class="pic">
-                <img src="./assets/Img/P/007.png">
+                <img src="./assets/Img/P/{{s}}.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li>Saiko Jump released on August 4, 2022.</li>
@@ -141,55 +52,16 @@
             </div>
         </div>
 
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/008.png">
-            </div>
-
-            <div class="text">
-                <ul>
-                    <li>Saiko Jump released on August 4, 2022.</li>
-                    <li>Asia Special Prize for November 2022 Meet-up event</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/009.png">
-            </div>
-
-            <div class="text">
-                <ul>
-                    <li>Saiko Jump released on August 4, 2022.</li>
-                    <li>Asia Special Prize for November 2022 Meet-up event</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/010.png">
-            </div>
-
-            <div class="text">
-                <ul>
-                    <li>Saiko Jump released on August 4, 2022.</li>
-                    <li>Asia Special Prize for November 2022 Meet-up event</li>
-                </ul>
-            </div>
-        </div>
 
         <div class="col-c" *ngFor="let s of uta_deck">
             <div class="pic">
                 <img src="./assets/Img/P/{{s}}.png">
             </div>
-
             <div class="text">
                 From Uta's deck obtainable:
                 <ul>
                     Participating
-                    <li [innerHTML]="stnd_btl_dcm_22 + 'Only on December'"></li>
+                    <li [innerHTML]="stnd_btl_dcm_22 + '<br>Only on December'"></li>
                 </ul>
             </div>
         </div>
@@ -198,7 +70,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/024.png">
             </div>
-
             <div class="text">
                 <ul>
                     Participating:
@@ -211,11 +82,10 @@
             <div class="pic">
                 <img src="./assets/Img/P/025.png">
             </div>
-
             <div class="text">
                 <ul>
                     Participating:
-                    <li [innerHTML]="meet_up_dcm_22 + '(Only on December)'"></li>
+                    <li [innerHTML]="meet_up_dcm_22 + '<br> Only on December'"></li>
                     <li>Promotional card sold with the December 2022 issue of VJump magazine released October 21 2022
                     </li>
                 </ul>
@@ -226,7 +96,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/026.png">
             </div>
-
             <div class="text">
                 <ul>
                     Participating:
@@ -239,86 +108,24 @@
             <div class="pic">
                 <img src="./assets/Img/P/027.png">
             </div>
-
             <div class="text">
                 <ul>
                     Participating:
-                    <li [innerHTML]="meet_up_dcm_22 + '(Only on Jenuary)'"></li>
+                    <li [innerHTML]="meet_up_dcm_22 + '<br> Only on Jenuary'"></li>
                 </ul>
             </div>
         </div>
 
-        <div class="col-c">
+        <div class="col-c" *ngFor="let s of promo_pack_2">
             <div class="pic">
-                <img src="./assets/Img/P/028.png">
+                <img src="./assets/Img/P/{{s}}.png">
             </div>
-
             <div class="text">
                 From Promotion Pack 2022 Vol.2 obtainable:
                 <ul>
                     Participating:
                     <li [innerHTML]="meet_up_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/029.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="meet_up_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/030.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="meet_up_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/031.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="meet_up_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/032.png">
-            </div>
-
-            <div class="text">
-                From Promotion Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="meet_up_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
+                    <li [innerHTML]="asia_cup_22 + '<br> Only on 3 Round'"></li>
                 </ul>
             </div>
         </div>
@@ -327,7 +134,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/033.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li>A special appendix card "Monkey D. Luffy" will appear in the New Year 6-7 merger issue of
@@ -341,7 +147,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/034.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li>A special appendix card "Sanji" will appear in the March extra-large issue of the magazine "V
@@ -350,11 +155,10 @@
             </div>
         </div>
 
-        <div class="col-c">
+        <div class="col-c" *ngFor="let s of standard_pack_1">
             <div class="pic">
-                <img src="./assets/Img/P/OP01-021.png">
+                <img src="./assets/Img/P/{{s}}.png">
             </div>
-
             <div class="text">
                 Random from Standard Battle Pack 2022 Vol.1 obtainable:
                 <ul>
@@ -368,58 +172,14 @@
             <div class="pic">
                 <img src="./assets/Img/P/OP01-021a.png">
             </div>
-
             <div class="text">
-
                 <ul>
                     Winning:
                     <li>Winner prize for September 2022 Standard Battle</li>
                 </ul>
             </div>
         </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/OP01-033.png">
-            </div>
-
-            <div class="text">
-                Random from Standard Battle Pack 2022 Vol.1 obtainable:
-                <ul>
-                    Winning:
-                    <li>Winner prize for September 2022 Standard Battle</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/ST01-007a.png">
-            </div>
-
-            <div class="text">
-                <ul>
-                    Winning:
-                    <li [innerHTML]="stnd_btl_dcm_22"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/ST01-007.png">
-            </div>
-
-            <div class="text">
-                Random from Standard Battle Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="stnd_btl_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
+        
         <div class="col-c">
             <div class="pic">
                 <img src="./assets/Img/P/ST01-009.png">
@@ -428,73 +188,37 @@
             <div class="text">
                 <ul>
                     Participating:
-                    <li [innerHTML]="stnd_btl_dcm_22 + '(Only on Jenuary)'"></li>
+                    <li [innerHTML]="stnd_btl_dcm_22 + '<br> Only on Jenuary'"></li>
                     <li>Shonen Jump Giga 2023</li>
                 </ul>
             </div>
         </div>
 
-        <div class="col-c">
+        <div class="col-c" *ngFor="let s of standard_pack_2">
             <div class="pic">
-                <img src="./assets/Img/P/ST02-007.png">
+                <img src="./assets/Img/P/{{s}}.png">
             </div>
-
             <div class="text">
                 Random from Standard Battle Pack 2022 Vol.2 obtainable:
                 <ul>
                     Participating:
                     <li [innerHTML]="stnd_btl_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
+                    <li [innerHTML]="asia_cup_22 + '<br> Only on 3 Round'"></li>
                 </ul>
             </div>
         </div>
 
         <div class="col-c">
             <div class="pic">
-                <img src="./assets/Img/P/ST03-007.png">
+                <img src="./assets/Img/P/ST01-007a.png">
             </div>
-
             <div class="text">
-                Random from Standard Battle Pack 2022 Vol.2 obtainable:
                 <ul>
-                    Participating:
+                    Winning:
                     <li [innerHTML]="stnd_btl_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
                 </ul>
             </div>
         </div>
-
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/ST04-010.png">
-            </div>
-
-            <div class="text">
-                Random from Standard Battle Pack 2022 Vol.2 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="stnd_btl_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-c">
-            <div class="pic">
-                <img src="./assets/Img/P/ST04-011.png">
-            </div>
-
-            <div class="text">
-                Random from Standard Battle Pack 2022 Vol.1 obtainable:
-                <ul>
-                    Participating:
-                    <li [innerHTML]="stnd_btl_dcm_22"></li>
-                    <li [innerHTML]="asia_cup_22 + '(Only on 3 Round)'"></li>
-                </ul>
-            </div>
-        </div>
-
 
         <div class="col-c">
             <div class="pic">
@@ -513,7 +237,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/ST01-013.png">
             </div>
-
             <div class="text">
                 <ul>
                     Top 1/2/4 on 64/128/256 person tournament
@@ -526,7 +249,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/ST01-006.png">
             </div>
-
             <div class="text">
                 <ul>
                     Top 8:
@@ -539,7 +261,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/ST01-004.png">
             </div>
-
             <div class="text">
                 <ul>
                     Top 2/4/8 on 64/128/256 person tournament:
@@ -552,7 +273,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/001c.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li
@@ -566,7 +286,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/ST03-008.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li
@@ -580,7 +299,6 @@
             <div class="pic">
                 <img src="./assets/Img/P/003a.png">
             </div>
-
             <div class="text">
                 <ul>
                     <li
@@ -590,6 +308,8 @@
             </div>
         </div>
     </div>
+
+
     <h1>JAPANESE PACK</h1>
     <div class="row-c">
         <div class="col-c">

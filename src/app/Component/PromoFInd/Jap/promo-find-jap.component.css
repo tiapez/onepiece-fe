@@ -14,7 +14,7 @@ a{
 .col-c{
     display: flex;
     flex-direction: column;  
-    width: 33%;
+    width: 25%;
     height: auto;
 }
 
@@ -27,6 +27,19 @@ a{
 
 .text{
     margin: 5%;
+}
+.text hr{
+    margin-left: 0;
+    margin-right: 0;
+}
+.list p{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 0;
+}
+.text .ul{
+    width: 100%;
+    margin: 0;
 }
 
 @media (max-width: 1000px){
