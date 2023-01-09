@@ -2,7 +2,7 @@
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  background: linear-gradient(#105edd,#0b3075);
+  background: linear-gradient(rgb(16, 94, 221,0.5),rgb(11, 48, 117,0.5));
   z-index:10;
   border-bottom: 1px solid black;
   transition: 0.5;
