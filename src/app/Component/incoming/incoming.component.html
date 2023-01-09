@@ -1,0 +1,30 @@
+ <div class="container-lg">
+    <h1>MAZZO MAMA</h1>
+    <div class="row-c">
+        <div  *ngFor="let s of st_07" class="{{s.includes('pre') ? 'big-pic' : 'pic'}}">
+            <img src="./assets/Img/ST07/{{s}}.png">
+        </div>
+    </div>
+    <hr>
+    <h1>SET 03</h1>
+    <div class="row-c">
+        <div *ngFor="let s of op_03" class="{{s.includes('pre') ? 'big-pic' : 'pic'}}">
+            <img src="./assets/Img/OP03/{{s}}.png">
+        </div>
+    </div>
+    <hr>
+    <h1>MAZZO YAMATO</h1>
+    <div class="row-c">
+        <div  *ngFor="let s of st_08" class="{{s.includes('pre') ? 'big-pic' : 'pic'}}">
+            <img src="./assets/Img/ST08/{{s}}.png">
+        </div>
+    </div>
+
+<hr>
+    <h1>MAZZO RUFY</h1>
+    <div class="row-c">
+        <div  *ngFor="let s of st_09" class="{{s.includes('pre') ? 'big-pic' : 'pic'}}">
+            <img src="./assets/Img/ST09/{{s}}.png">
+        </div>
+    </div>
+ </div>
