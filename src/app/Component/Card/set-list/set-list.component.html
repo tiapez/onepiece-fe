@@ -1,15 +1,21 @@
-<img class="loading" src="./assets/Img/loading.gif" alt="loading" *ngIf="setCardList.length == 0">
+<div class="app">
+    <img class="loading" src="./assets/Img/loading.gif" alt="loading" *ngIf="setCardList.length == 0">
 
 
-<div *ngFor="let setCard of setCardList">
+    <div *ngFor="let setCard of setCardList">
 
-    <div *ngIf="(setCard.set.name.includes(cardService.filter.setName) || cardService.filter.setName.includes('Any'))">
-        <h1>{{setCard.set.name}}</h1>
-        <h3>Card: {{setCard.set.nCard}}</h3>
-        <h3>Parallel: {{setCard.set.nParallel}}</h3>
+        <div
+            *ngIf="(setCard.set.name.includes(cardService.filter.setName) || cardService.filter.setName.includes('Any'))">
+            <h1>{{setCard.set.name}}</h1>
+            <h3>Card: {{setCard.set.nCard}}</h3>
+            <h3>Parallel: {{setCard.set.nParallel}}</h3>
 
-        <app-card-list [setCardList]="setCard.cardList">
-        </app-card-list>
+            <div class="card-container container-lg">
+                <img class="set-card" *ngFor="let cardDet of setCard.cardList"
+                src="./assets/Img/{{cardDet.card.setId}}/{{cardDet.card.number}}.png" 
+                (click)="cardService.openView(cardDet.card)" alt="{{cardDet.card.name}}">
+            </div>
+        </div>
+
     </div>
-
 </div>

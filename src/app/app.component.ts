@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalService } from './Service/global.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-op';
-  
+  constructor(public globalService : GlobalService){}
 ngOnInit(){  
   console.warn(`🚨 Console output is disabled on production!`);
  // console.log = function (): void { };

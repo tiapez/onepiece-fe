@@ -1,30 +1,29 @@
 <h1 class="deckButton" *ngIf="globalService.isDeck">
-    <button class="btn btn-light" (click)="openDeck()">
+    <button class="btn btn-sm btn-light" (click)="openDeck()">
         Show Deck
     </button>
 </h1>
 
-<h1 (click)="openFilter()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"
-    class="{{globalService.isDeck ? 'left' : 'center'}}">FILTER
+<h1 (click)="openFilter()" class="{{globalService.isDeck ? 'left' : 'center'}}">FILTER
 </h1>
 
 
 
-<div class="sideFilter text-center" id="collapseExample" [ngbCollapse]="isCollapsed"
-    [ngStyle]='{ width : filterWidth }'>
+<div class="sideFilter text-center" [ngStyle]='{ width : filterWidth }'>
     <a href="javascript:void(0)" class="closebtn" (click)="closeFilter()">&times;</a>
 
     <form action="/addFilter" class="form-filter" method="POST" id="formFilter">
         <div class="col-auto button-filter">
-            <select class="form-select" name="setOption" id="setOption" [(ngModel)]="cardService.filter.setOption"
-                (change)="cardService.changeFilter()">
-                <option value="Any/Any" text="{{cardService.filter.setOption.includes('Any/Any') ? 'Set' : 'Any'}}"></option>
+            <select class="form-control form-control-sm" name="setOption" id="setOption"
+                [(ngModel)]="cardService.filter.setOption" (change)="cardService.changeFilter()">
+                <option value="Any/Any" text="{{cardService.filter.setOption.includes('Any/Any') ? 'Set' : 'Any'}}">
+                </option>
                 <option *ngFor="let set of setList" value="{{set.id + '/' + set.name}}"> {{set.name}}</option>
             </select>
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard && !globalService.isDeck">
-            <select class="form-select" name="color" id="color" [(ngModel)]="cardService.filter.color">
+            <select class="form-control form-control-sm" name="color" id="color" [(ngModel)]="cardService.filter.color">
                 <option value="All" text="{{cardService.filter.color == 'All' ? 'Color' : 'All'}}"></option>
                 <option value="Red">Red</option>
                 <option value="Green">Green</option>
@@ -36,7 +35,7 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="role" id="role" [(ngModel)]="cardService.filter.role">
+            <select class="form-control form-control-sm" name="role" id="role" [(ngModel)]="cardService.filter.role">
                 <option value="All">
                     {{cardService.filter.role == 'All' ? 'Role' : 'All'}}
                 </option>
@@ -48,7 +47,8 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="cardType" id="cardType" [(ngModel)]="cardService.filter.cardType">
+            <select class="form-control form-control-sm" name="cardType" id="cardType"
+                [(ngModel)]="cardService.filter.cardType">
                 <option value="All">
                     {{cardService.filter.cardType == 'All' ? 'Card Type' : 'All'}}
                 </option>
@@ -60,17 +60,19 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <input type="text" placeholder="Type..." id="type" name="type" class="form-control"
+            <input type="text" placeholder="Type..." id="type" name="type" class="form-control form-control-sm"
                 th:value="${session.filter.type}}" [(ngModel)]="cardService.filter.type">
         </div>
 
+        <!--
         <div class="col-auto button-filter">
-            <input type="text" placeholder="Name..." id="name" name="name" class="form-control"
+            <input type="text" placeholder="Name..." id="name" name="name" class="form-control form-control-sm"
                 th:value="${session.filter.name}}" [(ngModel)]="cardService.filter.name">
         </div>
-
+        -->
         <div class="col-auto button-filter">
-            <select class="form-select" name="rarity" id="rarity" [(ngModel)]="cardService.filter.rarity">
+            <select class="form-control form-control-sm" name="rarity" id="rarity"
+                [(ngModel)]="cardService.filter.rarity">
                 <option value="All">
                     {{cardService.filter.rarity == 'All' ? 'Rarity' : 'All'}}
                 </option>
@@ -82,7 +84,7 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="power" id="power" [(ngModel)]="cardService.filter.power">
+            <select class="form-control form-control-sm" name="power" id="power" [(ngModel)]="cardService.filter.power">
                 <option value=-1>
                     {{cardService.filter.power == -1 ? 'Power' : 'Any'}}
                 </option>
@@ -91,7 +93,8 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="counter" id="counter" [(ngModel)]="cardService.filter.counter">
+            <select class="form-control form-control-sm" name="counter" id="counter"
+                [(ngModel)]="cardService.filter.counter">
                 <option value=-1>
                     {{cardService.filter.counter == -1 ? 'Counter' : 'Any'}}
                 </option>
@@ -100,7 +103,7 @@
         </div>
 
         <div class="col-auto button-filter" *ngIf="!globalService.isUserCard">
-            <select class="form-select" name="cost" id="cost" [(ngModel)]="cardService.filter.cost">
+            <select class="form-control form-control-sm" name="cost" id="cost" [(ngModel)]="cardService.filter.cost">
                 <option value=-1>
                     {{cardService.filter.cost == -1 ? 'Cost' : 'Any'}}
                 </option>
@@ -110,8 +113,8 @@
 
 
         <div class="col-auto button-filter" *ngIf="globalService.isDetails">
-            <select class="form-select" name="conditions" id="conditions" [(ngModel)]="cardService.filter.condition"
-                (ngModelChange)="conta()">
+            <select class="form-control form-control-sm" name="conditions" id="conditions"
+                [(ngModel)]="cardService.filter.condition" (ngModelChange)="conta()">
                 <option value="0">
                     {{cardService.filter.condition == 0 ? 'Min. Cond.' : 'All'}}
                 </option>
@@ -128,8 +131,8 @@
 
 
         <div class="col-auto button-filter" *ngIf="globalService.isDetails">
-            <select class="form-select" name="language" id="language" [(ngModel)]="cardService.filter.language"
-                (ngModelChange)="conta()">
+            <select class="form-control form-control-sm" name="language" id="language"
+                [(ngModel)]="cardService.filter.language" (ngModelChange)="conta()">
                 <option value="All">
                     {{cardService.filter.language == 'All' ? 'Language' : 'All'}}
                 </option>
@@ -140,7 +143,7 @@
 
 
         <div class="col-auto button-filter" *ngIf="globalService.isUserCard">
-            <select class="form-select" name="moa" id="moa" [(ngModel)]="cardService.filter.view"
+            <select class="form-control form-control-sm" name="moa" id="moa" [(ngModel)]="cardService.filter.view"
                 (ngModelChange)="conta()">
                 <option value="0">
                     {{cardService.filter.view == 0 ? 'View' : 'All'}}
@@ -152,8 +155,12 @@
         <div *ngIf="isMobile" class="col-auto button-filter ">
         </div>
         <div class="col-auto button-filter" id="button-reset">
-            <button class="btn btn-outline-success " (click)="reset()">Reset</button>
+            <button class="btn btn-sm btn-outline-success " (click)="reset()">Reset</button>
         </div>
-
+        <div *ngIf="globalService.isDeck && !globalService.isMobile" class="col-auto button-filter">
+            <button class="btn btn-sm btn-light" (click)="openDeck()">
+                Show Deck
+            </button>
+        </div>
     </form>
 </div>

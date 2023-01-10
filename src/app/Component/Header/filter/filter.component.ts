@@ -26,7 +26,7 @@ export class FilterComponent {
   numberList : number[] = [1000,2000,3000,4000,5000,6000,7000,8000,9000,10000];
 
   ngOnInit() {
-    if (this.isMobile) {
+    if (!this.isMobile) {
       this.filterWidth = "100%";
     }
     if(this.globalService.isDeck){
@@ -44,12 +44,7 @@ export class FilterComponent {
   openFilter() {
     if (this.isMobile) {
       this.filterWidth = "100%";
-      this.isCollapsed = false;
     }
-    else{
-      this.isCollapsed = !this.isCollapsed;   
-      this.startTimer();
-    }  
   }
 
   closeFilter() {

@@ -6,3 +6,14 @@ h1,h3{
     display: flex;
     margin: auto;
 }
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.set-card{
+    width: 25%;
+    padding: 1%;
+}

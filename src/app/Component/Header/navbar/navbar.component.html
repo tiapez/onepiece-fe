@@ -1,8 +1,7 @@
 <div class="container-myside" id="navbar">
 	<div class="container-lg navbar-container  align-items-center">
 		<div class="navbar-brand">
-			<img src="{{'./assets/Img/OP-navbar-'+globalService.navbarImg+'.png'}}" alt="onepiece-logo" />
-			<div id="div-click" (click)="openNav()"></div>
+			<img src="{{'./assets/Img/OP-navbar-'+globalService.navbarImg+'.png'}}" alt="onepiece-logo" (click)="openNav()" />
 		</div>
 		<div id="mySidenav " class="sidenav align-items-center" [ngStyle]='{ width : navbarWidth }'>
 			<img src="{{'./assets/Img/OP-navbar-'+globalService.navbarImg+'.png'}}" alt="onepiece-logo" />
@@ -46,7 +45,8 @@
 		</div>
 
 	</div>
-	<div class="container-lg">
-		<app-filter *ngIf="globalService.isCardList"></app-filter>
-	</div>
+
+</div>
+<div class="container-lg">
+	<app-filter *ngIf="globalService.isCardList"></app-filter>
 </div>

@@ -20,6 +20,7 @@ export class SetListComponent implements OnInit {
 
     this.cardService.filter.setOption="Any/Any";
     this.cardService.changeFilter();
+    this.globalService.isCardList = true;
   }
 
   
