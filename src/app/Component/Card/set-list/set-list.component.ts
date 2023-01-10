@@ -12,17 +12,15 @@ export class SetListComponent implements OnInit {
 
   constructor(public globalService: GlobalService, public cardService: CardListService) { }
 
-    setCardList : SetCard[] = [] ;
+  setCardList: SetCard[] = [];
   ngOnInit(): void {
     this.cardService.getCardAll2().subscribe({
-      next : data => {this.setCardList = data}
+      next: data => { this.setCardList = data }
     });
 
-    this.cardService.filter.setOption="Any/Any";
+    this.cardService.filter.setOption = "Any/Any";
     this.cardService.changeFilter();
     this.globalService.isCardList = true;
   }
-
-  
 
 }

@@ -1,4 +1,5 @@
 import { Component,ViewEncapsulation } from '@angular/core';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-promo-find-jap',
@@ -8,8 +9,10 @@ import { Component,ViewEncapsulation } from '@angular/core';
 })
 export class PromoFindJapComponent  {
 
-  constructor() { }
-
+  constructor(private globalService : GlobalService) { }
+  ngOnInit(){
+    this.globalService.isCardList = false;
+  }
   uta_deck = ['011','012','013','014','015','016','017','018','019','020','021','022','023'];
   promo_pack_1 = ['001', '002', '003', '004', '005'];
   jump_pack_1 = ['007', '008', '009', '010'];

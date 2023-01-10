@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/Service/global.service';
 
 @Component({
   selector: 'app-promo-find-global',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromoFindGlobalComponent {
 
-  constructor() { }
+  constructor(private globalService : GlobalService) { }
+  ngOnInit(){
+    this.globalService.isCardList = false;
+  }
 
   promo_pack_1 = ['001', '002', '003', '004', '005'];
   tournament_pack_1 = ['006', '007', '008', '009', '010'];

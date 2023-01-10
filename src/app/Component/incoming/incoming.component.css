@@ -25,3 +25,13 @@ h1{
     color: aliceblue;
     text-align: center;
 }
+
+.modal-dialog{
+    max-width: 100% !important;
+}
+
+@media (min-width: 576px){
+    .modal-dialog{
+        max-width: 1000px !important;
+    }
+}
