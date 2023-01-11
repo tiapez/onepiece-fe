@@ -52,7 +52,15 @@ export class FilterComponent {
   }
 
   reset() {
-    this.cardService.filter = new Filter();
+    if(this.globalService.isCardListAll){
+      this.cardService.filter = new Filter();
+      this.cardService.filter.setOption = "Any/Any";
+      this.cardService.filter.setId = "Any";
+      this.cardService.filter.setName = "Any";
+    }else{
+      this.cardService.filter = new Filter();
+    }
+
   }
 
 

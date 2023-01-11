@@ -20,8 +20,6 @@ export class ModalCardAddComponent {
   }
   
   ngAfterViewInit() {
-
-    console.log(this.modalCard);
   }
 
   add(card : CardDetails,details : Details){

@@ -4,6 +4,7 @@
   width: 100%;
   right: 0;
   top: 0;
+  align-self: center;
 }
 
 .deckButton{

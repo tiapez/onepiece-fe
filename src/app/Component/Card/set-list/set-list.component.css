@@ -14,6 +14,10 @@ h1,h3{
 }
 
 .set-card{
-    width: 25%;
-    padding: 1%;
+    max-width: 25%;
+}
+
+.set-card img{
+width: 98%;
+margin: 1%;
 }

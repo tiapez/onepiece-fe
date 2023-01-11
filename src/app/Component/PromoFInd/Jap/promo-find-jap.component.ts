@@ -1,5 +1,6 @@
-import { Component,ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { GlobalService } from 'src/app/Service/global.service';
+import { CardListService } from 'src/app/Service/Implemented/CardList/card-list.service';
 
 @Component({
   selector: 'app-promo-find-jap',
@@ -7,17 +8,20 @@ import { GlobalService } from 'src/app/Service/global.service';
   styleUrls: ['./promo-find-jap.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class PromoFindJapComponent  {
+export class PromoFindJapComponent {
 
-  constructor(private globalService : GlobalService) { }
-  ngOnInit(){
+  constructor(private globalService: GlobalService, private cardService: CardListService) { }
+  
+  ngOnInit() {
     this.globalService.isCardList = false;
+    this.cardService.changeFilter();
   }
-  uta_deck = ['011','012','013','014','015','016','017','018','019','020','021','022','023'];
+
+  uta_deck = ['011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021', '022', '023'];
   promo_pack_1 = ['001', '002', '003', '004', '005'];
   jump_pack_1 = ['007', '008', '009', '010'];
-  promo_pack_2  = ['028', '029', '030', '031', '032'];
-  standard_pack_1 = [ 'OP01-021','OP01-033', 'ST04-011'];
+  promo_pack_2 = ['028', '029', '030', '031', '032'];
+  standard_pack_1 = ['OP01-021', 'OP01-033', 'ST04-011'];
   standard_pack_2 = ['ST01-007', 'ST02-007', 'ST03-007', 'ST04-010'];
 
   teaching_tour_22 = "<a href='https://asia-en.onepiece-cardgame.com/events/2022/officialevents/teaching_tour.php' target='_blank'> Teaching Tour </a> <br> From June 2022 "

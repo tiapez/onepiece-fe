@@ -16,6 +16,7 @@ ngOnInit(){
   console.debug = function (): void { };
   console.warn = function (): void { };
   console.info = function (): void { };
+  this.globalService.changeUrl();
 }
 
 

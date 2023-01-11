@@ -14,7 +14,7 @@ a{
 .col-c{
     display: flex;
     flex-direction: column;  
-    width: 33%;
+    width: 25%;
     height: auto;
 }
 

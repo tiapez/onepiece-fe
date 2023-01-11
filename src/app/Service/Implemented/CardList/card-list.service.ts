@@ -118,7 +118,6 @@ export class CardListService {
   }
 
   cardIf(cardDet : CardDetails){
-    console.log(cardDet);
     return cardDet.card.name.toLocaleLowerCase().includes(this.filter.name) && (this.filter.rarity.includes('All') || cardDet.card.rarity.includes(this.filter.rarity)) 
     && (this.filter.setId.includes(cardDet.card.setId) || this.filter.setId == 'Any') && cardDet.qtyMax != 0
     && (( (this.globalService.isDetails) ||(this.globalService.isClassic) ) && (this.filter.view == 0 || (this.filter.view == 1 && cardDet.qty > 0) || (this.filter.view == 2 && cardDet.qty == 0)) 

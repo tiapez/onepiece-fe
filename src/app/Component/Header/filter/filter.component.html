@@ -12,7 +12,7 @@
 <div class="sideFilter text-center" [ngStyle]='{ width : filterWidth }'>
     <a href="javascript:void(0)" class="closebtn" (click)="closeFilter()">&times;</a>
 
-    <form action="/addFilter" class="form-filter" method="POST" id="formFilter">
+    <form action="/addFilter" class="form-filter justify-content-center" method="POST" id="formFilter">
         <div class="col-auto button-filter">
             <select class="form-control form-control-sm" name="setOption" id="setOption"
                 [(ngModel)]="cardService.filter.setOption" (change)="cardService.changeFilter()">
