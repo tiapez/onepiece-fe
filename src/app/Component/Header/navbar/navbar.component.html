@@ -25,9 +25,10 @@
 				<li> <a routerLink="/promo/global">Global</a></li>
 				<li> <a routerLink="/promo/jap">Japanese</a></li>
 			</ul>
-			<a class="only-mb" routerLink="/promo/global" (click)="closeNav()">Global</a>
-			<a class="only-mb" routerLink="/promo/jap" (click)="closeNav()">Japanese</a>
+			<a class="only-mb" routerLink="/promo/global" (click)="closeNav()">Promo Global</a>
+			<a class="only-mb" routerLink="/promo/jap" (click)="closeNav()">Promo Jap</a>
 			<a routerLink="/incoming" (click)="closeNav()">Incoming</a>
+			<a routerLink="/don" (click)="closeNav()">Don!!</a>
 			<div class="navbar-button">
 
 				<button *ngIf="globalService.isCardList" class="btn btn-outline-danger align-items-center"

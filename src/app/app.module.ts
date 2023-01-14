@@ -34,6 +34,7 @@ import { SetListComponent } from './Component/Card/set-list/set-list.component';
 import { PromoFindJapComponent } from './Component/PromoFInd/Jap/promo-find-jap.component';
 import { PromoFindGlobalComponent } from './Component/PromoFInd/Global/promo-find-global.component';
 import { IncomingComponent } from './Component/incoming/incoming.component';
+import { DonListComponent } from './Component/Card/don-list/don-list.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { IncomingComponent } from './Component/incoming/incoming.component';
     PromoFindJapComponent,
     PromoFindGlobalComponent,
     IncomingComponent,
+    DonListComponent,
   ],
   imports: [
     BrowserModule,

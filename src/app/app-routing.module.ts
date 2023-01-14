@@ -13,6 +13,7 @@ import { SetListComponent } from './Component/Card/set-list/set-list.component';
 import { PromoFindJapComponent } from './Component/PromoFInd/Jap/promo-find-jap.component';
 import { PromoFindGlobalComponent } from './Component/PromoFInd/Global/promo-find-global.component';
 import { IncomingComponent } from './Component/incoming/incoming.component';
+import { DonListComponent } from './Component/Card/don-list/don-list.component';
 import { 
   AuthGuardService as AuthGuard 
 } from './Component/Auth/auth-guard.service';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: "promo/jap", component: PromoFindJapComponent},
   {path: "promo/global", component: PromoFindGlobalComponent},
   {path: "incoming", component: IncomingComponent},
+  {path: "don", component: DonListComponent},
   {path : "", redirectTo : "cardList", pathMatch: 'full'}
 ];
 

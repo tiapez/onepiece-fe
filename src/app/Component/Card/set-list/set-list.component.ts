@@ -38,8 +38,6 @@ export class SetListComponent implements OnInit {
     }else{
       return false;
     }
-
-
   }
 
 }
