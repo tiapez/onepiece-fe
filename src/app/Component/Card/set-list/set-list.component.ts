@@ -15,7 +15,7 @@ export class SetListComponent implements OnInit {
 
   setCardList: SetCard[] = [];
   ngOnInit(): void {
-    this.cardService.getCardAll2().subscribe({
+    this.cardService.getCardAll().subscribe({
       next: data => { this.setCardList = data }
     });
 

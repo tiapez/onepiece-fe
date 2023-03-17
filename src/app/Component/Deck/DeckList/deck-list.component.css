@@ -12,7 +12,7 @@
 .deck-box {
     min-height: 380px;
     margin: 5%;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 .deck-name {
@@ -70,7 +70,7 @@
 
 .box__face {
     position: absolute;
-    border: 1px solid black;
+    border: 1px solid white;
     text-align: center;
     font-size: 30px;
 }
