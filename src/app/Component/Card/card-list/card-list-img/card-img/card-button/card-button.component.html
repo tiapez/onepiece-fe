@@ -1,7 +1,6 @@
 <div class="button-row">
     <div class="card-button text-center">
-        <button *ngIf="globalService.isClassic && cardDet.qty <= 0" class="btn btn-dark" (click)="cardAction.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>
-        <button *ngIf="globalService.isClassic && cardDet.qty > 0" class="btn btn-dark" (click)="cardAction.removeClassic(cardDet)"> <i class="fas fa-minus"></i></button>
+        <button *ngIf="globalService.isClassic" class="btn btn-dark" (click)="cardAction.addClassic(cardDet)"> <i class="fas fa-plus"></i></button>
         <button *ngIf="globalService.isDetails" class="btn btn-dark" (click)="cardService.openAdd(cardDet)"> <i class="fas fa-bars"></i></button>
         <button *ngIf="globalService.isDeck" class="btn btn-dark" (click)="deckService.createCard(cardDet)"> <i class="fas fa-plus"></i></button>
     </div>
@@ -15,10 +14,11 @@
         </form>
     </div>
     <div class="card-button text-center">
-        <button *ngIf="!globalService.isDeck" (click)="cardService.openView(cardDet.card);" class="btn btn-dark">
+        <button *ngIf="!globalService.isDeck && !globalService.isClassic" (click)="cardService.openView(cardDet.card);" class="btn btn-dark">
             <i class="fas fa-image"></i>
         </button>
         <button *ngIf="globalService.isDeck" class="btn btn-dark" (click)="deckService.removeDet(cardDet)"> <i class="fas fa-minus"></i></button>
+        <button *ngIf="globalService.isClassic" class="btn btn-dark" (click)="cardAction.removeClassic(cardDet)"> <i class="fas fa-minus"></i></button>
     </div>
 </div>
 
